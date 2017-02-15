@@ -1,0 +1,27 @@
+{
+	"routes": [
+		{
+			"name" : "auth",
+			"endpoint": "/auth",
+			"template": "auth",
+			"async": false
+		},
+		{
+			"name" : "api.login",
+			"endpoint": "/api/v1.0/login/",
+			"method":"post",
+			"async": true
+		},
+		{
+			"name" : "api.register",
+			"endpoint" : "/api/v1.0/register/",
+			"method" : "post",
+			"async" : true
+		}
+	],
+	"data":{
+		"api.login":{
+			"token":"muxi"
+		}
+	}
+}
