@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/Cruyun/Muxi-Studio-Permit#readme",
   "dependencies": {
-    "backbone": "^1.3.3",
     "css-loader": "^0.26.1",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-register": "^6.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^4.5.0",
     "sass-loader": "^4.1.1",
@@ -29,8 +34,10 @@
   },
   "devDependencies": {
     "html-loader": "^0.4.4",
-    "image-webpack-loader": "^3.2.0",
     "jquery": "^3.1.1",
-    "vue": "^2.0.5"
+    "vue": "^2.0.5",
+    "vue-loader": "^11.0.0",
+    "vue-template-compiler": "^2.1.10",
+    "whatwg-fetch": "^1.0.0"
   }
 }

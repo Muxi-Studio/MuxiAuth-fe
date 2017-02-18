@@ -2,7 +2,7 @@
 	"routes": [
 		{
 			"name" : "auth",
-			"endpoint": "/auth",
+			"endpoint": "/",
 			"template": "auth",
 			"async": false
 		},

@@ -4,17 +4,27 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        'auth.js': ['./src/auth.js', 'webpack-hot-middleware/client'],
-        vendor: ["Backbone", "underscore", "jquery", "./src/style.scss"]
+        'auth.js': ['./src/auth.js', 'webpack-hot-middleware/client']
     },
     output: {
-        path: '/',
+        path: path.join(__dirname, ""),
         publicPath: '/dist/',
         filename: '[name]'
     },
     devtool: '#eval-source-map',
     module: {
-        loaders: [{
+        loaders: [
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        }, {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            include: [
+                path.resolve(__dirname, "src"),
+            ],
+        },{
           test: /\.scss$/,
           loaders: ["style", "css", "sass"]
         },
@@ -36,6 +46,5 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js")
     ]
 };
