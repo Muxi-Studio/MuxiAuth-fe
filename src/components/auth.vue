@@ -14,22 +14,30 @@
     <div class="container">
 		<button class="loginButton btn" v-on:click = "onLogin">登录</button>
 	    <button class="registerButton btn" v-on:click = "onRegister">注册</button>
-
 	<div class="box">
 	  <div class="iconbox">
-	  <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon"></div>
-	  <input v-model = "emailInput" class="inputbox" type="text" placeholder="邮箱" v-blur="alertmessage">
+	  <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
+	  </div>
+	  <input v-model = "message.emailInput" class="inputbox" id="emailInput" type="text" placeholder="邮箱" v-blur="alertmessage">
 	</div>
 	<div class="box">
 	<div class="iconbox">
 	  <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
 	  </div>
-      <input v-model = "passwordInput" class="inputbox" type="password" placeholder="请输入密码" v-blur="alertmessage">
+      <input v-model = "message.passwordInput" class="inputbox" type="password" placeholder="请输入密码" v-blur="alertmessage" id="passwordInput" v-show="!showPass">
+      <input v-model = "message.passwordInput" class="inputbox" type="text" placeholder="请输入密码" v-blur="alertmessage" id="passwordInput" v-show="showPass">
+      <div class="iconbox"><img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click = "showPass = !showPass">
+      </div>
     </div>
 	<div v-show = "login" class="box">
 	<div class="iconbox">
-       <img src= "http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon"></div>
-		<input v-model = "psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-blur="alertmessage">
+       <img src= "http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
+       </div>
+		<input v-model = "message.psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="!showPass">
+        <input v-model = "message.psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="showPass">
+		<div class="iconbox">
+		<img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click = "showPass = !showPass">
+		</div>
 	</div>
 	<button v-on:click = "submit" class="change box">{{submitWord}}</button>
 	</div>
@@ -44,11 +52,17 @@ import blur from '../directives/blur.js'
 export default{
 	data(){
 		return{
-			emailInput:"",
-			passwordInput:"",
-			psdsecond:"",
+			message:{
+				emailInput:"",
+			    passwordInput:"",
+			    psdsecond:"",
+			},
+			emailInput:['lengthCheck', 'emailCheck'],
+			passwordInput:['lengthCheck'],
+			psdsecond:['lengthCheck'],
 			login:false,
-			submitWord:"登录"
+			submitWord:"登录",
+			showPass: false
 		}
 	},
 	directives: {
@@ -68,8 +82,16 @@ export default{
 			}
             
 		},
+		lengthCheck(key,word){
+			console.log('lengthCheck!!' + key + word)
+		},
+		emailCheck(key,word){
+			console.log('emailCheck!!' + key + word)
+		},
 		alertmessage(e){
-			alert(e)
+			var key = e.target.id
+			console.log(this.message[key])
+			this[key].forEach(e => this[e](key,this.message[key]))
 		},
 		submit(){
 			if(this.login){
@@ -137,14 +159,11 @@ export default{
 	height: 73px;
 	background-color: #ffffff;
 	overflow: hidden;
-    /*display: inline-block;*/
-    /*display: block; */
 }
 .logo{
-	/*background-image: url("../pictures/logo.png");*/
 	width: 101px;
 	height: 24px;
-	margin-top: 30px;
+	margin-top: 23px;
 	margin-left: 92px;
 	float: left;
 }
@@ -152,8 +171,6 @@ export default{
 	line-height: 73px;
 	font-size: 15px;
 	font-family: "Adobe Heiti Std";
-	/*color: #2b4755;*/
-	/*display: inline-block;*/
     float: right;
 }
 .xueer{
@@ -173,33 +190,23 @@ export default{
 	font-family: "FZLTZHK";
 	position: relative;
 	font-size: 0;
-	/*overflow: hidden;*/
 }
 
 .circle{
 	width: 380px;
 	height: 380px;
-    transform: translate(50%,50%);/* Standard syntax */
-    margin-top:-80px;
-    margin-left: -80px;
-    /*overflow:auto;*/
-	/*float: left;*/
-	/*top:50%;*/
-	/*margin-top: -189.5px;*/
-	/*position:absolute;*/
-	/*margin-top: calc(50% - 189.5px);*/
-	/*margin-left: calc(50% - 189.5px);*/
-    /*background-image: url("../pictures/circle.png");*/
+    transform: translate(-50%,-50%);
+    top:50%;
+    left: 50%;
+	position:absolute;
 }
 .container{
 	width: 202px;
 	display: inline-block;
 	margin-left: calc(50% - 100px);
-	/*margin-top: calc(50% - 100px);*/
 }
 .btn{
     margin-top: 137px;
-    /*font-family: "FZLTZHK";*/
     font-size: 14px;
     border: none;
     color: #0b2029;
@@ -232,8 +239,6 @@ export default{
 .inputbox{
 	display: inline-block;
 	height: 100%;
-	/*width: calc(100% - 30px);*/
-	/*margin-right: 0;*/
 	background-color: transparent;
 	border: none;
 	vertical-align: middle;
@@ -253,10 +258,8 @@ export default{
 .left{
 	width: 50%;
 	height: 100%;
-	/*float: left;*/
 	display: inline-block;
-	/*position: relative;*/
-	/*margin-right: 0;*/
+	position: relative;
 }
 .right{
 	width: 50%;
@@ -264,7 +267,6 @@ export default{
 	float: right;
 	margin-left: 0;
 	display: inline-block;
-	/*position: relative;*/
 }
 .footer{
 	width: 100%;
