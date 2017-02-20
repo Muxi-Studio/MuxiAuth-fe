@@ -4,7 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        'auth.js': ['./src/auth.js', 'webpack-hot-middleware/client']
+        'auth.js': ['./src/auth.js', 'webpack-hot-middleware/client'],
+        'auth_phone.js': ['./src/auth_phone.js', 'webpack-hot-middleware/client']
     },
     output: {
         path: path.join(__dirname, ""),

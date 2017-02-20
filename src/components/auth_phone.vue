@@ -1,143 +1,69 @@
 <template>
 <div class="wrap">
-  <img src="http://p1.bpimg.com/567571/bc7712cfadc0be46.png" class="header">
-  <div class="main">
-  <div class="top">
-    <img src="http://p1.bpimg.com/4851/1b5d2b9c20befb88.png" class="circle">
-    </div>
-    <div class="bottom">
-    <div class="container">
-		<button class="loginButton btn" v-on:click = "onLogin">登录</button>
-	    <button class="registerButton btn" v-on:click = "onRegister">注册</button>
+  	<img src="http://p1.bpimg.com/567571/bc7712cfadc0be46.png" class="header">
+  	<div class="main">
+	  	<div class="top">
+	    	<img src="http://p1.bqimg.com/567571/8bdd1501da6373b1.png" class="circle">
 	    </div>
-	<div class="box">
-	  <div class="iconbox">
-	  <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
-	  </div>
-	  <input v-model = "message.emailInput" class="inputbox" id="emailInput" type="text" placeholder="邮箱" v-blur="alertmessage">
-	</div>
-	<div class="box">
-	<div class="iconbox">
-	  <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
-	  </div>
-      <input v-model = "message.passwordInput" class="inputbox" type="password" placeholder="请输入密码" v-blur="alertmessage" id="passwordInput" v-show="!showPass">
-      <input v-model = "message.passwordInput" class="inputbox" type="text" placeholder="请输入密码" v-blur="alertmessage" id="passwordInput" v-show="showPass">
-      <div class="iconbox"><img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click = "showPass = !showPass">
-      </div>
-    </div>
-	<div v-show = "login" class="box">
-	<div class="iconbox">
-       <img src= "http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
-       </div>
-		<input v-model = "message.psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="!showPass">
-        <input v-model = "psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="showPass">
-		<div class="iconbox">
-		<img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click = "showPass = !showPass">
+	    <div class="bottom">
+		    <div class="container">
+				 <button class="loginButton btn" v-on:click = "onLogin">登录</button>
+			     <button class="registerButton btn" v-on:click = "onRegister">注册</button>
+		    </div>
+			<div class="box">
+			  <div class="iconbox">
+			  <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
+			  </div>
+			  <input v-model = "message.emailInput" class="inputbox" id="emailInput" type="text" placeholder="邮箱" v-blur="alertmessage">
+			</div>
+			<div class="box">
+			    <div class="iconbox">
+			     	<img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
+			    </div>
+		      	<input v-model = "message.passwordInput" class="inputbox" type="password" placeholder="请输入密码" v-blur="alertmessage" id="passwordInput" v-show="!showPass">
+		      	<input v-model = "message.passwordInput" class="inputbox" type="text" placeholder="请输入密码" v-blur="alertmessage" id="passwordInput" v-show="showPass">
+		      	<div class="iconbox">
+		          	<img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click = "showPass = !showPass">
+		      	</div>
+		    </div>
+			<div v-show = "login" class="box">
+			    <div class="iconbox">
+		         	<img src= "http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
+		        </div>
+				<input v-model = "message.psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="!showPass">
+		        <input v-model = "message.psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="showPass">
+				<div class="iconbox">
+					<img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click = "showPass = !showPass">
+				</div>
+			</div>
+			<button v-on:click = "submit" class="change box">{{submitWord}}</button>
 		</div>
 	</div>
-	<button v-on:click = "submit" class="change box">{{submitWord}}</button>
+	<div class="footer">
+	    <a href="http://xueer.muxixyz.com" class="xueer word">学而</a>
+	    <a href="http://muxistudio.com"class="word">木犀团队</a>
+	    <a href="http://xueer.muxixyz.com" class="word">木犀分享</a>
 	</div>
-	</div>
-  <div class="footer">
-    <div class="xueer word"></div>
-    <div class="studio word"></div>
-    <div class="share word"></div>
-  </div>
-  </div>
+</div>
 </template>
 
-<style>
-.header{
-	width: 100%;
-	height: 37px;
-}
-.main{
-	width: 100%;
-	height: calc(100% - 80px);
-	background-color: #ffffff;
-}
-.top{
-	width: 100%;
-	height: 40%;
-	position: relative;
-}
-.circle{
-	position: absolute;
-	transform: translate(-50%,-50%);
-    top:50%;
-    left: 50%;
-    width: 47%;
-}
-.bottom{
-	width: 100%;
-	height: 60%;
-}
-.container{
-	width: 72%;
-	height: 17px;
-	font-size: 18px;
-    border: none;
-    background-color: transparent;
-}
-.loginButton{
-    margin-left: calc(100% / 3);
-    display: inline-block;
-}
-.registerButton{
-	margin-right: calc(100% / 3);
-	display: inline-block;
-}
-.btn{
-    border: none;
-    color: #0b2029;
-}
-.box{
-    margin-top: 30px;
-    font-size: 14px;
-    color: #0b2029;
-    background-color: transparent;
-    height: 40px;
-    border-radius: 4px;
-    border: 1px solid #737373;
-}
 
-.inputbox{
-	display: inline-block;
-	height: 100%;
-	background-color: transparent;
-	border: none;
-	vertical-align: middle;
-}
-.iconbox{
-	width: 34px;
-	height: 100%;
-	display: inline-block;
-    vertical-align: middle;
-}
-.icon{
-	width: 14px;
-	height: 12px;
-	margin-top: calc(50% - 10px);
-	margin-left: calc(50% - 7px);
-}
-.footer{
-	width: 100%;
-	height: 43px;
-    background-color: #2b2b29;
-	margin-bottom: 0;
-}
-</style>
 <script>
 import blur from '../directives/blur.js'
 export default{
 	data(){
 		return{
-			emailInput:"",
-			passwordInput:"",
-			psdsecond:"",
+			message:{
+				emailInput:"",
+			    passwordInput:"",
+			    psdsecond:"",
+			},
+			emailInput:['lengthCheck', 'emailCheck'],
+			passwordInput:['lengthCheck'],
+			psdsecond:['lengthCheck'],
 			login:false,
-			showPass: false,
-			submitWord:"登录"
+			submitWord:"登录",
+			showPass: false
 		}
 	},
 	directives: {
@@ -161,6 +87,11 @@ export default{
 			var key = e.target.id
 			console.log(this.message[key])
 			this[key].forEach(e => this[e](key,this.message[key]))
+			var email = "[\\w-\\.]+@([\\w-]+\\.)+[a-z]{2,3}";
+            result = email.test(emailInput);
+            if(!result){
+            	alert("邮箱格式有误！")
+            }
 		},
 		submit(){
 			if(this.login){
@@ -194,10 +125,120 @@ export default{
 
                     })
 				}
-			if(this.psdsecond != this.passwordInput){
+			if(this.psdsecond != this.passwordInput && this.login){
 				alert("两次密码输入不一致")
 			 }
 	   }
    }
 }
 </script>
+
+<style>
+.header{
+	width: 100%;
+	height: 37px;
+}
+.main{
+	width: 100%;
+	height: calc(100% - 80px);
+	background-color: #ffffff;
+}
+.top{
+	width: 100%;
+	height: 40%;
+	position: relative;
+}
+.circle{
+	position: absolute;
+	transform: translate(-50%,-50%);
+    top:50%;
+    left: 50%;
+    width: 47%;
+}
+.bottom{
+	width: 100%;
+	height: 60%;
+}
+.container{
+	width: 72%;
+	height: 17px;
+	font-size: 18px;
+    border: none;
+    color: rgba(71, 70, 68, 0.99);
+    background-color: transparent;
+    margin-left: 14%;
+}
+.loginButton{
+    margin-left: calc(100% / 3);
+    display: inline-block;
+    margin-right: 7%;
+}
+.registerButton{
+	display: inline-block;
+}
+.btn{
+    font-size: 14px;
+    border: none;
+    color: #0b2029;
+    background-color: transparent;
+}
+.box{
+    margin-top: 30px;
+    /*font-size: 14px;*/
+    color: #0b2029;
+    background-color: transparent;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #737373;
+    width: 72%;
+    margin-left: 14%;
+    font-size: 0;
+}
+
+.inputbox{
+	display: inline-block;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+	vertical-align: middle;
+	width: 66%;
+}
+.iconbox{
+	width: 16%;
+	height: 100%;
+	display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.icon{
+	width: 14px;
+	height: 12px;
+	/*margin-top: calc(50% - 10px);*/
+	/*margin-left: calc(50% - 7px);*/
+	transform: translate(-50%,-50%);
+    top:50%;
+    left: 50%;
+    position: absolute;
+}
+.change{
+	background-color: rgba(255, 133, 12, 0.99);
+	color: #ffffff;
+	font-size: 18px;
+	border: none;
+}
+.footer{
+	width: 100%;
+	height: 43px;
+    background-color: #2b2b29;
+	margin-bottom: 0;
+	display: flex;
+}
+.word{
+	flex: 1;
+	line-height: 43px;
+	color: #ffffff;
+}
+.xueer{
+	margin-left: 14%;
+}
+</style>

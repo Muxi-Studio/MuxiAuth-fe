@@ -145,7 +145,7 @@ export default{
                    // })
 			//console.log(this.message)
 			//this.isture = true
-			if(this.psdsecond != this.passwordInput){
+			if(this.psdsecond != this.passwordInput && this.login){
 				alert("两次密码输入不一致")
 			 }
 	   }

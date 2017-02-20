@@ -6,3 +6,4 @@ new Vue({
 	el:"#auth",
 	render: h => h(Auth)
 })
+
