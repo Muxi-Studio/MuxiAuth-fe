@@ -124,8 +124,8 @@ export default{
                              'Content-Type': 'application/json'
                              },
                     body: JSON.stringify({
-                    content: this.emailInput
-                            // this.passwordInput
+                    username:this.message.emailInput,
+                    password:this.message.passwordInput
                         })
                     
                     })
@@ -138,8 +138,8 @@ export default{
                          'Content-Type': 'application/json'
                          },
                 body: JSON.stringify({
-                    content: this.emailInput
-                             //this.passwordInput
+                    username:this.message.emailInput,
+                    password:this.message.passwordInput
                         })
                     }).then(res => {
                     	return res.json()
