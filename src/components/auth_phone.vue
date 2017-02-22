@@ -1,6 +1,9 @@
 <template>
 <div class="wrap">
-  	<img src="http://p1.bpimg.com/567571/bc7712cfadc0be46.png" class="header">
+    <div class="nofooter">
+    <div class="header">
+  	    <img src="http://p1.bqimg.com/567571/2c7c44100e48ca4e.png" class="logo">
+  	</div>
   	<div class="main">
 	  	<div class="top">
 	    	<img src="http://p1.bqimg.com/567571/8bdd1501da6373b1.png" class="circle">
@@ -8,7 +11,7 @@
 	    <div class="bottom">
 		    <div class="container">
 				 <button class="loginButton btn" v-on:click = "onLogin">登录</button>
-			     <button class="registerButton btn" v-on:click = "onRegister">注册</button>
+			     <button class="btn" v-on:click = "onRegister">注册</button>
 		    </div>
 			<div class="box">
 			  <div class="iconbox">
@@ -43,6 +46,8 @@
 		    <div class="check" v-show = "checkmatch">密码输入不一致</div>
 			<button v-on:click = "submit" class="change box">{{submitWord}}</button>
 		</div>
+	</div>
+	<div class="push"></div>
 	</div>
 	<div class="footer">
 	    <a href="http://xueer.muxixyz.com" class="xueer word">学而</a>
@@ -153,27 +158,37 @@ export default{
 </script>
 
 <style>
-
+body{
+	min-width: 300px;
+}
 .header{
-	width: 100%;
+	background-color: rgba(251, 247, 213, 0.99);
 	height: 37px;
+}
+.logo{
+	width: 108px;
+	margin-left: calc(50% - 54px);
+	margin-top: 7px;
 }
 .main{
 	width: 100%;
-	height: calc(100% - 80px);
+	/*height: calc(100% - 80px);*/
 	background-color: #ffffff;
 }
 .top{
-	width: 100%;
+	/*width: 100%;*/
 	height: 40%;
 	position: relative;
+	padding: 20px;
 }
 .circle{
-	position: absolute;
-	transform: translate(-50%,-50%);
-    top:50%;
-    left: 50%;
+	/*position: absolute;*/
+	display: block;
+	/*transform: translate(-50%,-50%);*/
     width: 47%;
+    /*height: 80%;*/
+    margin: 0 auto;
+    height: 75%;
 }
 .bottom{
 	width: 100%;
@@ -187,16 +202,14 @@ export default{
     color: rgba(71, 70, 68, 0.99);
     background-color: transparent;
     margin-left: 14%;
+    display: flex;
+    justify-content: center;
 }
 .loginButton{
-    margin-left: calc(100% / 3);
     display: inline-block;
-    /*margin-right: 7%;*/
+    margin-right: 10px;
 }
-.registerButton{
-	display: inline-block;
-	/*margin-right: calc(100% / 3);*/
-}
+
 .btn{
     font-size: 14px;
     border: none;
@@ -204,7 +217,7 @@ export default{
     background-color: transparent;
 }
 .box{
-    margin-top: 30px;
+    margin-top: 14px;
     /*font-size: 14px;*/
     color: #0b2029;
     background-color: transparent;
@@ -264,12 +277,19 @@ export default{
 	color: #9ac2c6;
 }
 .xueer{
-	margin-left: 14%;
+	margin-left: 10%;
 }
 .check{
-	font-size: 15px;
+	font-size: 11px;
 	color: #aa3e21;
 	margin-top: 0;
 	margin-left: 14%;
+}
+.nofooter{
+	min-height: 100%;
+    margin-bottom: -43px;/* 等于footer的高度 */
+}
+.push{
+	height: 43px;
 }
 </style>

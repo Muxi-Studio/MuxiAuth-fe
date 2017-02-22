@@ -202,10 +202,12 @@ body{
 .circle{
 	width: 380px;
 	height: 380px;
-    transform: translate(-50%,-50%);
+	margin: 0 auto;
+	display: block;
+    /*transform: translate(-50%,-50%);
     top:50%;
     left: 50%;
-	position:absolute;
+	position:absolute;*/
 }
 .container{
 	width: 202px;
@@ -266,7 +268,8 @@ body{
 	width: 50%;
 	height: 100%;
 	display: inline-block;
-	position: relative;
+	/*position: relative;*/
+	margin-top: 7%;
 }
 .right{
 	width: 50%;
@@ -280,7 +283,6 @@ body{
 	height: 41px;
 	background-color: #afdce1;
 	margin-bottom: 0;
-	margin-top: 20px;
 }
 .checkemail{
 	margin-left: 130px;
