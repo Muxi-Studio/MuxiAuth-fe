@@ -87,6 +87,7 @@ export default{
 			if(this.login){
 				this.login = false
 				this.submitWord = "登录"
+				this.message.emailInput.reset()
 			}
 		},
 		onRegister(){
@@ -107,6 +108,7 @@ export default{
 			console.log(this.message[key])
 			this[key].forEach(e => this[e](key,this.message[key]))
 
+
 			var email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			//console.log("email.test(this.emailInput)",email.test(this.emailInput),!this.message.emailInput)
             this.result = (!email.test(this.message.emailInput)&& this.message.emailInput)
@@ -115,10 +117,10 @@ export default{
             this.checklength = (!psdlength.test(this.message.passwordInput)&& this.message.passwordInput)
 		},
 		submit(){
-			if(this.psdsecond != this.passwordInput && this.login){
+			if(this.message.psdsecond != this.message.passwordInput && this.login){
 				this.checkmatch  = true
 			}
-			if(this.checkmatch || this.result || this.checklength || this.message.passwordInput || this.message.emailInput) return
+			if(this.checkmatch || this.result || this.checklength || !this.message.passwordInput || !this.message.emailInput) return
 			if(this.login){
 				fetch("/api/v1.0/register/",{
 					method: 'POST',
@@ -130,7 +132,6 @@ export default{
                     username:this.message.emailInput,
                     password:this.message.passwordInput
                         })
-                    
                     })
 				}
 			if(!this.login){
@@ -164,11 +165,11 @@ body{
 .header{
 	background-color: rgba(251, 247, 213, 0.99);
 	height: 37px;
+	text-align: center;
 }
 .logo{
 	width: 108px;
-	margin-left: calc(50% - 54px);
-	margin-top: 7px;
+    margin-top: 7px;
 }
 .main{
 	width: 100%;
@@ -178,17 +179,13 @@ body{
 .top{
 	/*width: 100%;*/
 	height: 40%;
-	position: relative;
 	padding: 20px;
 }
 .circle{
-	/*position: absolute;*/
 	display: block;
-	/*transform: translate(-50%,-50%);*/
-    width: 47%;
-    /*height: 80%;*/
     margin: 0 auto;
     height: 75%;
+    width: 47%;
 }
 .bottom{
 	width: 100%;
@@ -217,15 +214,14 @@ body{
     background-color: transparent;
 }
 .box{
-    margin-top: 14px;
-    /*font-size: 14px;*/
     color: #0b2029;
     background-color: transparent;
     height: 40px;
     border-radius: 4px;
     border: 1px solid #737373;
     width: 72%;
-    margin-left: 14%;
+    margin: 14px auto;
+    display: block;
     font-size: 0;
 }
 

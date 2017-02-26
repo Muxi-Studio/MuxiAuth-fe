@@ -83,6 +83,7 @@ export default{
 			if(this.login){
 				this.login = false
 				this.submitWord = "登录"
+				this.message.emailInput.reset()
 			}
 		},
 		onRegister(){
@@ -127,7 +128,6 @@ export default{
                     username:this.message.emailInput,
                     password:this.message.passwordInput
                         })
-                    
                     })
 				}
 			if(!this.login){
@@ -162,7 +162,6 @@ body{
 	width: 100%;
 	height: 73px;
 	background-color: #ffffff;
-	overflow: auto;
 }
 .logo{
 	width: 101px;
@@ -202,12 +201,8 @@ body{
 .circle{
 	width: 380px;
 	height: 380px;
-	margin: 0 auto;
+	margin: 15% auto;
 	display: block;
-    /*transform: translate(-50%,-50%);
-    top:50%;
-    left: 50%;
-	position:absolute;*/
 }
 .container{
 	width: 202px;
@@ -268,15 +263,11 @@ body{
 	width: 50%;
 	height: 100%;
 	display: inline-block;
-	/*position: relative;*/
-	margin-top: 7%;
 }
 .right{
 	width: 50%;
 	height: 100%;
 	float: right;
-	margin-left: 0;
-	display: inline-block;
 }
 .footer{
 	width: 100%;
