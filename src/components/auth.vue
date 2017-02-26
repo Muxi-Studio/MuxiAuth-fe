@@ -115,7 +115,7 @@ export default{
 			if(this.message.psdsecond != this.message.passwordInput && this.login){
 				this.checkmatch  = true
 			}
-			if(this.checkmatch || this.result || this.checklength || this.message.passwordInput || this.message.emailInput) return
+			if(this.checkmatch || this.result || this.checklength || !this.message.passwordInput || !this.message.emailInput) return
 			if(this.login){
 				fetch("/api/v1.0/register/",{
 					method: 'POST',
