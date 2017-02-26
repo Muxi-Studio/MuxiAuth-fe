@@ -84,12 +84,22 @@ export default{
 			if(this.login){
 				this.login = false
 				this.submitWord = "登录"
+				this.message.emailInput = ""
+			    this.message.passwordInput = ""
+			    this.message.psdsecond = ""
+			    checkmatch: false
+			    result: true
 			}
 		},
 		onRegister(){
 			if (!this.login) {
 				this.login = true
 				this.submitWord = "注册"
+				this.message.emailInput = ""
+			    this.message.passwordInput = ""
+			    // this.message.psdsecond = ""
+			    checkmatch: false
+			    result: false
 			}
 		},
 		lengthCheck(key,word){

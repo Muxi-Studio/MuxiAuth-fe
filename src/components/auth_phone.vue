@@ -87,12 +87,22 @@ export default{
 			if(this.login){
 				this.login = false
 				this.submitWord = "登录"
+				this.message.emailInput = ""
+			    this.message.passwordInput = ""
+			    this.message.psdsecond = ""
+			    checkmatch: false
+			    result: true
 			}
 		},
 		onRegister(){
 			if (!this.login) {
 				this.login = true
 				this.submitWord = "注册"
+				this.message.emailInput = ""
+			    this.message.passwordInput = ""
+			    // this.message.psdsecond = ""
+			    checkmatch: false
+			    result: false
 			}
 		},
 		lengthCheck(key,word){
@@ -172,11 +182,9 @@ body{
 }
 .main{
 	width: 100%;
-	/*height: calc(100% - 80px);*/
 	background-color: #ffffff;
 }
 .top{
-	/*width: 100%;*/
 	height: 40%;
 	padding: 20px;
 }
@@ -197,9 +205,9 @@ body{
     border: none;
     color: rgba(71, 70, 68, 0.99);
     background-color: transparent;
-    margin-left: 14%;
     display: flex;
     justify-content: center;
+    margin: 0 auto;
 }
 .loginButton{
     display: inline-block;
@@ -277,7 +285,6 @@ body{
 .check{
 	font-size: 11px;
 	color: #aa3e21;
-	margin-top: 0;
 	margin-left: 14%;
 }
 .nofooter{
