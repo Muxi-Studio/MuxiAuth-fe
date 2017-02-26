@@ -83,7 +83,6 @@ export default{
 			if(this.login){
 				this.login = false
 				this.submitWord = "登录"
-				this.message.emailInput.reset()
 			}
 		},
 		onRegister(){
