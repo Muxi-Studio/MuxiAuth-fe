@@ -90,8 +90,8 @@ export default{
 				this.message.emailInput = ""
 			    this.message.passwordInput = ""
 			    this.message.psdsecond = ""
-			    checkmatch: false
-			    result: true
+			    // checkmatch: false
+			    // result: true
 			}
 		},
 		onRegister(){
@@ -101,8 +101,8 @@ export default{
 				this.message.emailInput = ""
 			    this.message.passwordInput = ""
 			    // this.message.psdsecond = ""
-			    checkmatch: false
-			    result: false
+			    // checkmatch: false
+			    // result: false
 			}
 		},
 		lengthCheck(key,word){
