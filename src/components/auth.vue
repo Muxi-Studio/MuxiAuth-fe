@@ -54,6 +54,7 @@
 </div>
 </template>
 
+
 <script>
 import blur from '../directives/blur.js'
 export default{
@@ -90,7 +91,6 @@ export default{
 				this.login = true
 				this.submitWord = "注册"
 			}
-            
 		},
 		lengthCheck(key,word){
 			console.log('lengthCheck!!' + key + word)
@@ -152,6 +152,7 @@ export default{
    }
 }
 </script>
+
 
 <style>
 body{
