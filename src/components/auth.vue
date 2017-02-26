@@ -112,7 +112,7 @@ export default{
             this.checklength = (!psdlength.test(this.message.passwordInput)&& this.message.passwordInput)
 		},
 		submit(){
-			if(this.psdsecond != this.passwordInput && this.login){
+			if(this.message.psdsecond != this.message.passwordInput && this.login){
 				this.checkmatch  = true
 			}
 			if(this.checkmatch || this.result || this.checklength || this.message.passwordInput || this.message.emailInput) return
@@ -296,6 +296,6 @@ body{
     margin-left: 100px;
 }
 .match{
-	margin-left: 100px;
+	margin-left: 110px;
 }
 </style>
