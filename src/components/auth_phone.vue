@@ -1,6 +1,5 @@
 <template>
 <div class="wrap">
-    <div class="nofooter">
     <div class="header">
   	    <img src="http://p1.bqimg.com/567571/2c7c44100e48ca4e.png" class="logo">
   	</div>
@@ -47,8 +46,6 @@
 			<button v-on:click = "submit" class="change box">{{submitWord}}</button>
 		</div>
 	</div>
-	<div class="push"></div>
-	</div>
 	<div class="footer">
 	    <a href="http://xueer.muxixyz.com" class="xueer word">学而</a>
 	    <a href="http://muxistudio.com"class="word">木犀团队</a>
@@ -90,8 +87,9 @@ export default{
 				this.message.emailInput = ""
 			    this.message.passwordInput = ""
 			    this.message.psdsecond = ""
-			    // checkmatch: false
-			    // result: true
+			    this.checkmatch= false
+			    this.result = false
+			    this.checklength = false
 			}
 		},
 		onRegister(){
@@ -100,9 +98,10 @@ export default{
 				this.submitWord = "注册"
 				this.message.emailInput = ""
 			    this.message.passwordInput = ""
-			    // this.message.psdsecond = ""
-			    // checkmatch: false
-			    // result: false
+			    this.message.psdsecond = ""
+			    this.checkmatch = false
+			    this.result = false
+			    this.checklength = false
 			}
 		},
 		lengthCheck(key,word){
@@ -127,6 +126,9 @@ export default{
 		submit(){
 			if(this.message.psdsecond != this.message.passwordInput && this.login){
 				this.checkmatch  = true
+			}
+			if(this.message.psdsecond == this.message.passwordInput && this.login){
+				this.checkmatch  = false
 			}
 			if(this.checkmatch || this.result || this.checklength || !this.message.passwordInput || !this.message.emailInput) return
 			if(this.login){
@@ -183,6 +185,8 @@ body{
 .main{
 	width: 100%;
 	background-color: #ffffff;
+	min-height: 100%;
+    margin-bottom: -80px;
 }
 .top{
 	height: 40%;
@@ -199,12 +203,8 @@ body{
 	height: 60%;
 }
 .container{
-	width: 72%;
-	height: 17px;
 	font-size: 18px;
-    border: none;
     color: rgba(71, 70, 68, 0.99);
-    background-color: transparent;
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -234,9 +234,6 @@ body{
 
 .inputbox{
 	display: inline-block;
-	height: 100%;
-	background-color: transparent;
-	border: none;
 	vertical-align: middle;
 	width: 66%;
 }
@@ -286,12 +283,5 @@ body{
 	font-size: 11px;
 	color: #aa3e21;
 	margin-left: 14%;
-}
-.nofooter{
-	min-height: 100%;
-    margin-bottom: -43px;/* 等于footer的高度 */
-}
-.push{
-	height: 43px;
 }
 </style>

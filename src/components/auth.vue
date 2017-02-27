@@ -8,7 +8,7 @@
     </div>
     <div class="main">
         <div class="left">
-          <img src="http://p1.bpimg.com/4851/1b5d2b9c20befb88.png" class="circle">
+            <img src="http://p1.bpimg.com/4851/1b5d2b9c20befb88.png" class="circle">
         </div>
         <div class="right">
             <div class="container">
@@ -23,7 +23,7 @@
 	                <input v-model = "message.emailInput" class="inputbox" id="emailInput" type="text" placeholder="邮箱" v-blur="alertmessage">
 	            </div>
 	            <div class="checkemail check" v-show="result">邮箱格式有误
-	           </div>
+	            </div>
 	        <div class="box">
 	            <div class="iconbox">
 	                <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
@@ -87,8 +87,9 @@ export default{
 				this.message.emailInput = ""
 			    this.message.passwordInput = ""
 			    this.message.psdsecond = ""
-			    // checkmatch: false
-			    // result: true
+			    this.checkmatch= false
+			    this.result = false
+			    this.checklength = false
 			}
 		},
 		onRegister(){
@@ -97,9 +98,10 @@ export default{
 				this.submitWord = "注册"
 				this.message.emailInput = ""
 			    this.message.passwordInput = ""
-			    // this.message.psdsecond = ""
-			    // checkmatch: false
-			    // result: false
+			    this.message.psdsecond = ""
+			    this.checkmatch = false
+			    this.result = false
+			    this.checklength = false
 			}
 		},
 		lengthCheck(key,word){
@@ -201,11 +203,11 @@ body{
 }
 .main{
 	width: 100%;
-	height: calc(100% - 114px);
 	background-color: #f4f7ed;
 	font-family: "FZLTZHK";
-	position: relative;
 	font-size: 0;
+	min-height: 100%;
+    margin-bottom: -114px;
 }
 
 .circle{
@@ -216,8 +218,8 @@ body{
 }
 .container{
 	width: 202px;
-	display: inline-block;
-	margin-left: calc(50% - 100px);
+	display: block;
+	margin: 0 auto;
 }
 .btn{
     margin-top: 137px;
@@ -254,7 +256,6 @@ body{
 	display: inline-block;
 	height: 100%;
 	background-color: transparent;
-	border: none;
 	vertical-align: middle;
 }
 .iconbox{
@@ -266,8 +267,7 @@ body{
 .icon{
 	width: 14px;
 	height: 12px;
-	margin-top: calc(50% - 10px);
-	margin-left: calc(50% - 7px);
+    margin: 8px;
 }
 .left{
 	width: 50%;
@@ -280,10 +280,10 @@ body{
 	float: right;
 }
 .footer{
-	width: 100%;
+	/*width: 100%;*/
 	height: 41px;
 	background-color: #afdce1;
-	margin-bottom: 0;
+	/*margin-bottom: 0;*/
 }
 .checkemail{
 	margin-left: 130px;
