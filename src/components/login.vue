@@ -4,7 +4,7 @@
             <div class="iconbox">
                 <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
             </div>
-            <input type="text" v-model.trim="emailInput" class="inputbox" type="text" placeholder="邮箱">
+            <input type="text" v-model.trim="emailInput" class="inputbox" placeholder="邮箱">
         </div>
         <div v-if="!$v.emailInput.email" class="checkemail check">邮箱格式有误</div>
         <div class="box">

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Auth from './components/auth_phone.vue'
+import Auth from './components/auth.vue'
 import Login from './components/login.vue'
 import Register from './components/register.vue'
 import style from './main.scss'
@@ -18,7 +18,7 @@ const router = new VueRouter({
 })
 
 new Vue({
-    el: "#auth_phone",
+    el: "#auth",
     router,
     render: h => h(Auth)
 })
