@@ -9,41 +9,12 @@
             </div>
             <div class="bottom">
                 <div class="container">
-                    <button class="loginButton btn" v-on:click="onLogin">登录</button>
-                    <button class="btn" v-on:click="onRegister">注册</button>
-                </div>
-                <div class="box">
-                    <div class="iconbox">
-                        <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
-                    </div>
-                    <input v-model="message.emailInput" class="inputbox" id="emailInput" type="text" placeholder="邮箱" v-blur="alertmessage">
-                </div>
-                <div class="check" v-show="result">邮箱格式有误
-                </div>
-                <div class="box">
-                    <div class="iconbox">
-                        <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
-                    </div>
-                    <input v-model="message.passwordInput" class="inputbox" type="password" placeholder="密码(不少于六位）" v-blur="alertmessage" id="passwordInput" v-show="!showPass">
-                    <input v-model="message.passwordInput" class="inputbox" type="text" placeholder="密码(不少于六位）" v-blur="alertmessage" id="passwordInput" v-show="showPass">
-                    <div class="iconbox">
-                        <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click="showPass = !showPass">
+                    <div id="auth_phone">
+                        <router-link to="/" class="loginButton btn">登录</router-link>
+                        <router-link to="/register" class="registerButton btn">注册</router-link>
+                        <router-view></router-view>
                     </div>
                 </div>
-                <div class="check" v-show="checklength">密码请勿少于六位
-                </div>
-                <div v-show="login" class="box">
-                    <div class="iconbox">
-                        <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
-                    </div>
-                    <input v-model="message.psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="!showPass">
-                    <input v-model="message.psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="showPass">
-                    <div class="iconbox">
-                        <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click="showPass = !showPass">
-                    </div>
-                </div>
-                <div class="check" v-show="checkmatch">密码输入不一致</div>
-                <button v-on:click="submit" class="change box">{{submitWord}}</button>
             </div>
         </div>
         <div class="footer">
@@ -54,115 +25,19 @@
     </div>
 </template>
 <script>
-import blur from '../directives/blur.js'
+import Login from './login.vue'
+import Register from './register.vue'
 export default {
+    components: {
+        "login": Login,
+        "register": Register
+    },
     data() {
-            return {
-                message: {
-                    emailInput: "",
-                    passwordInput: "",
-                    psdsecond: "",
-                },
-                emailInput: ['lengthCheck', 'emailCheck'],
-                passwordInput: ['lengthCheck'],
-                psdsecond: ['lengthCheck'],
-                login: false,
-                submitWord: "登录",
-                showPass: false,
-                result: false,
-                checklength: false,
-                checkmatch: false
-            }
-        },
-        directives: {
-            blur: blur
-        },
-        methods: {
-            onLogin() {
-                if (this.login) {
-                    this.login = false
-                    this.submitWord = "登录"
-                    this.message.emailInput = ""
-                    this.message.passwordInput = ""
-                    this.message.psdsecond = ""
-                    this.checkmatch = false
-                    this.result = false
-                    this.checklength = false
-                }
-            },
-            onRegister() {
-                if (!this.login) {
-                    this.login = true
-                    this.submitWord = "注册"
-                    this.message.emailInput = ""
-                    this.message.passwordInput = ""
-                    this.message.psdsecond = ""
-                    this.checkmatch = false
-                    this.result = false
-                    this.checklength = false
-                }
-            },
-            lengthCheck(key, word) {
-                console.log('lengthCheck!!' + key + word)
-            },
-            emailCheck(key, word) {
-                console.log('emailCheck!!' + key + word)
-            },
-            alertmessage(e) {
-                var key = e.target.id
-                console.log(this.message[key])
-                this[key].forEach(e => this[e](key, this.message[key]))
-
-
-                var email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                //console.log("email.test(this.emailInput)",email.test(this.emailInput),!this.message.emailInput)
-                this.result = (!email.test(this.message.emailInput) && this.message.emailInput)
-                    //console.log(this.emailInput)
-                var psdlength = /.{6,}/;
-                this.checklength = (!psdlength.test(this.message.passwordInput) && this.message.passwordInput)
-            },
-            submit() {
-                if (this.message.psdsecond != this.message.passwordInput && this.login) {
-                    this.checkmatch = true
-                }
-                if (this.message.psdsecond == this.message.passwordInput && this.login) {
-                    this.checkmatch = false
-                }
-                if (this.checkmatch || this.result || this.checklength || !this.message.passwordInput || !this.message.emailInput) return
-                if (this.login) {
-                    fetch("/api/v1.0/register/", {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            username: this.message.emailInput,
-                            password: this.message.passwordInput
-                        })
-                    })
-                }
-                if (!this.login) {
-                    fetch("/api/v1.0/login/", {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            username: this.message.emailInput,
-                            password: this.message.passwordInput
-                        })
-                    }).then(res => {
-                        return res.json()
-                    }).then(res => {
-                        console.log(res)
-                            //this.token = res.token
-
-                    })
-                }
-            }
-        }
+        return {}
+    },
+    directives: {
+        blur: blur
+    }
 }
 </script>
 <style>

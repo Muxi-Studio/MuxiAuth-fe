@@ -4,7 +4,7 @@
             <img src="http://p1.bpimg.com/4851/0cbf553a4e98a401.png" class="logo">
             <a href="http://share.muxixyz.com/" class="share word">木犀分享</a>
             <a href="http://muxistudio.com" class="studio word">木犀团队</a>
-            <a href="http://xueer.muxixyz.com" class="xueer word">学而</a>
+            <a href="http://xueer.muxixyz.com" class="word">学而</a>
         </div>
         <div class="main">
             <div class="left">
@@ -13,103 +13,29 @@
             <div class="right">
                 <div class="container">
                     <div id="auth">
-                        <router-link to="/login" class="loginButton btn">登录</router-link>
+                        <router-link to="/" class="loginButton btn">登录</router-link>
                         <router-link to="/register" class="registerButton btn">注册</router-link>
                         <router-view></router-view>
                     </div>
-                    <!--                     
-                    <button class="loginButton btn" v-on:click="onLogin">登录
-                    </button>
-                    <button class="registerButton btn" v-on:click="onRegister">注册
-                    </button>
-                    <div class="box">
-                        <div class="iconbox">
-                            <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
-                        </div>
-                        <input v-model="message.emailInput" class="inputbox" id="emailInput" type="text" placeholder="邮箱" v-blur="alertmessage">
-                    </div>
-                    <div class="checkemail check" v-show="result">邮箱格式有误
-                    </div>
-                    <div class="box">
-                        <div class="iconbox">
-                            <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
-                        </div>
-                        <input v-model="message.passwordInput" class="inputbox" type="password" placeholder="密码(不少于六位）" v-blur="alertmessage" id="passwordInput" v-show="!showPass">
-                        <input v-model="message.passwordInput" class="inputbox" type="text" placeholder="密码(不少于六位）" v-blur="alertmessage" id="passwordInput" v-show="showPass">
-                        <div class="iconbox">
-                            <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click="showPass = !showPass">
-                        </div>
-                    </div>
-                    <div class="checkpsd check" v-show="checklength">密码请勿少于六位</div>
-                    <div v-show="login" class="box">
-                        <div class="iconbox">
-                            <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
-                        </div>
-                        <input v-model="message.psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="!showPass">
-                        <input v-model="message.psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-blur="alertmessage" id="psdsecond" v-show="showPass">
-                        <div class="iconbox">
-                            <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click="showPass = !showPass">
-                        </div>
-                    </div>
-                    <div class="match check" v-show="checkmatch">密码输入不一致</div>
-                    <button v-on:click="submit" class="change box">{{submitWord}}</button>
                 </div>
-                </div> -->
-                </div>
-                <div class="footer"></div>
             </div>
         </div>
+        <div class="footer"></div>
     </div>
 </template>
 <script>
-import blur from '../directives/blur.js'
 import Login from './login.vue'
-
+import Register from './register.vue'
 export default {
     components: {
-        "login": Login
+        "login": Login,
+        "register": Register
     },
     data() {
         return {}
     },
     directives: {
         blur: blur
-    },
-    methods: {
-        submit() {
-            if (this.login) {
-                fetch("/api/v1.0/register/", {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username: this.message.emailInput,
-                        password: this.message.passwordInput
-                    })
-                })
-            }
-            if (!this.login) {
-                fetch("/api/v1.0/login/", {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username: this.message.emailInput,
-                        password: this.message.passwordInput
-                    })
-                }).then(res => {
-                    return res.json()
-                }).then(res => {
-                    console.log(res)
-                        //this.token = res.token
-
-                })
-            }
-        }
     }
 }
 </script>
@@ -139,19 +65,12 @@ body {
     float: right;
 }
 
-.xueer {
-    /*margin-left: 400px;*/
-    /*float: right;*/
-}
-
 .studio {
     margin-left: 40px;
-    /*float: right;*/
 }
 
 .share {
     margin-left: 40px;
-    /*float: right;*/
     margin-right: 184px;
 }
 
@@ -175,6 +94,7 @@ body {
     width: 202px;
     display: block;
     margin: 0 auto;
+    padding-top: 150px;
 }
 
 .btn {
@@ -195,7 +115,7 @@ body {
 }
 
 .loginButton {
-    margin-left: 50px;
+    margin-left: 60px;
 }
 
 .registerButton {
@@ -226,11 +146,10 @@ body {
 }
 
 .footer {
-    /*width: 100%;*/
     height: 41px;
     background-color: #afdce1;
-    /*margin-bottom: 0;*/
 }
+
 .inputbox {
     display: inline-block;
     height: 100%;
