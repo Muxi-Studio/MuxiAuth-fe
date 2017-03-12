@@ -42,7 +42,7 @@ module.exports = {
     }]
     },
     resolve: {
-        extensions: ['', '.js','.scss'],
+        extensions: ['', '.js','.scss','.vue'],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

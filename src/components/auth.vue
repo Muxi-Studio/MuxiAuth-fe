@@ -12,6 +12,12 @@
             </div>
             <div class="right">
                 <div class="container">
+                    <div id="auth">
+                        <router-link to="/login" class="loginButton btn">登录</router-link>
+                        <router-link to="/register" class="registerButton btn">注册</router-link>
+                        <router-view></router-view>
+                    </div>
+                    <!--                     
                     <button class="loginButton btn" v-on:click="onLogin">登录
                     </button>
                     <button class="registerButton btn" v-on:click="onRegister">注册
@@ -48,141 +54,63 @@
                     <div class="match check" v-show="checkmatch">密码输入不一致</div>
                     <button v-on:click="submit" class="change box">{{submitWord}}</button>
                 </div>
+                </div> -->
+                </div>
+                <div class="footer"></div>
             </div>
         </div>
-        <div class="footer"></div>
     </div>
 </template>
 <script>
 import blur from '../directives/blur.js'
-import {
-    required,
-    minLength,
-    email
-} from 'vuelidate/lib/validators'
+import Login from './login.vue'
+
 export default {
+    components: {
+        "login": Login
+    },
     data() {
-            return {
-                message: {
-                    emailInput: "",
-                    passwordInput: "",
-                    psdsecond: "",
-                },
-                // emailInput: ['lengthCheck', 'emailCheck'],
-                // passwordInput: ['lengthCheck'],
-                // psdsecond: ['lengthCheck'],
-                login: false,
-                submitWord: "登录",
-                showPass: false,
-                // result: false,
-                // checklength: false,
-                // checkmatch: false,
-                emailInput: '',
-                passwordInput: '',
-                psdsecond: ''
-            }
-        },
-        validations: {
-            emailInput: {
-                required,
-                email
-            }
-            passwordInput: {
-                required,
-                minLength: minLength(6)
-            },
-            psdsecond: {
-                required,
-                sameAsPassword: sameAs('passwordInput'),
-                minLength: minLength(6)
-            }
-        },
-        directives: {
-            blur: blur
-        },
-        methods: {
-            onLogin() {
-                if (this.login) {
-                    this.login = false
-                    this.submitWord = "登录"
-                    this.message.emailInput = ""
-                    this.message.passwordInput = ""
-                    this.message.psdsecond = ""
-                    this.checkmatch = false
-                    this.result = false
-                    this.checklength = false
-                }
-            },
-            onRegister() {
-                if (!this.login) {
-                    this.login = true
-                    this.submitWord = "注册"
-                    this.message.emailInput = ""
-                    this.message.passwordInput = ""
-                    this.message.psdsecond = ""
-                    this.checkmatch = false
-                    this.result = false
-                    this.checklength = false
-                }
-            },
-            lengthCheck(key, word) {
-                console.log('lengthCheck!!' + key + word)
-            },
-            emailCheck(key, word) {
-                console.log('emailCheck!!' + key + word)
-            },
-            alertmessage(e) {
-                var key = e.target.id
-                console.log(this.message[key])
-                this[key].forEach(e => this[e](key, this.message[key]))
-
-
-                var email = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                //console.log("email.test(this.emailInput)",email.test(this.emailInput),!this.message.emailInput)
-                this.result = (!email.test(this.message.emailInput) && this.message.emailInput)
-                    //console.log(this.emailInput)
-                var psdlength = /.{6,}/;
-                this.checklength = (!psdlength.test(this.message.passwordInput) && this.message.passwordInput)
-            },
-            submit() {
-                if (this.message.psdsecond != this.message.passwordInput && this.login) {
-                    this.checkmatch = true
-                }
-                if (this.checkmatch || this.result || this.checklength || !this.message.passwordInput || !this.message.emailInput) return
-                if (this.login) {
-                    fetch("/api/v1.0/register/", {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            username: this.message.emailInput,
-                            password: this.message.passwordInput
-                        })
+        return {}
+    },
+    directives: {
+        blur: blur
+    },
+    methods: {
+        submit() {
+            if (this.login) {
+                fetch("/api/v1.0/register/", {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: this.message.emailInput,
+                        password: this.message.passwordInput
                     })
-                }
-                if (!this.login) {
-                    fetch("/api/v1.0/login/", {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            username: this.message.emailInput,
-                            password: this.message.passwordInput
-                        })
-                    }).then(res => {
-                        return res.json()
-                    }).then(res => {
-                        console.log(res)
-                            //this.token = res.token
-
+                })
+            }
+            if (!this.login) {
+                fetch("/api/v1.0/login/", {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: this.message.emailInput,
+                        password: this.message.passwordInput
                     })
-                }
+                }).then(res => {
+                    return res.json()
+                }).then(res => {
+                    console.log(res)
+                        //this.token = res.token
+
+                })
             }
         }
+    }
 }
 </script>
 <style>
@@ -285,26 +213,6 @@ body {
     background-color: #df6b0f;
 }
 
-.inputbox {
-    display: inline-block;
-    height: 100%;
-    background-color: transparent;
-    vertical-align: middle;
-}
-
-.iconbox {
-    width: 34px;
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.icon {
-    width: 14px;
-    height: 12px;
-    margin: 8px;
-}
-
 .left {
     width: 50%;
     height: 100%;
@@ -323,6 +231,12 @@ body {
     background-color: #afdce1;
     /*margin-bottom: 0;*/
 }
+.inputbox {
+    display: inline-block;
+    height: 100%;
+    background-color: transparent;
+    vertical-align: middle;
+}
 
 .checkemail {
     margin-left: 130px;
@@ -332,6 +246,19 @@ body {
     font-size: 11px;
     color: #aa3e21;
     margin-top: 0;
+}
+
+.iconbox {
+    width: 34px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon {
+    width: 14px;
+    height: 12px;
+    margin: 8px;
 }
 
 .checkpsd {

@@ -1,11 +1,24 @@
 import Vue from 'vue'
 import Auth from './components/auth.vue'
+import Login from './components/login.vue'
+import Register from './components/register.vue'
 import style from './main.scss'
 import Vuelidate from 'vuelidate'
-Vue.use(Vuelidate)
+import VueRouter from 'vue-router'
 
+Vue.use(Vuelidate)
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+    mode: 'history',
+    routes:[
+        { path: '/login', component: Login },
+        { path: '/register', component: Register }
+    ]
+})
 
 new Vue({
-	el:"#auth",
-	render: h => h(Auth)
+    el: "#auth",
+    router,
+    render: h => h(Auth)
 })
