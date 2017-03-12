@@ -33,7 +33,7 @@ export default {
         "register": Register
     },
     data() {
-        return {}
+        return { }
     },
     directives: {
         blur: blur
