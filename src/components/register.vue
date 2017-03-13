@@ -4,7 +4,7 @@
             <div class="iconbox">
                 <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
             </div>
-            <input type="text" v-model.trim="emailInput" @blur="isBlur"class="inputbox" placeholder="邮箱">
+            <input type="text" v-model.trim="emailInput" @blur="isBlur" class="inputbox" placeholder="邮箱">
         </div>
         <div v-if="!$v.emailInput.email && this.blur" class="checkemail check">邮箱格式有误</div>
         <div class="box">
@@ -22,13 +22,13 @@
             <div class="iconbox">
                 <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
             </div>
-            <input v-model.trim="psdsecond" @blur="isBlur"class="inputbox" type="password" placeholder="再次输入密码" v-show="!showPass">
-            <input v-model.trim="psdsecond" @blur="isBlur"class="inputbox" type="text" placeholder="再次输入密码" v-show="showPass">
+            <input v-model.trim="psdsecond" @blur="isBlur" class="inputbox" type="password" placeholder="再次输入密码" v-show="!showPass">
+            <input v-model.trim="psdsecond" @blur="isBlur" class="inputbox" type="text" placeholder="再次输入密码" v-show="showPass">
             <div class="iconbox">
                 <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon" v-on:click="showPass = !showPass">
             </div>
         </div>
-        <div class="match check" v-if="!$v.psdsecond.sameAs && this.blur">密码输入不一致</div>
+        <div class="match check" v-if="!$v.psdsecond.sameAs && this.blur && this.psdsecond">密码输入不一致</div>
         <button v-on:click="submit" class="change box">注册</button>
     </div>
 </template>
@@ -44,7 +44,9 @@ export default {
                 emailInput: '',
                 passwordInput: '',
                 psdsecond: '',
-                showPass: false
+                showPass: false,
+                blur: false
+
             }
         },
         validations: {
@@ -63,17 +65,19 @@ export default {
                 this.blur = true
             },
             submit() {
-                fetch("/api/v1.0/register/", {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username: this.emailInput,
-                        password: this.passwordInput
+                if (this.emailInput && this.emailInput.email && this.passwordInput && this.psdsecond.sameAs) {
+                    fetch("/api/v1.0/register/", {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: this.emailInput,
+                            password: this.passwordInput
+                        })
                     })
-                })
+                }
             }
         }
 }

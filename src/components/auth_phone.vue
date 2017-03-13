@@ -33,7 +33,7 @@ export default {
         "register": Register
     },
     data() {
-        return { }
+        return {}
     },
     directives: {
         blur: blur
@@ -86,6 +86,11 @@ body {
     display: flex;
     justify-content: center;
     margin: 0 auto;
+}
+
+#auth_phone {
+    height: 100%;
+    width: 100%;
 }
 
 .loginButton {
