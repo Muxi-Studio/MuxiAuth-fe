@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     routes:[
-        { path: '/', component: Login },
+        { path: '/phone', component: Login },
         { path: '/register', component: Register }
     ]
 })

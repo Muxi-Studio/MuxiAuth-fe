@@ -10,7 +10,7 @@
             <div class="bottom">
                 <div class="container">
                     <div id="auth_phone">
-                        <router-link to="/" class="loginButton btn">登录</router-link>
+                        <router-link to="/phone" class="loginButton btn">登录</router-link>
                         <router-link to="/register" class="registerButton btn">注册</router-link>
                         <router-view></router-view>
                     </div>
@@ -83,14 +83,13 @@ body {
 .container {
     font-size: 18px;
     color: rgba(71, 70, 68, 0.99);
-    display: flex;
-    justify-content: center;
     margin: 0 auto;
 }
 
 #auth_phone {
     height: 100%;
     width: 100%;
+    text-align: center;
 }
 
 .loginButton {
