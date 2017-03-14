@@ -9,11 +9,11 @@
             </div>
             <div class="bottom">
                 <div class="container">
-                    <div id="auth_phone">
+                    <div class="buttonBox">
                         <router-link to="/phone" class="loginButton btn">登录</router-link>
                         <router-link to="/register" class="registerButton btn">注册</router-link>
-                        <router-view></router-view>
                     </div>
+                    <router-view></router-view>
                 </div>
             </div>
         </div>
@@ -86,9 +86,7 @@ body {
     margin: 0 auto;
 }
 
-#auth_phone {
-    height: 100%;
-    width: 100%;
+.buttonBox {
     text-align: center;
 }
 
@@ -133,8 +131,6 @@ body {
 .icon {
     width: 14px;
     height: 12px;
-    /*margin-top: calc(50% - 10px);*/
-    /*margin-left: calc(50% - 7px);*/
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
