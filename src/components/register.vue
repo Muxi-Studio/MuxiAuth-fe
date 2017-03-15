@@ -85,7 +85,6 @@ export default {
 <style>
 .change {
     background-color: #fd860e;
-    border: none;
     color: #ffffff;
     font-size: 14px;
     border-radius: 4px;
