@@ -30,12 +30,6 @@ export default {
     components: {
         "login": Login,
         "register": Register
-    },
-    data() {
-        return {}
-    },
-    directives: {
-        blur: blur
     }
 }
 </script>
