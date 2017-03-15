@@ -43,7 +43,7 @@ export default {
                 this.blur = true
             },
             submit() {
-                if (this.emailInput && this.passwordInput && this.emailInput.email) {
+                if (this.emailInput && this.passwordInput && this.$v.emailInput.email) {
                     fetch("/api/v1.0/login/", {
                         method: 'POST',
                         headers: {
@@ -60,6 +60,9 @@ export default {
                         console.log(res)
                     })
                 }
+                console.log(this.emailInput)
+                console.log(this.passwordInput)
+                console.log(this.emailInput.email)
             }
         }
 }

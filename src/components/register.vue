@@ -65,7 +65,7 @@ export default {
                 this.blur = true
             },
             submit() {
-                if (this.emailInput && this.emailInput.email && this.passwordInput && this.psdsecond.sameAs) {
+                if (this.emailInput && this.$v.emailInput.email && this.passwordInput && this.$v.passwordInput.minLength && this.$v.psdsecond.sameAs) {
                     fetch("/api/v1.0/register/", {
                         method: 'POST',
                         headers: {
