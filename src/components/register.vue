@@ -11,24 +11,24 @@
             <div class="iconbox">
                 <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
             </div>
-            <input v-model.trim="passwordInput" @blur="isBlur" type="password" class="inputbox" placeholder="密码(不少于六位)" v-show="!showPass">
+            <input v-model.trim="passwordInput" type="password" class="inputbox" placeholder="密码(不少于六位)" v-show="!showPass">
             <input v-model.trim="passwordInput" type="text" class="inputbox" placeholder="密码(不少于六位)" v-show="showPass">
             <div class="iconbox eye">
                 <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon">
             </div>
         </div>
-        <div class="check" v-if="!$v.passwordInput.minLength && this.blur">密码请勿少于六位</div>
+        <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
         <div class="box box-height">
             <div class="iconbox">
                 <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
             </div>
-            <input v-model.trim="psdsecond" @blur="isBlur" class="inputbox" type="password" placeholder="再次输入密码" v-show="!showPass">
-            <input v-model.trim="psdsecond" @blur="isBlur" class="inputbox" type="text" placeholder="再次输入密码" v-show="showPass">
+            <input v-model.trim="psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-show="!showPass">
+            <input v-model.trim="psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-show="showPass">
             <div class="iconbox  eye">
                 <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon ">
             </div>
         </div>
-        <div class="check" v-if="!$v.psdsecond.sameAs && this.blur && this.psdsecond">密码输入不一致</div>
+        <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
         <button v-on:click="submit" class="change box-height">注册</button>
     </div>
 </template>
@@ -89,7 +89,7 @@ export default {
     color: #ffffff;
     font-size: 14px;
     border-radius: 4px;
-    border:none;
+    border: none;
     width: 100%;
 }
 
@@ -119,6 +119,7 @@ export default {
     vertical-align: middle;
     position: relative;
 }
+
 .icon {
     width: 14px;
     height: 12px;

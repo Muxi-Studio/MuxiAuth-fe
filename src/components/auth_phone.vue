@@ -94,7 +94,6 @@ body {
 .box-height {
     height: 40px;
     margin: 0 auto;
-    display: block;
     margin-top: 14px;
 }
 
