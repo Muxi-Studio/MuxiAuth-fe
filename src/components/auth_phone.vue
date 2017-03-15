@@ -55,6 +55,7 @@ body {
     background-color: #ffffff;
     min-height: 100%;
     margin-bottom: -80px;
+    overflow: hidden;
 }
 
 .top {
@@ -78,6 +79,7 @@ body {
     font-size: 18px;
     color: rgba(71, 70, 68, 0.99);
     margin: 0 auto;
+    width: 72%;
 }
 
 .buttonBox {
@@ -89,57 +91,19 @@ body {
     margin-right: 10px;
 }
 
-.btn {
-    font-size: 14px;
-    border: none;
-    color: #0b2029;
-    background-color: transparent;
-}
-
-.box {
-    color: #0b2029;
-    background-color: transparent;
+.box-height {
     height: 40px;
-    border-radius: 4px;
-    border: 1px solid #737373;
-    width: 72%;
-    margin: 14px auto;
+    margin: 0 auto;
     display: block;
-    font-size: 0;
+    margin-top: 14px;
 }
 
-.inputbox {
-    display: inline-block;
-    vertical-align: middle;
+.inputbox-width {
     width: 66%;
 }
 
-.iconbox {
-    width: 16%;
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-}
-
-.icon {
-    width: 14px;
-    height: 12px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    position: absolute;
-}
-
-.change {
-    background-color: rgba(255, 133, 12, 0.99);
-    color: #ffffff;
-    font-size: 18px;
-    border: none;
-}
-
-.change:hover {
-    background-color: #df6b0f;
+.eye {
+    float: right;
 }
 
 .footer {
@@ -160,9 +124,4 @@ body {
     margin-left: 10%;
 }
 
-.check {
-    font-size: 11px;
-    color: #aa3e21;
-    margin-left: 14%;
-}
 </style>

@@ -75,6 +75,7 @@ body {
     font-size: 0;
     min-height: 100%;
     margin-bottom: -114px;
+    overflow: hidden;
 }
 
 .circle {
@@ -91,21 +92,9 @@ body {
     padding-top: 150px;
 }
 
-.btn {
-    margin-top: 137px;
-    font-size: 14px;
-    border: none;
-    color: #0b2029;
-    background-color: transparent;
-}
-
-.box {
-    width: 202px;
+.box-height {
     height: 30px;
-    border-radius: 4px;
     margin-top: 22px;
-    font-size: 0;
-    border: 1px solid #737373;
 }
 
 .loginButton {
@@ -114,17 +103,6 @@ body {
 
 .registerButton {
     margin-left: 14px;
-}
-
-.change {
-    background-color: #fd860e;
-    border: none;
-    color: #ffffff;
-    font-size: 14px;
-}
-
-.change:hover {
-    background-color: #df6b0f;
 }
 
 .left {
@@ -144,41 +122,11 @@ body {
     background-color: #afdce1;
 }
 
-.inputbox {
-    display: inline-block;
-    height: 100%;
-    background-color: transparent;
-    vertical-align: middle;
-}
-
-.checkemail {
-    margin-left: 130px;
-}
-
 .check {
     font-size: 11px;
     color: #aa3e21;
-    margin-top: 0;
+    float: right;
 }
 
-.iconbox {
-    width: 34px;
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-}
 
-.icon {
-    width: 14px;
-    height: 12px;
-    margin: 8px;
-}
-
-.checkpsd {
-    margin-left: 100px;
-}
-
-.match {
-    margin-left: 110px;
-}
 </style>
