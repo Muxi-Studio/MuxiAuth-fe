@@ -60,9 +60,6 @@ export default {
                         console.log(res)
                     })
                 }
-                console.log(this.emailInput)
-                console.log(this.passwordInput)
-                console.log(this.emailInput.email)
             }
         }
 }

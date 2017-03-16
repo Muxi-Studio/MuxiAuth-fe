@@ -15,7 +15,7 @@
 		{
 			"name" : "api.login",
 			"endpoint": "/api/v1.0/login/",
-			"method":"post",
+			"method":"get",
 			"async": true
 		},
 		{
