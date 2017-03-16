@@ -45,15 +45,12 @@ export default {
             submit() {
                 if (this.emailInput && this.passwordInput && this.$v.emailInput.email) {
                     fetch("/api/v1.0/login/", {
-                        method: 'POST',
+                        method: 'GET',
                         headers: {
                             'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            username: this.emailInput,
-                            password: this.passwordInput
-                        })
+                            'Content-Type': 'application/x-www-form-unlencoded',
+                            'Authorization': 'Basic' + btoa(this.emailInput+':' + this.passwordInput)
+                        }
                     }).then(res => {
                         return res.json()
                     }).then(res => {
