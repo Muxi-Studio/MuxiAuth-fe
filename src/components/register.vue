@@ -96,6 +96,10 @@ export default {
                 if (this.submitFlag) return
                 this.submitFlag = true
                 if (this.username && this.$v.username.maxLength && this.emailInput && this.$v.emailInput.email && this.passwordInput && this.$v.passwordInput.minLength && this.$v.psdsecond.sameAs) {
+                    fetch("http://user.muxixyz.com/api/username_exists/?username=" + this.username,{
+                        
+                    })
+
                     fetch("http://user.muxixyz.com/api/register/", {
                         method: 'POST',
                         headers: {

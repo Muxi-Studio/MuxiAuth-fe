@@ -6,7 +6,11 @@
             </div>
             <input type="text" v-model.trim="emailInput" @focus="isFocus" @blur="isBlur" class="inputbox" placeholder="邮箱">
         </div>
-        <div v-if="!$v.emailInput.email && blur " class="checkemail check">邮箱格式有误</div>
+        <div class="height">
+            <div v-if="email_exit" class="checkemail check">邮箱不存在</div>
+            <div v-if="!$v.emailInput.email && this.blur " class="checkemail check">邮箱格式有误</div>
+        </div>
+        
         <div class="box box-height">
             <div class="iconbox">
                 <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
@@ -18,7 +22,7 @@
             </div>
         </div>
         <div class="height">
-            <div v-if="failed" class="checkemail check">邮箱或密码错误</div>
+            <div v-if="failed" class="checkemail check">密码不正确</div>
         </div>
         <button v-on:click="submit" class="change box-height" :style="changedButton">登录</button>
     </div>
@@ -36,7 +40,8 @@ export default {
                 focus: false,
                 submitFlag: false,
                 failed: false,
-                blur: false
+                blur: false,
+                email_exit: false
             }
         },
         validations: {
@@ -63,22 +68,29 @@ export default {
                 if (this.submitFlag) return
                 this.submitFlag = true
                 if (this.emailInput && this.passwordInput && this.$v.emailInput.email) {
-                    fetch("http://user.muxixyz.com/api/login/", {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/x-www-form-unlencoded',
-                            'Authorization': 'Basic ' + btoa(this.emailInput + ':' + this.passwordInput)
-                        }
-                    }).then(res => {
-                        if (res.ok) {
-                            return res.json()
-                        } else {
-                            this.failed = true
-                        }
-                    }).then(res => {
-                        console.log(res)
-                    })
+                    fetch("http://user.muxixyz.com/api/email_exists/?email=xxx@qq.com", {
+                            method: 'GET'
+                        }).then(res => {
+                            if(res.ok){
+                                this.email_exit = true
+                            }
+                        }),
+                        fetch("http://user.muxixyz.com/api/login/", {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/x-www-form-unlencoded',
+                                'Authorization': 'Basic ' + btoa(this.emailInput + ':' + this.passwordInput)
+                            }
+                        }).then(res => {
+                            if (res.ok) {
+                                return res.json()
+                            } else {
+                                this.failed = true
+                            }
+                        }).then(res => {
+                            console.log(res)
+                        })
                 }
             }
         }
