@@ -11,13 +11,11 @@
                 <img src="http://p1.bpimg.com/4851/1b5d2b9c20befb88.png" class="circle">
             </div>
             <div class="right">
-                <div class="container">
-                    <div id="auth">
-                        <router-link to="/" class="loginButton btn">登录</router-link>
-                        <router-link to="/register" class="registerButton btn">注册</router-link>
-                        <router-view></router-view>
-                    </div>
+                <div class="tittle">
+                    <router-link to="/" class="btn">登录</router-link>
+                    <router-link to="/register" class="registerButton btn">注册</router-link>
                 </div>
+                <router-view></router-view>
             </div>
         </div>
         <div class="footer"></div>
@@ -88,16 +86,12 @@ body {
 .container {
     width: 202px;
     margin: 0 auto;
-    padding-top: 150px;
+    vertical-align: middle;
 }
 
 .box-height {
     height: 30px;
     margin-top: 22px;
-}
-
-.loginButton {
-    margin-left: 60px;
 }
 
 .registerButton {
@@ -108,12 +102,20 @@ body {
     width: 50%;
     height: 100%;
     display: inline-block;
+    vertical-align: middle;
+}
+
+.tittle {
+    text-align: center;
 }
 
 .right {
     width: 50%;
     height: 100%;
-    float: right;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0 13%;
 }
 
 .footer {
@@ -126,6 +128,4 @@ body {
     color: #aa3e21;
     float: right;
 }
-
-
 </style>

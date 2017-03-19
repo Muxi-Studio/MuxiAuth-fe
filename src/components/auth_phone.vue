@@ -92,7 +92,7 @@ body {
 }
 
 .box-height {
-    height: 40px;
+    height: 35px;
     margin: 0 auto;
     margin-top: 14px;
 }
@@ -109,7 +109,6 @@ body {
     width: 100%;
     height: 43px;
     background-color: #2b2b29;
-    margin-bottom: 0;
     display: flex;
 }
 
@@ -122,5 +121,4 @@ body {
 .xueer {
     margin-left: 10%;
 }
-
 </style>
