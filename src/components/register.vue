@@ -1,44 +1,61 @@
 <template>
     <div>
         <div class="box box-height">
-            <div class="iconbox">
-                <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
+            <div class="iconbox width">
+                <svg viewBox="0 0 200 200" class="icon">
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#username"></use>
+                </svg>
             </div>
-            <input type="text" v-model.trim="username" @focus="isFocus" class="inputbox" placeholder="用户名(不超过八个字符)">
+            <input type="text" v-model.trim="username" @focus="isFocus" @blur="userBlur" class="inputbox" placeholder="用户名(不超过八个字符)">
         </div>
-        <div v-if="!$v.username.maxLength && this.username" class="check">不超过八个字符</div>
+        <div v-if="$v.username.maxLength && $v.username.require && this.username_exit" class="check">用户名已注册
+        </div>
+        <div v-if="!$v.username.maxLength && !$v.username.require" class="check">不超过八个字符
+        </div>
         <div class="box box-height">
-            <div class="iconbox">
-                <img src="http://p1.bqimg.com/4851/b4cd511b8361c9fc.png" class="icon">
+            <div class="iconbox width">
+                <svg viewBox="0 0 200 200" class="icon">>
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
+                </svg>
             </div>
             <input type="text" v-model.trim="emailInput" @blur="isBlur" @focus="isFocus" class="inputbox" placeholder="邮箱">
         </div>
-        <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式有误</div>
+        <div v-if="$v.emailInput.email && this.email_exit && this.blur" class="check">邮箱已注册
+        </div>
+        <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式不正确</div>
         <div class="box box-height">
-            <div class="iconbox">
-                <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
+            <div class="iconbox width">
+                <svg viewBox="0 0 200 200" class="icon">>
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
+                </svg>
             </div>
             <input v-model.trim="passwordInput" @focus="isFocus" type="password" class="inputbox" placeholder="密码(不少于六位)" v-show="!showPass">
             <input v-model.trim="passwordInput" @focus="isFocus" type="text" class="inputbox" placeholder="密码(不少于六位)" v-show="showPass">
             <div class="iconbox eye" v-on:click="showPass = !showPass">
-                <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon">
+                <svg viewBox="0 0 200 200" v-on:click="showPass = !showPass">
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
+                </svg>
             </div>
         </div>
         <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
         <div class="box box-height">
-            <div class="iconbox">
-                <img src="http://p1.bpimg.com/567571/f65b0c8dbf582daa.png" class="icon">
+            <div class="iconbox width">
+                <svg viewBox="0 0 200 200" class="icon">>
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
+                </svg>
             </div>
             <input v-model.trim="psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-show="!showPass">
             <input v-model.trim="psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-show="showPass">
             <div class="iconbox  eye" v-on:click="showPass = !showPass">
-                <img src="http://p1.bqimg.com/4851/f766b55f214f6b8d.png" class="icon ">
+                <svg viewBox="0 0 200 200" v-on:click="showPass = !showPass">
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
+                </svg>
             </div>
         </div>
         <div class="height">
             <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
-            <div v-if="failed" class="checkemail check">用户名或邮箱已被注册</div>
-        </div>
+            <!--             <div v-if="failed" class="check">用户名或邮箱已被注册</div>
+ --></div>
         <button v-on:click="submit" class="change box-height" :style="changedButton">注册</button>
     </div>
 </template>
@@ -47,7 +64,8 @@ import {
     email,
     minLength,
     maxLength,
-    sameAs
+    sameAs,
+    require
 } from 'vuelidate/lib/validators'
 export default {
     data() {
@@ -57,25 +75,31 @@ export default {
                 passwordInput: '',
                 psdsecond: '',
                 focus: false,
-                failed: false,
+                email_exit: false,
                 showPass: false,
                 blur: false,
-                submitFlag: false
+                submitFlag: false,
+                username_exit: false
             }
         },
         validations: {
             username: {
-                maxLength: maxLength(8)
+                maxLength: maxLength(8),
+                require
             },
             emailInput: {
-                email
+                email,
+                require
             },
             passwordInput: {
-                minLength: minLength(6)
+                minLength: minLength(6),
+                require
             },
             psdsecond: {
-                sameAs: sameAs("passwordInput")
-            }
+                sameAs: sameAs("passwordInput"),
+                require
+            },
+            validationGroup: ['username', 'emailInput', 'passwordInput', 'psdsecond']
         },
         computed: {
             changedButton: function() {
@@ -87,6 +111,18 @@ export default {
         methods: {
             isBlur() {
                 this.blur = true
+                fetch("http://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
+                    if (res.ok) {
+                        this.email_exit = true
+                    }
+                })
+            },
+            userBlur() {
+                fetch("http://user.muxixyz.com/api/username_exists/?username=" + this.username, {}).then(res => {
+                    if (res.ok) {
+                        this.username_exit = true
+                    }
+                })
             },
             isFocus() {
                 this.submitFlag = false
@@ -95,11 +131,7 @@ export default {
             submit() {
                 if (this.submitFlag) return
                 this.submitFlag = true
-                if (this.username && this.$v.username.maxLength && this.emailInput && this.$v.emailInput.email && this.passwordInput && this.$v.passwordInput.minLength && this.$v.psdsecond.sameAs) {
-                    fetch("http://user.muxixyz.com/api/username_exists/?username=" + this.username,{
-                        
-                    })
-
+                if (this.validationGroup && this.username_exit && this.username_exit) {
                     fetch("http://user.muxixyz.com/api/register/", {
                         method: 'POST',
                         headers: {
@@ -114,10 +146,11 @@ export default {
                     }).then(res => {
                         if (res.ok) {
                             window.location = "/"
-                        } else {
-                            this.failed = true
                         }
-                    }).then(res => {
+                        // } else {
+                        //     this.failed = true
+                        // }
+                        // }).then(res => {
 
                     })
                 }
@@ -155,8 +188,11 @@ export default {
     width: 65%;
 }
 
-.iconbox {
+.width {
     width: 16%;
+}
+
+.iconbox {
     height: 100%;
     display: inline-block;
     vertical-align: middle;
@@ -164,8 +200,8 @@ export default {
 }
 
 .icon {
-    width: 14px;
-    height: 12px;
+    width: 17px;
+    height: 17px;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
@@ -175,7 +211,7 @@ export default {
 .btn {
     font-size: 14px;
     border: none;
-    color: #0b2029;
+    color: #989f9d;
     background-color: transparent;
 }
 

@@ -14,8 +14,7 @@ module.exports = {
     },
     devtool: '#eval-source-map',
     module: {
-        loaders: [
-        {
+        loaders: [{
             test: /\.vue$/,
             loader: 'vue-loader'
         }, {
@@ -25,24 +24,19 @@ module.exports = {
             include: [
                 path.resolve(__dirname, "src"),
             ],
-        },{
-          test: /\.scss$/,
-          loaders: ["style", "css", "sass"]
-        },
-        {
-          test: /\.html$/,
-          loader: "html-loader"
-        },
-        {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-            'file',
-            'image-webpack-loader'
-        ]
-    }]
+        }, {
+            test: /\.scss$/,
+            loaders: ["style", "css", "sass"]
+        }, {
+            test: /\.html$/,
+            loader: "html-loader"
+        }, {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loaders: ['url-loader?limit=8192','file-loader']
+        }]
     },
     resolve: {
-        extensions: ['', '.js','.scss','.vue'],
+        extensions: ['', '.js', '.scss', '.vue'],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

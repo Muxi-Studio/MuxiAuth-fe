@@ -35,8 +35,10 @@
     "webpack-hot-middleware": "^2.13.2"
   },
   "devDependencies": {
+    "file-loader": "^0.10.1",
     "html-loader": "^0.4.4",
     "jquery": "^3.1.1",
+    "url-loader": "^0.5.8",
     "vue": "^2.0.5",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.1.10",

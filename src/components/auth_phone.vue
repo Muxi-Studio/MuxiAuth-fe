@@ -6,6 +6,8 @@
         <div class="main">
             <div class="top">
                 <img src="http://p1.bqimg.com/567571/8bdd1501da6373b1.png" class="circle">
+               <!--  <div class="circle">
+                </div> -->
             </div>
             <div class="bottom">
                 <div class="container">
@@ -17,10 +19,18 @@
                 </div>
             </div>
         </div>
+        <div class="copy">
+            <div class="copyright">
+                华中师范大学木犀团队
+            </div>
+            <div class="copyright">
+                Hello from Wuhan，2014-2017 MuxiStudio
+            </div>
+        </div>
         <div class="footer">
-            <a href="http://xueer.muxixyz.com" class="xueer word">学而</a>
-            <a href="http://muxistudio.com" class="word">木犀团队</a>
-            <a href="http://share.muxixyz.com/" class="word">木犀分享</a>
+            <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
+            <a href="http://muxistudio.com" class="word word_change">木犀团队</a>
+            <a href="http://share.muxixyz.com/" class="word word_change">木犀分享</a>
         </div>
     </div>
 </template>
@@ -60,7 +70,9 @@ body {
 
 .top {
     height: 40%;
-    padding: 20px;
+    /*padding: 30px;*/
+    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .circle {
@@ -68,6 +80,7 @@ body {
     margin: 0 auto;
     height: 75%;
     width: 47%;
+    background-image: url('../pictures/moblie.png');
 }
 
 .bottom {
@@ -103,22 +116,39 @@ body {
 
 .eye {
     float: right;
+    width: 10%;
+}
+
+.copy {
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+}
+
+.copyright {
+    font-size: 13px;
+    text-align: center;
+    color: #989f9d;
 }
 
 .footer {
+    /*margin-top: 20px;*/
     width: 100%;
     height: 43px;
     background-color: #2b2b29;
     display: flex;
+    position: fixed;
+    bottom: 0;
 }
 
 .word {
     flex: 1;
     line-height: 43px;
-    color: #9ac2c6;
+    color: #989f9d;
+    text-align: center;
 }
 
-.xueer {
-    margin-left: 10%;
+.word_change:hover {
+    color: #fe850b;
 }
 </style>
