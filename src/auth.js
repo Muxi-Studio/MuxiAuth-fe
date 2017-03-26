@@ -14,7 +14,8 @@ const router = new VueRouter({
     routes:[
         { path: '/', component: Login },
         { path: '/register', component: Register }
-    ]
+    ],
+    linkActiveClass:'color:red;'
 })
 
 new Vue({

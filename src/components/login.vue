@@ -9,7 +9,7 @@
             <input type="text" v-model.trim="emailInput" @focus="isFocus" @blur="isBlur" class="inputbox" placeholder="邮箱">
         </div>
         <div class="height">
-            <div v-if="$v.emailInput.email && this.email_exit && this.blur" class="check">邮箱已注册
+            <div v-if="$v.emailInput.email && $v.emailInput.require && !this.email_exit && this.blur" class="check">邮箱不存在
             </div>
             <div v-if="!$v.emailInput.email && this.blur " class="check">邮箱格式有误</div>
         </div>
@@ -21,9 +21,11 @@
             </div>
             <input v-model.trim="passwordInput" type="password" class="inputbox" placeholder="密码" v-show="!showPass" @focus="isFocus">
             <input v-model.trim="passwordInput" type="text" class="inputbox" placeholder="密码" v-show="showPass" @focus="isFocus">
-            <svg viewBox="0 0 200 200" class="iconbox eye" v-on:click="showPass = !showPass">
-                <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
-            </svg>
+            <div class="iconbox  eye" v-on:click="showPass = !showPass">
+                <svg viewBox="0 0 200 200" class="icon">
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
+                </svg>
+            </div>
         </div>
         <div class="height">
             <svg viewBox="0 0 200 200" class="secret">>
@@ -62,7 +64,6 @@ export default {
                 require
             },
             validationGroup: ['emailInput', 'passwordInput']
-
         },
         computed: {
             changedButton: function() {
@@ -74,11 +75,13 @@ export default {
         methods: {
             isBlur() {
                 this.blur = true
-                ffetch("http://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
-                    if (res.ok) {
-                        this.email_exit = true
-                    }
-                })
+                if (this.$v.emailInput.email) {
+                    fetch("http://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
+                        if (res.ok) {
+                            this.email_exit = true
+                        }
+                    })
+                }
             },
             isFocus() {
                 this.submitFlag = false
@@ -87,7 +90,7 @@ export default {
             submit() {
                 if (this.submitFlag) return
                 this.submitFlag = true
-                if (this.validationGroup && this.username_exit) {
+                if (this.$v.validationGroup && this.email_exit) {
                     fetch("http://user.muxixyz.com/api/login/", {
                         method: 'GET',
                         headers: {

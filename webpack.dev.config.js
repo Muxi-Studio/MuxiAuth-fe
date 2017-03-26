@@ -32,14 +32,20 @@ module.exports = {
             loader: "html-loader"
         }, {
             test: /\.(jpe?g|png|gif|svg)$/i,
-            loaders: ['url-loader?limit=8192','file-loader']
+            loader: 'url-loader?limit=20&name=images/[hash:8].[name].[ext]'
         }]
     },
     resolve: {
         extensions: ['', '.js', '.scss', '.vue'],
     },
+    vue: {
+        loaders: {
+            css: ExtractTextPlugin.extract("css")
+        }
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
+        new ExtractTextPlugin("style.css")
     ]
 };

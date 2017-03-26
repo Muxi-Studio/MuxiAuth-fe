@@ -1,13 +1,15 @@
 <template>
     <div class="wrap">
         <div class="header">
-            <img src="http://p1.bqimg.com/567571/2c7c44100e48ca4e.png" class="logo">
+            <!-- <svg viewBox="0 0 200 200" class="logo">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+                </svg> -->
         </div>
         <div class="main">
             <div class="top">
                 <img src="http://p1.bqimg.com/567571/8bdd1501da6373b1.png" class="circle">
-               <!--  <div class="circle">
-                </div> -->
+                 <div class="circle">
+                </div>
             </div>
             <div class="bottom">
                 <div class="container">
@@ -53,26 +55,26 @@ body {
     background-color: rgba(251, 247, 213, 0.99);
     height: 37px;
     text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 .logo {
-    width: 108px;
-    margin-top: 7px;
+    /*width: 108px;
+    margin-top: 7px;*/
 }
 
 .main {
     width: 100%;
     background-color: #ffffff;
-    min-height: 100%;
-    margin-bottom: -80px;
-    overflow: hidden;
+    margin-top: 50px;
 }
 
 .top {
     height: 40%;
-    /*padding: 30px;*/
-    padding-top: 20px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .circle {
@@ -80,7 +82,7 @@ body {
     margin: 0 auto;
     height: 75%;
     width: 47%;
-    background-image: url('../pictures/moblie.png');
+    background-image: url('../pictures/moblie.png')no-repeat;
 }
 
 .bottom {
@@ -105,9 +107,9 @@ body {
 }
 
 .box-height {
-    height: 35px;
+    height: 34px;
     margin: 0 auto;
-    margin-top: 14px;
+    margin-top: 18px;
 }
 
 .inputbox-width {
@@ -118,11 +120,14 @@ body {
     float: right;
     width: 10%;
 }
-
+.margin-bottom{
+    margin-bottom: 100px;
+}
 .copy {
     position: fixed;
-    bottom: 50px;
+    bottom: 40px;
     width: 100%;
+    background-color: #ffffff;
 }
 
 .copyright {
@@ -132,7 +137,6 @@ body {
 }
 
 .footer {
-    /*margin-top: 20px;*/
     width: 100%;
     height: 43px;
     background-color: #2b2b29;

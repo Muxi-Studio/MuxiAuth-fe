@@ -8,7 +8,7 @@
             </div>
             <input type="text" v-model.trim="username" @focus="isFocus" @blur="userBlur" class="inputbox" placeholder="用户名(不超过八个字符)">
         </div>
-        <div v-if="$v.username.maxLength && $v.username.require && this.username_exit" class="check">用户名已注册
+        <div v-if="$v.username.require && !this.username_exit" class="check">用户名已注册
         </div>
         <div v-if="!$v.username.maxLength && !$v.username.require" class="check">不超过八个字符
         </div>
@@ -20,7 +20,7 @@
             </div>
             <input type="text" v-model.trim="emailInput" @blur="isBlur" @focus="isFocus" class="inputbox" placeholder="邮箱">
         </div>
-        <div v-if="$v.emailInput.email && this.email_exit && this.blur" class="check">邮箱已注册
+        <div v-if="!this.email_exit && this.blur && $v.emailInput.require" class="check">邮箱已注册
         </div>
         <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式不正确</div>
         <div class="box box-height">
@@ -32,7 +32,7 @@
             <input v-model.trim="passwordInput" @focus="isFocus" type="password" class="inputbox" placeholder="密码(不少于六位)" v-show="!showPass">
             <input v-model.trim="passwordInput" @focus="isFocus" type="text" class="inputbox" placeholder="密码(不少于六位)" v-show="showPass">
             <div class="iconbox eye" v-on:click="showPass = !showPass">
-                <svg viewBox="0 0 200 200" v-on:click="showPass = !showPass">
+                <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
                 </svg>
             </div>
@@ -47,16 +47,15 @@
             <input v-model.trim="psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-show="!showPass">
             <input v-model.trim="psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-show="showPass">
             <div class="iconbox  eye" v-on:click="showPass = !showPass">
-                <svg viewBox="0 0 200 200" v-on:click="showPass = !showPass">
+                <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
                 </svg>
             </div>
         </div>
         <div class="height">
             <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
-            <!--             <div v-if="failed" class="check">用户名或邮箱已被注册</div>
- --></div>
-        <button v-on:click="submit" class="change box-height" :style="changedButton">注册</button>
+        </div>
+        <button v-on:click="submit" class="change box-height margin-bottom" :style="changedButton">注册</button>
     </div>
 </template>
 <script>
@@ -111,27 +110,32 @@ export default {
         methods: {
             isBlur() {
                 this.blur = true
-                fetch("http://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
-                    if (res.ok) {
-                        this.email_exit = true
-                    }
-                })
+                if (this.$v.emailInput.email) {
+                    fetch("http://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
+                        if (res.ok) {
+                            this.email_exit = true
+                        }
+                    })
+                }
             },
             userBlur() {
-                fetch("http://user.muxixyz.com/api/username_exists/?username=" + this.username, {}).then(res => {
-                    if (res.ok) {
-                        this.username_exit = true
-                    }
-                })
+                if (this.$v.username.maxLength) {
+                    fetch("http://user.muxixyz.com/api/username_exists/?username=" + this.username, {}).then(res => {
+                        if (res.ok) {
+                            this.username_exit = true
+                        }
+                    })
+                }
             },
             isFocus() {
                 this.submitFlag = false
                 this.focus = true
             },
             submit() {
+                console.log(this.$v.validationGroup.username)
                 if (this.submitFlag) return
                 this.submitFlag = true
-                if (this.validationGroup && this.username_exit && this.username_exit) {
+                if (this.$v.validationGroup && this.username_exit && this.email_exit) {
                     fetch("http://user.muxixyz.com/api/register/", {
                         method: 'POST',
                         headers: {
@@ -147,11 +151,6 @@ export default {
                         if (res.ok) {
                             window.location = "/"
                         }
-                        // } else {
-                        //     this.failed = true
-                        // }
-                        // }).then(res => {
-
                     })
                 }
             }
