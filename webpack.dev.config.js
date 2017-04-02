@@ -37,15 +37,5 @@ module.exports = {
     },
     resolve: {
         extensions: ['', '.js', '.scss', '.vue'],
-    },
-    vue: {
-        loaders: {
-            css: ExtractTextPlugin.extract("css")
-        }
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin("style.css")
-    ]
+    }
 };

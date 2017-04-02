@@ -207,13 +207,6 @@ export default {
     position: absolute;
 }
 
-.btn {
-    font-size: 14px;
-    border: none;
-    color: #989f9d;
-    background-color: transparent;
-}
-
 .check {
     font-size: 11px;
     color: #aa3e21;

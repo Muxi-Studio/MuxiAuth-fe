@@ -174,11 +174,4 @@ export default {
     display: inline-block;
     color: #aa3e21;
 }
-
-.btn {
-    font-size: 14px;
-    border: none;
-    color: #989f9d;
-    background-color: transparent;
-}
 </style>

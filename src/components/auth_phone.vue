@@ -1,38 +1,40 @@
 <template>
     <div class="wrap">
-        <div class="header">
-            <!-- <svg viewBox="0 0 200 200" class="logo">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
-                </svg> -->
+        <div class="header text-align">
+            <svg class="logo" viewBox="0 0 200 200">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+            </svg>
         </div>
         <div class="main">
             <div class="top">
-                <img src="http://p1.bqimg.com/567571/8bdd1501da6373b1.png" class="circle">
-                 <div class="circle">
-                </div>
+                <div class="circle margin"></div>
             </div>
             <div class="bottom">
-                <div class="container">
-                    <div class="buttonBox">
-                        <router-link to="/phone" class="loginButton btn">登录</router-link>
-                        <router-link to="/register" class="registerButton btn">注册</router-link>
+                <div class="container margin">
+                    <div class="text-align">
+                        <router-link to="/phone" class="btn">
+                            <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
+                        </router-link>
+                        <router-link to="/register" class="registerButton btn">
+                            <a v-on:click="toregister" v-bind:class="{ highlight: !login}">注册</a>
+                        </router-link>
                     </div>
                     <router-view></router-view>
                 </div>
             </div>
         </div>
         <div class="copy">
-            <div class="copyright">
+            <div class="copyright text-align">
                 华中师范大学木犀团队
             </div>
-            <div class="copyright">
+            <div class="copyright text-align">
                 Hello from Wuhan，2014-2017 MuxiStudio
             </div>
         </div>
         <div class="footer">
-            <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
-            <a href="http://muxistudio.com" class="word word_change">木犀团队</a>
-            <a href="http://share.muxixyz.com/" class="word word_change">木犀分享</a>
+            <a href="http://xueer.muxixyz.com" class="word word_change text-align">学而</a>
+            <a href="http://muxistudio.com" class="word word_change text-align">木犀团队</a>
+            <a href="http://share.muxixyz.com/" class="word word_change text-align">木犀分享</a>
         </div>
     </div>
 </template>
@@ -40,10 +42,23 @@
 import Login from './login.vue'
 import Register from './register.vue'
 export default {
-    components: {
-        "login": Login,
-        "register": Register
-    }
+    data() {
+            return {
+                login: true
+            }
+        },
+        components: {
+            "login": Login,
+            "register": Register
+        },
+        methods: {
+            tologin: function() {
+                this.login = true
+            },
+            toregister: function() {
+                this.login = false
+            }
+        }
 }
 </script>
 <style>
@@ -51,22 +66,27 @@ body {
     min-width: 300px;
 }
 
+.highlight {
+    color: black;
+}
+
 .header {
     background-color: rgba(251, 247, 213, 0.99);
     height: 37px;
-    text-align: center;
     position: fixed;
     top: 0;
     width: 100%;
 }
 
 .logo {
-    /*width: 108px;
-    margin-top: 7px;*/
+    width: 180px;
+    height: 100px;
+    margin-top: -32px;
 }
 
 .main {
     width: 100%;
+    min-height: 500px;
     background-color: #ffffff;
     margin-top: 50px;
 }
@@ -79,10 +99,19 @@ body {
 
 .circle {
     display: block;
-    margin: 0 auto;
-    height: 75%;
-    width: 47%;
-    background-image: url('../pictures/moblie.png')no-repeat;
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50%;
+    background-image: url('../pictures/moblie.png');
+}
+
+.btn {
+    font-size: 14px;
+    border: none;
+    color: #a6a5a4;
+    background-color: transparent;
 }
 
 .bottom {
@@ -93,22 +122,11 @@ body {
 .container {
     font-size: 18px;
     color: rgba(71, 70, 68, 0.99);
-    margin: 0 auto;
     width: 72%;
-}
-
-.buttonBox {
-    text-align: center;
-}
-
-.loginButton {
-    display: inline-block;
-    margin-right: 10px;
 }
 
 .box-height {
     height: 34px;
-    margin: 0 auto;
     margin-top: 18px;
 }
 
@@ -120,9 +138,11 @@ body {
     float: right;
     width: 10%;
 }
-.margin-bottom{
+
+.margin-bottom {
     margin-bottom: 100px;
 }
+
 .copy {
     position: fixed;
     bottom: 40px;
@@ -132,7 +152,6 @@ body {
 
 .copyright {
     font-size: 13px;
-    text-align: center;
     color: #989f9d;
 }
 
@@ -149,7 +168,6 @@ body {
     flex: 1;
     line-height: 43px;
     color: #989f9d;
-    text-align: center;
 }
 
 .word_change:hover {

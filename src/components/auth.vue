@@ -1,24 +1,31 @@
 <template>
     <div class="wrap">
         <div class="content header-color">
-            <div class="header" v-on:click="changeColor">
-                <img src="http://p1.bpimg.com/4851/0cbf553a4e98a401.png" class="logo">
+            <div class="header margin" v-on:click="changeColor">
+                <svg class="logo">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
+                    </use>
+                </svg>
                 <a href="http://share.muxixyz.com/" class="share word word_change">木犀分享</a>
                 <a href="http://muxistudio.com" class="studio word word_change">木犀团队</a>
                 <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
             </div>
         </div>
         <div class="content main-color">
-            <div class="main">
-                <div class="left">
+            <div class="main margin">
+                <div class="left inline-block vertical-align">
                     <div class="circle">
                     </div>
                 </div>
-                <div class="right">
-                    <div class="container">
-                        <div class="tittle">
-                            <router-link to="/" class="btn" v-on:changeColor="highlight">登录</router-link>
-                            <router-link to="/register" class="registerButton btn" v-on:changeColor="highlight">注册</router-link>
+                <div class="right inline-block vertical-align">
+                    <div class="container vertical-align margin">
+                        <div class="text-align">
+                            <router-link to="/" class="btn">
+                                <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
+                            </router-link>
+                            <router-link to="/register" class="registerButton btn">
+                                <a v-on:click="toregister" v-bind:class="{ highlight: !login}">注册</a>
+                            </router-link>
                         </div>
                         <router-view></router-view>
                     </div>
@@ -26,11 +33,11 @@
             </div>
         </div>
         <div class="footer">
-            <div class="center">
-                <div class="copyright">
+            <div class="center margin">
+                <div class="copyright text-align">
                     华中师范大学木犀团队
                 </div>
-                <div class="copyright">
+                <div class="copyright text-align">
                     Hello from Wuhan，2014-2017 MuxiStudio
                 </div>
             </div>
@@ -41,10 +48,11 @@
 <script>
 import Login from './login.vue'
 import Register from './register.vue'
+
 export default {
     data() {
             return {
-                
+                login: true
             }
         },
         components: {
@@ -52,16 +60,13 @@ export default {
             "register": Register
         },
         methods: {
-            changeColor: function() {
-                this.$emit('changeColor')
-            }
-        },
-        computed: {
-            highlight: function(){
-                
+            tologin: function() {
+                this.login = true
+            },
+            toregister: function() {
+                this.login = false
             }
         }
-
 }
 </script>
 <style>
@@ -69,9 +74,12 @@ body {
     min-width: 700px;
 }
 
+.highlight {
+    color: #0b2029;
+}
+
 .content {
     width: 100%;
-    margin: 0 auto;
 }
 
 .header-color {
@@ -82,7 +90,6 @@ body {
     width: 985px;
     height: 73px;
     background-color: #ffffff;
-    margin: 0 auto;
 }
 
 .logo {
@@ -91,6 +98,13 @@ body {
     margin-top: 23px;
     margin-left: 7%;
     float: left;
+}
+
+.btn {
+    font-size: 14px;
+    border: none;
+    color: #878583;
+    background-color: transparent;
 }
 
 .eye {
@@ -125,7 +139,6 @@ body {
 
 .main {
     font-size: 0;
-    margin: 0 auto;
     width: 985px;
 }
 
@@ -139,8 +152,6 @@ body {
 
 .container {
     width: 202px;
-    margin: 0 auto;
-    vertical-align: middle;
 }
 
 .box-height {
@@ -155,19 +166,11 @@ body {
 .left {
     width: 50%;
     height: 100%;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.tittle {
-    text-align: center;
 }
 
 .right {
     width: 50%;
     height: 100%;
-    display: inline-block;
-    vertical-align: middle;
     box-sizing: border-box;
     padding: 0 13%;
 }
@@ -187,13 +190,10 @@ body {
 .center {
     transform: translateY(7px);
     width: 985px;
-    margin: 0 auto;
 }
 
 .copyright {
-    text-align: center;
     color: #687b84;
     font-size: 14px;
-    margin: 0 auto;
 }
 </style>
