@@ -8,9 +8,9 @@
             </div>
             <input type="text" v-model.trim="username" @focus="isFocus" @blur="userBlur" class="inputbox transparent inline-block vertical-align" placeholder="用户名(不超过八个字符)">
         </div>
-        <div v-if="$v.username.require && !this.username_exit" class="check">用户名已注册
+        <div v-if="$v.username.required && !this.username_exit" class="check">用户名已注册
         </div>
-        <div v-if="!$v.username.maxLength && !$v.username.require" class="check">不超过八个字符
+        <div v-if="!$v.username.maxLength && !$v.username.required" class="check">不超过八个字符
         </div>
         <div class="box box-height transparent">
             <div class="iconbox width inline-block vertical-align">
@@ -20,7 +20,7 @@
             </div>
             <input type="text" v-model.trim="emailInput" @blur="isBlur" @focus="isFocus" class="inputbox transparent inline-block vertical-align" placeholder="邮箱">
         </div>
-        <div v-if="!this.email_exit && this.blur && $v.emailInput.require" class="check">邮箱已注册
+        <div v-if="!this.email_exit && this.blur && $v.emailInput.required" class="check">邮箱已注册
         </div>
         <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式不正确</div>
         <div class="box box-height transparent">
@@ -64,7 +64,7 @@ import {
     minLength,
     maxLength,
     sameAs,
-    require
+    required
 } from 'vuelidate/lib/validators'
 export default {
     data() {
@@ -84,19 +84,19 @@ export default {
         validations: {
             username: {
                 maxLength: maxLength(8),
-                require
+                required
             },
             emailInput: {
                 email,
-                require
+                required
             },
             passwordInput: {
                 minLength: minLength(6),
-                require
+                required
             },
             psdsecond: {
                 sameAs: sameAs("passwordInput"),
-                require
+                required
             },
             validationGroup: ['username', 'emailInput', 'passwordInput', 'psdsecond']
         },

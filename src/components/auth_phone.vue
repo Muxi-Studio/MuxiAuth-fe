@@ -69,15 +69,17 @@ body {
 .highlight {
     color: black;
 }
+
 .btn {
     font-size: 14px;
     border: none;
-    color: #aaafad;
+    color: grey;
 }
 
-.registerButton{
+.registerButton {
     margin-left: 20px;
 }
+
 .header {
     background-color: #f9f5d3;
     height: 37px;
@@ -114,7 +116,6 @@ body {
     background-image: url('../pictures/moblie.png');
 }
 
-
 .bottom {
     width: 100%;
     height: 60%;
@@ -124,6 +125,10 @@ body {
     font-size: 18px;
     color: rgba(71, 70, 68, 0.99);
     width: 72%;
+}
+
+.psd-height {
+    height: 34px;
 }
 
 .box-height {
@@ -147,12 +152,13 @@ body {
 .copy {
     position: fixed;
     bottom: 40px;
+    padding: 10px;
     width: 100%;
     background-color: #ffffff;
 }
 
 .copyright {
-    font-size: 13px;
+    font-size: 11px;
     color: #989f9d;
 }
 

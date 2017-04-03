@@ -9,11 +9,11 @@
             <input type="text" v-model.trim="emailInput" @focus="isFocus" @blur="isBlur" class="transparent inline-block vertical-align" placeholder="邮箱">
         </div>
         <div class="height">
-            <div v-if="$v.emailInput.email && $v.emailInput.require && !this.email_exit && this.blur" class="check">邮箱不存在
+            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exit && !this.blur" class="check">邮箱不存在
             </div>
             <div v-if="!$v.emailInput.email && this.blur " class="check">邮箱格式有误</div>
         </div>
-        <div class="box box-height transparent">
+        <div class="box psd-height transparent">
             <div class="iconbox width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
@@ -40,9 +40,12 @@
 <script>
 import {
     email,
-    require
+    required
 } from 'vuelidate/lib/validators'
 export default {
+    mounted(){
+        console.log("$v.emailInput.email",this.$v.emailInput.email ,"$v.emailInput.required", this.$v.emailInput.required,"!this.email_exit", !this.email_exit,"blur", this.blur)
+    },
     data() {
             return {
                 emailInput: '',
@@ -58,10 +61,10 @@ export default {
         validations: {
             emailInput: {
                 email,
-                require
+                required
             },
             passwordInput: {
-                require
+                required
             },
             validationGroup: ['emailInput', 'passwordInput']
         },
@@ -88,6 +91,7 @@ export default {
                 this.focus = true
             },
             submit() {
+                console.log("$v.emailInput.email",this.$v.emailInput.email ,"$v.emailInput.required", this.$v.emailInput.required,"!this.email_exit", !this.email_exit,"blur", this.blur)
                 if (this.submitFlag) return
                 this.submitFlag = true
                 if (this.$v.validationGroup && this.email_exit) {

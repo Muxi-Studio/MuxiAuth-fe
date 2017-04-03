@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <div class="content header-color">
-            <div class="header margin" v-on:click="changeColor">
+            <div class="header margin">
                 <svg class="logo">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
                     </use>
@@ -93,8 +93,8 @@ body {
 }
 
 .logo {
-    width: 101px;
-    height: 24px;
+    width: 130px;
+    height: 30px;
     margin-top: 23px;
     margin-left: 7%;
     float: left;
@@ -162,7 +162,9 @@ body {
 .registerButton {
     margin-left: 14px;
 }
-
+.psd-height{
+    height: 30px;
+}
 .left {
     width: 50%;
     height: 100%;
