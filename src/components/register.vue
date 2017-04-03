@@ -1,52 +1,52 @@
 <template>
     <div>
-        <div class="box box-height">
-            <div class="iconbox width">
+        <div class="box box-height transparent">
+            <div class="iconbox width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#username"></use>
                 </svg>
             </div>
-            <input type="text" v-model.trim="username" @focus="isFocus" @blur="userBlur" class="inputbox" placeholder="用户名(不超过八个字符)">
+            <input type="text" v-model.trim="username" @focus="isFocus" @blur="userBlur" class="inputbox transparent inline-block vertical-align" placeholder="用户名(不超过八个字符)">
         </div>
         <div v-if="$v.username.require && !this.username_exit" class="check">用户名已注册
         </div>
         <div v-if="!$v.username.maxLength && !$v.username.require" class="check">不超过八个字符
         </div>
-        <div class="box box-height">
-            <div class="iconbox width">
+        <div class="box box-height transparent">
+            <div class="iconbox width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                 </svg>
             </div>
-            <input type="text" v-model.trim="emailInput" @blur="isBlur" @focus="isFocus" class="inputbox" placeholder="邮箱">
+            <input type="text" v-model.trim="emailInput" @blur="isBlur" @focus="isFocus" class="inputbox transparent inline-block vertical-align" placeholder="邮箱">
         </div>
         <div v-if="!this.email_exit && this.blur && $v.emailInput.require" class="check">邮箱已注册
         </div>
         <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式不正确</div>
-        <div class="box box-height">
-            <div class="iconbox width">
+        <div class="box box-height transparent">
+            <div class="iconbox width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                 </svg>
             </div>
-            <input v-model.trim="passwordInput" @focus="isFocus" type="password" class="inputbox" placeholder="密码(不少于六位)" v-show="!showPass">
-            <input v-model.trim="passwordInput" @focus="isFocus" type="text" class="inputbox" placeholder="密码(不少于六位)" v-show="showPass">
-            <div class="iconbox eye" v-on:click="showPass = !showPass">
+            <input v-model.trim="passwordInput" @focus="isFocus" type="password" class="inputbox transparent inline-block vertical-align" placeholder="密码(不少于六位)" v-show="!showPass">
+            <input v-model.trim="passwordInput" @focus="isFocus" type="text" class="inputbox transparent inline-block vertical-align" placeholder="密码(不少于六位)" v-show="showPass">
+            <div class="iconbox eye inline-block vertical-align" v-on:click="showPass = !showPass">
                 <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
                 </svg>
             </div>
         </div>
         <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
-        <div class="box box-height">
-            <div class="iconbox width">
+        <div class="box box-height transparent">
+            <div class="iconbox width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                 </svg>
             </div>
-            <input v-model.trim="psdsecond" class="inputbox" type="password" placeholder="再次输入密码" v-show="!showPass">
-            <input v-model.trim="psdsecond" class="inputbox" type="text" placeholder="再次输入密码" v-show="showPass">
-            <div class="iconbox  eye" v-on:click="showPass = !showPass">
+            <input v-model.trim="psdsecond" class="inputbox transparent inline-block vertical-align" type="password" placeholder="再次输入密码" v-show="!showPass">
+            <input v-model.trim="psdsecond" class="inputbox transparent inline-block vertical-align" type="text" placeholder="再次输入密码" v-show="showPass">
+            <div class="iconbox  eye inline-block vertical-align" v-on:click="showPass = !showPass">
                 <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
                 </svg>
@@ -173,7 +173,6 @@ export default {
 
 .box {
     color: #0b2029;
-    background-color: transparent;
     border-radius: 4px;
     border: 1px solid #737373;
     font-size: 0;
@@ -181,9 +180,6 @@ export default {
 }
 
 .inputbox {
-    display: inline-block;
-    background-color: transparent;
-    vertical-align: middle;
     width: 65%;
 }
 
@@ -193,8 +189,6 @@ export default {
 
 .iconbox {
     height: 100%;
-    display: inline-block;
-    vertical-align: middle;
     position: relative;
 }
 

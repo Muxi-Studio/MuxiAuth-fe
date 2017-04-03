@@ -69,9 +69,17 @@ body {
 .highlight {
     color: black;
 }
+.btn {
+    font-size: 14px;
+    border: none;
+    color: #aaafad;
+}
 
+.registerButton{
+    margin-left: 20px;
+}
 .header {
-    background-color: rgba(251, 247, 213, 0.99);
+    background-color: #f9f5d3;
     height: 37px;
     position: fixed;
     top: 0;
@@ -87,7 +95,6 @@ body {
 .main {
     width: 100%;
     min-height: 500px;
-    background-color: #ffffff;
     margin-top: 50px;
 }
 
@@ -107,12 +114,6 @@ body {
     background-image: url('../pictures/moblie.png');
 }
 
-.btn {
-    font-size: 14px;
-    border: none;
-    color: #a6a5a4;
-    background-color: transparent;
-}
 
 .bottom {
     width: 100%;
