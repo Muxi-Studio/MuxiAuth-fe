@@ -13,6 +13,12 @@
 			"async": false
 		},
 		{
+			"name" : "newpsd",
+			"endpoint" : "/newpsd",
+			"template" : "newpsd",
+			"async" : false
+		},
+		{
 			"name" : "api.login",
 			"endpoint": "/api/v1.0/login/",
 			"method":"get",

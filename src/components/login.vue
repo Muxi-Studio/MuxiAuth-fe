@@ -31,7 +31,7 @@
             <svg viewBox="0 0 200 200" class="secret inline-block">>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secret"></use>
             </svg>
-            <div class="forget inline-block">忘记密码？</div>
+            <a href="/newpsd" class="forget inline-block">忘记密码？</a>
             <div v-if="failed" class="check">邮箱或密码不正确</div>
         </div>
         <button v-on:click="submit" class="change box-height" :style="changedButton">登录</button>
@@ -43,9 +43,6 @@ import {
     required
 } from 'vuelidate/lib/validators'
 export default {
-    mounted(){
-        console.log("$v.emailInput.email",this.$v.emailInput.email ,"$v.emailInput.required", this.$v.emailInput.required,"!this.email_exit", !this.email_exit,"blur", this.blur)
-    },
     data() {
             return {
                 emailInput: '',
@@ -91,7 +88,6 @@ export default {
                 this.focus = true
             },
             submit() {
-                console.log("$v.emailInput.email",this.$v.emailInput.email ,"$v.emailInput.required", this.$v.emailInput.required,"!this.email_exit", !this.email_exit,"blur", this.blur)
                 if (this.submitFlag) return
                 this.submitFlag = true
                 if (this.$v.validationGroup && this.email_exit) {
@@ -166,5 +162,6 @@ export default {
 .forget {
     font-size: 11px;
     color: #aa3e21;
+    margin-top: 5px;
 }
 </style>

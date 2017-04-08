@@ -132,9 +132,8 @@ body {
 
 .main-color {
     background-color: #f4f7ed;
-    margin-bottom: -129px;
-    min-height: 100%;
     overflow: hidden;
+    height: 100%;
 }
 
 .main {
@@ -181,6 +180,8 @@ body {
     width: 100%;
     height: 56px;
     background-color: #afdce1;
+    position: fixed;
+    bottom: 0;
 }
 
 .check {

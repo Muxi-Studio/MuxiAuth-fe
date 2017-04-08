@@ -23,18 +23,20 @@
                 </div>
             </div>
         </div>
-        <div class="copy">
-            <div class="copyright text-align">
-                华中师范大学木犀团队
+        <div class="footer-copy">
+            <div class="footer">
+                <a href="http://xueer.muxixyz.com" class="word word_change text-align">学而</a>
+                <a href="http://muxistudio.com" class="word word_change text-align">木犀团队</a>
+                <a href="http://share.muxixyz.com/" class="word word_change text-align">木犀分享</a>
             </div>
-            <div class="copyright text-align">
-                Hello from Wuhan，2014-2017 MuxiStudio
+            <div class="copy">
+                <div class="copyright text-align">
+                    华中师范大学木犀团队
+                </div>
+                <div class="copyright text-align">
+                    Hello from Wuhan，2014-2017 MuxiStudio
+                </div>
             </div>
-        </div>
-        <div class="footer">
-            <a href="http://xueer.muxixyz.com" class="word word_change text-align">学而</a>
-            <a href="http://muxistudio.com" class="word word_change text-align">木犀团队</a>
-            <a href="http://share.muxixyz.com/" class="word word_change text-align">木犀分享</a>
         </div>
     </div>
 </template>
@@ -96,7 +98,7 @@ body {
 
 .main {
     width: 100%;
-    min-height: 500px;
+    /*min-height: 500px;*/
     margin-top: 50px;
 }
 
@@ -113,7 +115,7 @@ body {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50%;
-    background-image: url('../pictures/moblie.png');
+    background-image: url('../pictures/mobile.png');
 }
 
 .bottom {
@@ -150,11 +152,17 @@ body {
 }
 
 .copy {
-    position: fixed;
-    bottom: 40px;
-    padding: 10px;
+    /*position: fixed;
+    bottom: 40px;*/
+    /*padding: 10px;*/
     width: 100%;
-    background-color: #ffffff;
+}
+
+.footer-copy {
+    background-color: #2b2b29;
+    /*position: fixed;
+    bottom: 0;*/
+    width: 100%;
 }
 
 .copyright {
@@ -165,10 +173,7 @@ body {
 .footer {
     width: 100%;
     height: 43px;
-    background-color: #2b2b29;
     display: flex;
-    position: fixed;
-    bottom: 0;
 }
 
 .word {
