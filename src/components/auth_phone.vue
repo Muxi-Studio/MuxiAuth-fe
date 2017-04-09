@@ -1,5 +1,6 @@
 <template>
     <div class="wrap">
+    <div class="no-footer">
         <div class="header text-align">
             <svg class="logo" viewBox="0 0 200 200">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
@@ -22,6 +23,9 @@
                     <router-view></router-view>
                 </div>
             </div>
+        </div>
+       <!--  <div class="push">
+        </div> -->
         </div>
         <div class="footer-copy">
             <div class="footer">
@@ -67,7 +71,13 @@ export default {
 body {
     min-width: 300px;
 }
-
+.no-footer{
+    min-height: 100%;
+    margin-bottom: -90px;
+}
+.push{
+    height: 90px;
+}
 .highlight {
     color: black;
 }
@@ -99,7 +109,9 @@ body {
 .main {
     width: 100%;
     /*min-height: 500px;*/
-    margin-top: 50px;
+    height: 100%;
+   /* margin-top: 50px;*/
+
 }
 
 .top {
@@ -162,6 +174,7 @@ body {
     background-color: #2b2b29;
     /*position: fixed;
     bottom: 0;*/
+    height: 90px;
     width: 100%;
 }
 

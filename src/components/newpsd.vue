@@ -34,14 +34,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="row-box">
-                                <div class="iconbox inline-block">
-                                    <svg viewBox="0 0 200 200" class="icon">
-                                        <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#captcha"></use>
-                                    </svg>
-                                </div>
-                                <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align" placeholder="输入验证码">
+                            <div class="iconbox inline-block">
+                                <svg viewBox="0 0 200 200" class="icon">
+                                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#captcha"></use>
+                                </svg>
                             </div>
+                            <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align" placeholder="输入验证码">
                         </div>
                     </div>
                 </div>
@@ -131,10 +129,6 @@ body {
     border-bottom: 2px solid #e1e3df;
 }
 
-.row-box {
-    line-height: 55px;
-}
-
 .icon-box {
     width: 50px;
     height: 100%;
@@ -152,7 +146,10 @@ body {
     width: 75px;
     background-color: #4ac1c7;
     border-radius: 4px;
+    line-height: 55px;
+    vertical-align: middle;
     /*    float: right;
+
 */
 }
 </style>
