@@ -1,31 +1,29 @@
 <template>
     <div class="wrap">
-    <div class="no-footer">
-        <div class="header text-align">
-            <svg class="logo" viewBox="0 0 200 200">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
-            </svg>
-        </div>
-        <div class="main">
-            <div class="top">
-                <div class="circle margin"></div>
+        <div class="no-footer">
+            <div class="header text-align">
+                <svg class="logo" viewBox="0 0 200 200">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
+                </svg>
             </div>
-            <div class="bottom">
-                <div class="container margin">
-                    <div class="text-align">
-                        <router-link to="/phone" class="btn">
-                            <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
-                        </router-link>
-                        <router-link to="/register" class="registerButton btn">
-                            <a v-on:click="toregister" v-bind:class="{ highlight: !login}">注册</a>
-                        </router-link>
+            <div class="main">
+                <div class="top">
+                    <div class="circle margin"></div>
+                </div>
+                <div class="bottom">
+                    <div class="container margin">
+                        <div class="text-align">
+                            <router-link to="/phone" class="btn">
+                                <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
+                            </router-link>
+                            <router-link to="/register" class="registerButton btn">
+                                <a v-on:click="toregister" v-bind:class="{ highlight: !login}">注册</a>
+                            </router-link>
+                        </div>
+                        <router-view></router-view>
                     </div>
-                    <router-view></router-view>
                 </div>
             </div>
-        </div>
-       <!--  <div class="push">
-        </div> -->
         </div>
         <div class="footer-copy">
             <div class="footer">
@@ -71,13 +69,16 @@ export default {
 body {
     min-width: 300px;
 }
-.no-footer{
+
+.no-footer {
     min-height: 100%;
-    margin-bottom: -90px;
+    margin-bottom: -60px;
 }
-.push{
+
+.push {
     height: 90px;
 }
+
 .highlight {
     color: black;
 }
@@ -95,8 +96,6 @@ body {
 .header {
     background-color: #f9f5d3;
     height: 37px;
-    position: fixed;
-    top: 0;
     width: 100%;
 }
 
@@ -108,10 +107,7 @@ body {
 
 .main {
     width: 100%;
-    /*min-height: 500px;*/
     height: 100%;
-   /* margin-top: 50px;*/
-
 }
 
 .top {
@@ -164,17 +160,13 @@ body {
 }
 
 .copy {
-    /*position: fixed;
-    bottom: 40px;*/
-    /*padding: 10px;*/
     width: 100%;
 }
 
 .footer-copy {
     background-color: #2b2b29;
-    /*position: fixed;
-    bottom: 0;*/
-    height: 90px;
+    height: 60px;
+    padding-top: 3px;
     width: 100%;
 }
 
@@ -185,13 +177,13 @@ body {
 
 .footer {
     width: 100%;
-    height: 43px;
+    height: 25px;
     display: flex;
 }
 
 .word {
     flex: 1;
-    line-height: 43px;
+    line-height: 25px;
     color: #989f9d;
 }
 

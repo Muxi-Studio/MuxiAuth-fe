@@ -13,10 +13,8 @@ const router = new VueRouter({
     mode: 'history',
     routes:[
         { path: '/', component: Login },
-        { path: '/register', component: Register },
-        { path: '/newpsd', component: newpsd}
-    ],
-    linkActiveClass:'color:red;'
+        { path: '/register', component: Register }
+    ]
 })
 
 new Vue({
