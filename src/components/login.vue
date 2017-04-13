@@ -76,7 +76,7 @@ export default {
             isBlur() {
                 this.blur = true
                 if (this.$v.emailInput.email) {
-                    fetch("http://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
+                    fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
                         if (res.ok) {
                             this.email_exit = true
                         }
@@ -91,7 +91,7 @@ export default {
                 if (this.submitFlag) return
                 this.submitFlag = true
                 if (this.$v.validationGroup && this.email_exit) {
-                    fetch("http://user.muxixyz.com/api/login/", {
+                    fetch("https://user.muxixyz.com/api/login/", {
                         method: 'GET',
                         headers: {
                             'Accept': 'application/json',
@@ -112,7 +112,7 @@ export default {
         }
 }
 </script>
-<style>
+<style scoped>
 .change {
     color: #ffffff;
     font-size: 14px;

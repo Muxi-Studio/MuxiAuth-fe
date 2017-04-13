@@ -43,7 +43,6 @@
             </div>
         </div>
     </div>
-    </div>
 </template>
 <script>
 import Login from './login.vue'
@@ -161,9 +160,11 @@ body {
 .registerButton {
     margin-left: 14px;
 }
-.psd-height{
+
+.psd-height {
     height: 30px;
 }
+
 .left {
     width: 50%;
     height: 100%;

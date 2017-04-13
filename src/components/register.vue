@@ -111,7 +111,7 @@ export default {
             isBlur() {
                 this.blur = true
                 if (this.$v.emailInput.email) {
-                    fetch("http://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
+                    fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
                         if (res.ok) {
                             this.email_exit = true
                         }
@@ -120,7 +120,7 @@ export default {
             },
             userBlur() {
                 if (this.$v.username.maxLength) {
-                    fetch("http://user.muxixyz.com/api/username_exists/?username=" + this.username, {}).then(res => {
+                    fetch("https://user.muxixyz.com/api/username_exists/?username=" + this.username, {}).then(res => {
                         if (res.ok) {
                             this.username_exit = true
                         }
@@ -136,7 +136,7 @@ export default {
                 if (this.submitFlag) return
                 this.submitFlag = true
                 if (this.$v.validationGroup && this.username_exit && this.email_exit) {
-                    fetch("http://user.muxixyz.com/api/register/", {
+                    fetch("https://user.muxixyz.com/api/register/", {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -157,7 +157,7 @@ export default {
         }
 }
 </script>
-<style>
+<style scoped>
 .change {
     background-color: #fd860e;
     color: #ffffff;

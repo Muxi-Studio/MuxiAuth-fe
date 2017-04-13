@@ -4,7 +4,7 @@ module.exports = {
 	webpack: true, // flag for using webpack or not
 	// proxy: {
 	// 	route: "/api",
-	// 	origin: "http://user.muxixyz.com"
+	// 	origin: "https://user.muxixyz.com"
 	// },
 	staticDir: "/static",
 	templateDir: "/template",
