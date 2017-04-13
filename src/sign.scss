@@ -1,0 +1,38 @@
+.change {
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+}
+
+.change:hover {
+    background-color: #df6b0f;
+}
+
+.box {
+    color: #0b2029;
+    border-radius: 4px;
+    border: 1px solid #737373;
+    font-size: 0;
+}
+
+.iconbox {
+    position: relative;
+}
+
+.icon {
+    width: 18px;
+    height: 16px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+.height {
+    height: 17px;
+}
+
+.width {
+    width: 16%;
+}

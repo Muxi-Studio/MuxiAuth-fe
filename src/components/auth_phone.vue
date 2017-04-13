@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <div class="no-footer">
-            <div class="header text-align">
+            <div class="header text-align full-width">
                 <svg class="logo" viewBox="0 0 200 200">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
                 </svg>
@@ -10,7 +10,7 @@
                 <div class="top">
                     <div class="circle margin"></div>
                 </div>
-                <div class="bottom">
+                <div class="bottom full-width">
                     <div class="container margin">
                         <div class="text-align">
                             <router-link to="/phone" class="btn">
@@ -25,13 +25,13 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copy">
-            <div class="footer">
+        <div class="footer-copy full-width">
+            <div class="footer full-width">
                 <a href="http://xueer.muxixyz.com" class="word word_change text-align">学而</a>
                 <a href="http://muxistudio.com" class="word word_change text-align">木犀团队</a>
                 <a href="http://share.muxixyz.com/" class="word word_change text-align">木犀分享</a>
             </div>
-            <div class="copy">
+            <div class="full-width">
                 <div class="copyright text-align">
                     华中师范大学木犀团队
                 </div>
@@ -96,7 +96,6 @@ body {
 .header {
     background-color: #f9f5d3;
     height: 37px;
-    width: 100%;
 }
 
 .logo {
@@ -118,8 +117,8 @@ body {
 
 .circle {
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 50%;
@@ -127,7 +126,6 @@ body {
 }
 
 .bottom {
-    width: 100%;
     height: 60%;
 }
 
@@ -159,15 +157,10 @@ body {
     margin-bottom: 100px;
 }
 
-.copy {
-    width: 100%;
-}
-
 .footer-copy {
     background-color: #2b2b29;
     height: 60px;
     padding-top: 3px;
-    width: 100%;
 }
 
 .copyright {
@@ -176,7 +169,6 @@ body {
 }
 
 .footer {
-    width: 100%;
     height: 25px;
     display: flex;
 }

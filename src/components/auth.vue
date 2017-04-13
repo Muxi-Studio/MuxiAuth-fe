@@ -1,6 +1,6 @@
 <template>
     <div class="wrap">
-        <div class="content header-color">
+        <div class="full-width header-color">
             <div class="header margin">
                 <svg class="logo">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
@@ -11,13 +11,13 @@
                 <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
             </div>
         </div>
-        <div class="content main-color">
+        <div class="full-width main-color">
             <div class="main margin">
-                <div class="left inline-block vertical-align">
+                <div class="left-right inline-block vertical-align">
                     <div class="circle">
                     </div>
                 </div>
-                <div class="right inline-block vertical-align">
+                <div class="right left-right inline-block vertical-align">
                     <div class="container vertical-align margin">
                         <div class="text-align">
                             <router-link to="/" class="btn">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer">
+        <div class="footer full-width">
             <div class="center margin">
                 <div class="copyright text-align">
                     华中师范大学木犀团队
@@ -75,10 +75,6 @@ body {
 
 .highlight {
     color: #0b2029;
-}
-
-.content {
-    width: 100%;
 }
 
 .header-color {
@@ -165,20 +161,12 @@ body {
     height: 30px;
 }
 
-.left {
-    width: 50%;
-    height: 100%;
-}
-
 .right {
-    width: 50%;
-    height: 100%;
     box-sizing: border-box;
     padding: 0 13%;
 }
 
 .footer {
-    width: 100%;
     height: 56px;
     background-color: #afdce1;
     position: fixed;

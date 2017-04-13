@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="box box-height transparent">
-            <div class="iconbox width inline-block vertical-align">
+            <div class="iconbox full-height width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#username"></use>
                 </svg>
@@ -13,7 +13,7 @@
         <div v-if="!$v.username.maxLength && !$v.username.required" class="check">不超过八个字符
         </div>
         <div class="box box-height transparent">
-            <div class="iconbox width inline-block vertical-align">
+            <div class="iconbox full-height width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                 </svg>
@@ -24,14 +24,14 @@
         </div>
         <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式不正确</div>
         <div class="box box-height transparent">
-            <div class="iconbox width inline-block vertical-align">
+            <div class="iconbox full-height width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                 </svg>
             </div>
             <input v-model.trim="passwordInput" @focus="isFocus" type="password" class="inputbox transparent inline-block vertical-align" placeholder="密码(不少于六位)" v-show="!showPass">
             <input v-model.trim="passwordInput" @focus="isFocus" type="text" class="inputbox transparent inline-block vertical-align" placeholder="密码(不少于六位)" v-show="showPass">
-            <div class="iconbox eye inline-block vertical-align" v-on:click="showPass = !showPass">
+            <div class="iconbox full-height eye inline-block vertical-align" v-on:click="showPass = !showPass">
                 <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
                 </svg>
@@ -39,14 +39,14 @@
         </div>
         <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
         <div class="box box-height transparent">
-            <div class="iconbox width inline-block vertical-align">
+            <div class="iconbox full-height width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                 </svg>
             </div>
             <input v-model.trim="psdsecond" class="inputbox transparent inline-block vertical-align" type="password" placeholder="再次输入密码" v-show="!showPass">
             <input v-model.trim="psdsecond" class="inputbox transparent inline-block vertical-align" type="text" placeholder="再次输入密码" v-show="showPass">
-            <div class="iconbox  eye inline-block vertical-align" v-on:click="showPass = !showPass">
+            <div class="iconbox full-height eye inline-block vertical-align" v-on:click="showPass = !showPass">
                 <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
                 </svg>
@@ -55,7 +55,7 @@
         <div class="height">
             <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
         </div>
-        <button v-on:click="submit" class="change box-height margin-bottom" :style="changedButton">注册</button>
+        <button v-on:click="submit" class="change full-width box-height margin-bottom" :style="changedButton">注册</button>
     </div>
 </template>
 <script>
@@ -158,56 +158,12 @@ export default {
 }
 </script>
 <style scoped>
-.change {
-    background-color: #fd860e;
-    color: #ffffff;
-    font-size: 14px;
-    border-radius: 4px;
-    border: none;
-    width: 100%;
-}
-
-.change:hover {
-    background-color: #df6b0f;
-}
-
-.box {
-    color: #0b2029;
-    border-radius: 4px;
-    border: 1px solid #737373;
-    font-size: 0;
-    clear: both;
-}
-
 .inputbox {
     width: 65%;
 }
 
-.width {
-    width: 16%;
-}
-
-.iconbox {
-    height: 100%;
-    position: relative;
-}
-
-.icon {
-    width: 17px;
-    height: 17px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    position: absolute;
-}
-
 .check {
-    font-size: 11px;
     color: #aa3e21;
     float: right;
-}
-
-.height {
-    height: 17px;
 }
 </style>
