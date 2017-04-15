@@ -1,0 +1,67 @@
+body {
+    min-width: 700px;
+}
+
+.header-color {
+    background-color: #ffffff;
+}
+
+.header {
+    width: 985px;
+    height: 73px;
+    background-color: #ffffff;
+}
+
+.logo {
+    width: 130px;
+    height: 30px;
+    margin-top: 23px;
+    margin-left: 7%;
+    float: left;
+}
+
+.word {
+    line-height: 73px;
+    font-size: 15px;
+    float: right;
+}
+
+.word_change:hover {
+    color: #ff850c;
+}
+
+.studio {
+    margin-left: 40px;
+}
+
+.share {
+    margin-left: 40px;
+    margin-right: 120px;
+}
+
+.main-color {
+    background-color: #f4f7ed;
+    height: 100%;
+}
+
+.main {
+    font-size: 0;
+    width: 985px;
+}
+.footer {
+    width: 100%;
+    height: 56px;
+    background-color: #afdce1;
+    position: fixed;
+    bottom: 0;
+}
+
+.center {
+    transform: translateY(7px);
+    width: 985px;
+}
+
+.copyright {
+    color: #687b84;
+    font-size: 14px;
+}

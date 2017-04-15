@@ -11,7 +11,7 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
     mode: 'history',
-    routes:[
+    routes: [
         { path: '/phone', component: Login },
         { path: '/register', component: Register }
     ]
@@ -22,3 +22,6 @@ new Vue({
     router,
     render: h => h(Auth)
 })
+if (window.devicePixelRatio && devicePixelRatio >= 2) {
+    document.querySelector('.box').className += 'box';
+}

@@ -19,7 +19,7 @@
                 </div>
                 <div class="right left-right inline-block vertical-align">
                     <div class="container vertical-align margin">
-                        <div class="text-align">
+                        <div class="text-align router-margin">
                             <router-link to="/" class="btn">
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
@@ -68,31 +68,11 @@ export default {
         }
 }
 </script>
-<style>
-body {
-    min-width: 700px;
-}
+<style lang="sass">
+@import '../pc.scss';
 
 .highlight {
     color: #0b2029;
-}
-
-.header-color {
-    background-color: #ffffff;
-}
-
-.header {
-    width: 985px;
-    height: 73px;
-    background-color: #ffffff;
-}
-
-.logo {
-    width: 130px;
-    height: 30px;
-    margin-top: 23px;
-    margin-left: 7%;
-    float: left;
 }
 
 .btn {
@@ -104,36 +84,6 @@ body {
 
 .eye {
     width: 20px;
-}
-
-.word {
-    line-height: 73px;
-    font-size: 15px;
-    float: right;
-}
-
-.word_change:hover {
-    color: #ff850c;
-}
-
-.studio {
-    margin-left: 40px;
-}
-
-.share {
-    margin-left: 40px;
-    margin-right: 120px;
-}
-
-.main-color {
-    background-color: #f4f7ed;
-    overflow: hidden;
-    height: 100%;
-}
-
-.main {
-    font-size: 0;
-    width: 985px;
 }
 
 .circle {
@@ -150,15 +100,10 @@ body {
 
 .box-height {
     height: 30px;
-    margin-top: 22px;
 }
 
 .registerButton {
     margin-left: 14px;
-}
-
-.psd-height {
-    height: 30px;
 }
 
 .right {
@@ -166,26 +111,7 @@ body {
     padding: 0 13%;
 }
 
-.footer {
-    height: 56px;
-    background-color: #afdce1;
-    position: fixed;
-    bottom: 0;
-}
-
-.check {
-    font-size: 11px;
-    color: #9f442c;
-    float: right;
-}
-
-.center {
-    transform: translateY(7px);
-    width: 985px;
-}
-
-.copyright {
-    color: #687b84;
-    font-size: 14px;
+.eye {
+    width: 20px;
 }
 </style>

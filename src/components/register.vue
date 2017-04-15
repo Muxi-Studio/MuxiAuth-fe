@@ -8,9 +8,11 @@
             </div>
             <input type="text" v-model.trim="username" @focus="isFocus" @blur="userBlur" class="inputbox transparent inline-block vertical-align" placeholder="用户名(不超过八个字符)">
         </div>
+        <div class="height">
         <div v-if="$v.username.required && !this.username_exit" class="check">用户名已注册
         </div>
         <div v-if="!$v.username.maxLength && !$v.username.required" class="check">不超过八个字符
+        </div>
         </div>
         <div class="box box-height transparent">
             <div class="iconbox full-height width inline-block vertical-align">
@@ -20,9 +22,11 @@
             </div>
             <input type="text" v-model.trim="emailInput" @blur="isBlur" @focus="isFocus" class="inputbox transparent inline-block vertical-align" placeholder="邮箱">
         </div>
-        <div v-if="!this.email_exit && this.blur && $v.emailInput.required" class="check">邮箱已注册
+        <div class="height">
+        <div v-if="!this.email_exit && this.blur && $v.emailInput.required && $v.emailInput.email" class="check">邮箱已注册
         </div>
         <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式不正确</div>
+        </div>
         <div class="box box-height transparent">
             <div class="iconbox full-height width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
@@ -37,7 +41,8 @@
                 </svg>
             </div>
         </div>
-        <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
+        <div class="height">
+        <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div></div>
         <div class="box box-height transparent">
             <div class="iconbox full-height width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
@@ -132,7 +137,6 @@ export default {
                 this.focus = true
             },
             submit() {
-                console.log(this.$v.validationGroup.username)
                 if (this.submitFlag) return
                 this.submitFlag = true
                 if (this.$v.validationGroup && this.username_exit && this.email_exit) {
@@ -157,13 +161,8 @@ export default {
         }
 }
 </script>
-<style scoped>
+<style>
 .inputbox {
     width: 65%;
-}
-
-.check {
-    color: #aa3e21;
-    float: right;
 }
 </style>

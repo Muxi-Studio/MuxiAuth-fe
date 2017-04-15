@@ -12,7 +12,7 @@
                 </div>
                 <div class="bottom full-width">
                     <div class="container margin">
-                        <div class="text-align">
+                        <div class="text-align router-margin">
                             <router-link to="/phone" class="btn">
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
@@ -65,7 +65,7 @@ export default {
         }
 }
 </script>
-<style>
+<style lang="sass">
 body {
     min-width: 300px;
 }
@@ -74,9 +74,8 @@ body {
     min-height: 100%;
     margin-bottom: -60px;
 }
-
-.push {
-    height: 90px;
+.router-margin{
+    margin-bottom: 10px;
 }
 
 .highlight {
@@ -141,7 +140,6 @@ body {
 
 .box-height {
     height: 34px;
-    margin-top: 18px;
 }
 
 .inputbox-width {

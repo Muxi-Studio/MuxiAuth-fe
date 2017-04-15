@@ -13,7 +13,7 @@
             </div>
             <div v-if="!$v.emailInput.email && this.blur " class="check tip-font">邮箱格式有误</div>
         </div>
-        <div class="box psd-height transparent">
+        <div class="box box-height transparent">
             <div class="iconbox full-height width inline-block vertical-align">
                 <svg viewBox="0 0 200 200" class="icon">>
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
@@ -112,7 +112,7 @@ export default {
         }
 }
 </script>
-<style scoped>
+<style lang="sass">
 .secret {
     width: 14px;
     height: 12px;
