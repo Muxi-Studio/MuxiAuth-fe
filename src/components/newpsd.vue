@@ -85,6 +85,7 @@ export default {
     background-color: #4ac1c7;
     border-radius: 4px;
     vertical-align: middle;
+    margin-left: 55px;
 }
 
 .inputword {

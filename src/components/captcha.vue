@@ -24,6 +24,7 @@
             </div>
             <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
         </div>
+        <button type="submit" class="btn next">下一步</button>
     </div>
 </template>
 <script>
@@ -98,5 +99,9 @@ export default {
     width: 25px;
     height: 25px;
     transform: translateX(50%);
+}
+.next{
+    margin-top: 20px;
+    float: right;
 }
 </style>

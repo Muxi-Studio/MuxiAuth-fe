@@ -145,7 +145,9 @@ export default {
                 e.preventDefault();
                 if (this.submitFlag) return
                 this.submitFlag = true
-                if (this.$v.validationGroup && this.username_exist && this.email_exist) {
+            console.log("this.$v.validationGroup",this.$v.validationGroup,"this.username_exist",this.username_exist,"this.email_exist",this.email_exist)
+                if (this.$v.validationGroup && !this.username_exist && !this.email_exist) {
+
                     fetch("https://user.muxixyz.com/api/register/", {
                         method: 'POST',
                         headers: {
@@ -158,6 +160,7 @@ export default {
                             password: this.passwordInput
                         })
                     }).then(res => {
+                        console.log("success")
                         if (res.ok) {
                             window.location = "/"
                         }
