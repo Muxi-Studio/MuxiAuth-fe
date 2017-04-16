@@ -9,7 +9,7 @@
             <input type="text" v-model.trim="emailInput" @focus="isFocus" @blur="isBlur" class="transparent inline-block vertical-align" placeholder="邮箱">
         </div>
         <div class="height">
-            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exit && !this.blur" class="check tip-font">邮箱不存在
+            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exist && this.blur" class="check tip-font">邮箱不存在
             </div>
             <div v-if="!$v.emailInput.email && this.blur " class="check tip-font">邮箱格式有误</div>
         </div>
@@ -52,7 +52,7 @@ export default {
                 submitFlag: false,
                 failed: false,
                 blur: false,
-                email_exit: false
+                email_exist: true
             }
         },
         validations: {
@@ -75,10 +75,12 @@ export default {
         methods: {
             isBlur() {
                 this.blur = true
-                if (this.$v.emailInput.email) {
+                if (this.$v.emailInput.email && this.$v.emailInput.required) {
                     fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
                         if (res.ok) {
-                            this.email_exit = true
+                            this.email_exist = false
+                        } else {
+                            this.email_exist = true
                         }
                     })
                 }
@@ -87,10 +89,11 @@ export default {
                 this.submitFlag = false
                 this.focus = true
             },
-            submit() {
+            submit(e) {
                 if (this.submitFlag) return
                 this.submitFlag = true
-                if (this.$v.validationGroup && this.email_exit) {
+                            // e.preventDefault();
+                if (this.$v.validationGroup && this.email_exist) {
                     fetch("https://user.muxixyz.com/api/login/", {
                         method: 'GET',
                         headers: {
@@ -104,8 +107,6 @@ export default {
                         } else {
                             this.failed = true
                         }
-                    }).then(res => {
-                        console.log(res)
                     })
                 }
             }

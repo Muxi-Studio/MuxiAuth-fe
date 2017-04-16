@@ -1,6 +1,6 @@
 <template>
 <div>
-    <button type="submit" class="btn">{{time | change}}</button>
+    <button class="btn">{{time | change}}</button>
     </div>
 </template>
 <script>

@@ -8,11 +8,11 @@
             </div>
             <input type="text" v-model.trim="emailInput" @blur="isBlur" class="transparent inline-block vertical-align inputword" placeholder="请填写邮箱地址">
             <div class="inline-block">
-            <sendcode :start='start' @countDown ='start=false' @click.native='sendCode'></sendcode>
+                <sendcode :start='start' @countDown='start=false' @click.native='sendCode'></sendcode>
             </div>
         </div>
         <div class="height">
-            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exit && !this.blur" class="check">您输入的账号不存在，请重新输入
+            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exist && this.blur" class="check">您输入的账号不存在，请重新输入
             </div>
             <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式有误</div>
         </div>
@@ -38,8 +38,9 @@ export default {
                 emailInput: '',
                 captchaInput: '',
                 blur: false,
-                email_exit: false,
-                start: false
+                email_exist: true,
+                start: false,
+                flag : false
             }
         },
         components: {
@@ -57,13 +58,17 @@ export default {
                 if (this.$v.emailInput.email && this.$v.emailInput.required) {
                     fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
                         if (res.ok) {
-                            this.email_exit = true
+                            this.email_exist = false
+                        } else {
+                            this.email_exist = true
                         }
                     })
                 }
             },
             sendCode(value) {
-                if (this.$v.emailInput && this.email_exit) {
+                value.stopPropagation()
+                value.preventDefault();
+                if (this.$v.emailInput.email && this.email_exist) {
                     fetch("https://user.muxixyz.com/api/forgot_password/get_captcha/", {
                         method: 'POST',
                         headers: {
@@ -75,11 +80,11 @@ export default {
                         })
                     }).then(res => {
                         if (res.ok) {
-                             this.start = true
+                            this.start = true
+                            // this.flag = true               
                         }
                     })
                 }
-                value.preventDefalut();
             }
         }
 }
@@ -88,7 +93,8 @@ export default {
 .height {
     height: 30px;
 }
-.icon-size{
+
+.icon-size {
     width: 25px;
     height: 25px;
     transform: translateX(50%);
