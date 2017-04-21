@@ -9,9 +9,9 @@
             <input type="text" v-model.trim="emailInput" @focus="isFocus" @blur="isBlur" class="transparent inline-block vertical-align" placeholder="邮箱">
         </div>
         <div class="height">
-            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exist && this.blur" class="check tip-font">邮箱不存在
+            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exist && this.blur" class="check tip-style">邮箱不存在
             </div>
-            <div v-if="!$v.emailInput.email && this.blur " class="check tip-font">邮箱格式有误</div>
+            <div v-if="!$v.emailInput.email && this.blur " class="check tip-style">邮箱格式有误</div>
         </div>
         <div class="box box-height transparent">
             <div class="iconbox full-height width inline-block vertical-align">
@@ -31,9 +31,10 @@
             <svg viewBox="0 0 200 200" class="secret inline-block">>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secret"></use>
             </svg>
-            <a href="/newpsd" class="forget inline-block tip-font">忘记密码？</a>
-            <div v-if="failed" class="check tip-font">邮箱或密码不正确</div>
+            <a href="/newpsd" class="forget inline-block tip-style">忘记密码？</a>
+            <div v-if="this.failed" class="check inline-block fail tip-style">邮箱或密码不正确</div>
         </div>
+        
         <button v-on:click="submit" class="change box-height full-width" :style="changedButton">登录</button>
     </div>
 </template>
@@ -91,8 +92,7 @@ export default {
             },
             submit(e) {
                 if (this.submitFlag) return
-                this.submitFlag = true
-                            // e.preventDefault();
+                this.submitFlag = true                    
                 if (this.$v.validationGroup && this.email_exist) {
                     fetch("https://user.muxixyz.com/api/login/", {
                         method: 'GET',
@@ -120,7 +120,9 @@ export default {
 }
 
 .forget {
-    color: #aa3e21;
     margin-top: 5px;
+}
+.fail{
+    float: right;
 }
 </style>
