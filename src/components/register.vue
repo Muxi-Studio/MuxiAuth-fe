@@ -114,6 +114,13 @@ export default {
                 }
             }
         },
+        mounted(){
+            if (window.devicePixelRatio && devicePixelRatio >= 2) {
+                var boxes = document.querySelectorAll('.box')
+                for (var i = 0; i < boxes.length; i++)
+                    boxes[i].className += ' box1';
+            }
+        },
         methods: {
             isBlur() {
                 this.blur = true

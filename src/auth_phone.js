@@ -22,6 +22,4 @@ new Vue({
     router,
     render: h => h(Auth)
 })
-if (window.devicePixelRatio && devicePixelRatio >= 2) {
-    document.querySelector('.box').className += 'box';
-}
+

@@ -57,7 +57,7 @@ export default {
             isBlur() {
                 this.blur = true
                 if (this.$v.emailInput.email && this.$v.emailInput.required) {
-                    fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
+                    fetch("/api/email_exists/?email=" + this.emailInput, {}).then(res => {
                         if (res.ok) {
                             this.email_exist = false
                         } else {
@@ -70,7 +70,7 @@ export default {
                 value.stopPropagation()
                 value.preventDefault();
                 if (this.$v.emailInput.email && this.email_exist) {
-                    fetch("https://user.muxixyz.com/api/forgot_password/get_captcha/", {
+                    fetch("/api/forgot_password/get_captcha/", {
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',

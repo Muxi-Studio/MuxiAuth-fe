@@ -6,12 +6,13 @@
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                 </svg>
             </div>
-            <input type="text" v-model.trim="emailInput" @focus="isFocus" @blur="isBlur" class="transparent inline-block vertical-align" placeholder="邮箱">
+            <eInput v-model.trim="emailInput" @focus="isFocus"></eInput>
+            <!--  <input type="text" debounce="500" v-model.trim="emailInput" @focus="isFocus" class="transparent inline-block vertical-align" placeholder="邮箱"> -->
         </div>
         <div class="height">
-            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exist && this.blur" class="check tip-style">邮箱不存在
+            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-style">邮箱不存在
             </div>
-            <div v-if="!$v.emailInput.email && this.blur " class="check tip-style">邮箱格式有误</div>
+            <div v-if="!$v.emailInput.email" class="check tip-style">邮箱格式有误</div>
         </div>
         <div class="box box-height transparent">
             <div class="iconbox full-height width inline-block vertical-align">
@@ -34,15 +35,26 @@
             <a href="/newpsd" class="forget inline-block tip-style">忘记密码？</a>
             <div v-if="this.failed" class="check inline-block fail tip-style">邮箱或密码不正确</div>
         </div>
-        
         <button v-on:click="submit" class="change box-height full-width" :style="changedButton">登录</button>
     </div>
 </template>
 <script>
+import Input from './Input.vue'
 import {
     email,
-    required
+    required,
+    isUnique
 } from 'vuelidate/lib/validators'
+
+// let id = false
+
+// if (id){
+//     clearTimeout(id)
+//     id = false
+// }else{
+//     id = setTimeoiut(xxx)
+// }
+
 export default {
     data() {
             return {
@@ -52,14 +64,35 @@ export default {
                 focus: false,
                 submitFlag: false,
                 failed: false,
-                blur: false,
-                email_exist: true
+                flag: true
             }
+        },
+        mounted(){
+            if (window.devicePixelRatio && devicePixelRatio >= 2) {
+                var boxes = document.querySelectorAll('.box')
+                for (var i = 0; i < boxes.length; i++)
+                    boxes[i].className += ' box1';
+            }
+        },
+        components: {
+            "eInput": Input
         },
         validations: {
             emailInput: {
                 email,
-                required
+                required,
+                isUnique(value) {
+                    return new Promise((resolve, reject) => {
+                        resolve(typeof value === 'string' &&
+                            this.checkemail(value))
+                    })
+                }
+                // async isUnique (value) {
+                //     if (value === '' && !this.flag) return true
+                //     const response = await fetch(`https://user.muxixyz.com/api/email_exists/?email=${value}`)
+
+                //     return Boolean(await response.json())
+                // }
             },
             passwordInput: {
                 required
@@ -74,17 +107,25 @@ export default {
             }
         },
         methods: {
-            isBlur() {
-                this.blur = true
-                if (this.$v.emailInput.email && this.$v.emailInput.required) {
-                    fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
-                        if (res.ok) {
-                            this.email_exist = false
-                        } else {
-                            this.email_exist = true
-                        }
-                    })
-                }
+            //     if (this.$v.emailInput.email && this.$v.emailInput.required) {
+            //         fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
+            //             if (res.ok) {
+            //                 this.email_exist = false
+            //             } else {
+            //                 this.email_exist = true
+            //             }
+            //         })
+            //     }
+            // },
+            checkemail(value) {
+                fetch(`/api/email_exists/?email=${value}`).then(res => {
+                    this.flag = true
+                    if (res.ok) {
+                        return false
+                    } else {
+                        return true
+                    }
+                })
             },
             isFocus() {
                 this.submitFlag = false
@@ -92,9 +133,9 @@ export default {
             },
             submit(e) {
                 if (this.submitFlag) return
-                this.submitFlag = true                    
-                if (this.$v.validationGroup && this.email_exist) {
-                    fetch("https://user.muxixyz.com/api/login/", {
+                this.submitFlag = true
+                if (this.$v.validationGroup) {
+                    fetch("/api/login/", {
                         method: 'GET',
                         headers: {
                             'Accept': 'application/json',
@@ -122,7 +163,8 @@ export default {
 .forget {
     margin-top: 5px;
 }
-.fail{
+
+.fail {
     float: right;
 }
 </style>

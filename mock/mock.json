@@ -19,6 +19,12 @@
 			"async" : false
 		},
 		{
+			"name" : "newpsd_phone",
+			"endpoint" : "/newpsd_phone",
+			"template" : "newpsd_phone",
+			"async" : false
+		},
+		{
 			"name" : "api.login",
 			"endpoint": "/api/v1.0/login/",
 			"method":"get",

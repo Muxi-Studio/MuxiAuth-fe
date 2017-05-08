@@ -66,14 +66,8 @@ export default {
 }
 </script>
 <style lang="sass">
-body {
-    min-width: 300px;
-}
+@import '../mobile.scss';
 
-.no-footer {
-    min-height: 100%;
-    margin-bottom: -60px;
-}
 .router-margin{
     margin-bottom: 10px;
 }

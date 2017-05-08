@@ -82,10 +82,6 @@ export default {
     background-color: transparent;
 }
 
-.eye {
-    width: 20px;
-}
-
 .circle {
     width: 380px;
     height: 380px;
