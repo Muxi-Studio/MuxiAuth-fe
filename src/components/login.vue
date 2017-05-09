@@ -6,7 +6,7 @@
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                 </svg>
             </div>
-            <eInput v-model.trim="emailInput" @focus="isFocus"></eInput>
+            <eInput v-model.trim="emailInput" v-on:onemit="onemit" @focus="isFocus"></eInput>
             <!--  <input type="text" debounce="500" v-model.trim="emailInput" @focus="isFocus" class="transparent inline-block vertical-align" placeholder="邮箱"> -->
         </div>
         <div class="height">
@@ -117,7 +117,10 @@ export default {
             //         })
             //     }
             // },
-            checkemail(value) {
+            onemit(value){
+                this.emailInput = value
+            },
+            checkemail(value){
                 fetch(`/api/email_exists/?email=${value}`).then(res => {
                     this.flag = true
                     if (res.ok) {
@@ -125,7 +128,7 @@ export default {
                     } else {
                         return true
                     }
-                })
+                })                
             },
             isFocus() {
                 this.submitFlag = false
