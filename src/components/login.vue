@@ -2,7 +2,7 @@
     <div>
         <div class="box box-height transparent">
             <div class="iconbox full-height width inline-block vertical-align">
-                <svg viewBox="0 0 200 200" class="icon">>
+                <svg viewBox="0 0 200 200" class="icon">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                 </svg>
             </div>
@@ -67,7 +67,7 @@ export default {
                 flag: true
             }
         },
-        mounted(){
+        mounted() {
             if (window.devicePixelRatio && devicePixelRatio >= 2) {
                 var boxes = document.querySelectorAll('.box')
                 for (var i = 0; i < boxes.length; i++)
@@ -117,10 +117,10 @@ export default {
             //         })
             //     }
             // },
-            onemit(value){
+            onemit(value) {
                 this.emailInput = value
             },
-            checkemail(value){
+            checkemail(value) {
                 fetch(`/api/email_exists/?email=${value}`).then(res => {
                     this.flag = true
                     if (res.ok) {
@@ -128,7 +128,7 @@ export default {
                     } else {
                         return true
                     }
-                })                
+                })
             },
             isFocus() {
                 this.submitFlag = false

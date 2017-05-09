@@ -2,7 +2,6 @@
     <input type="text" class="transparent inline-block vertical-align" 
     placeholder="邮箱" 
     ref="input" 
-    v-model="text" 
     v-bind:value="value" 
     v-on:input="updateValue($event.target.value)">
 </template>
@@ -11,9 +10,7 @@
 export default {
     data() {
             return {
-            	former:"",
             	flag:true,
-            	text:""
             }
         },
         props: ['value'],
@@ -25,9 +22,8 @@ export default {
             	}
             },
             test(){
-            	this.$emit('onemit',this.text)
+            	this.$emit('onemit',this.$refs.input.value)
             	this.flag = true
-
             }
         }
 }
