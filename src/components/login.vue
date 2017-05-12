@@ -1,41 +1,40 @@
 <template>
     <div>
-        <div class="box box-height transparent">
-            <div class="iconbox full-height width inline-block vertical-align">
-                <svg viewBox="0 0 200 200" class="icon">
-                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
-                </svg>
+        <div class="row">
+            <div class="box box-height transparent">
+                <div class="iconbox full-height width inline-block vertical-align">
+                    <svg viewBox="0 0 200 200" class="icon">
+                        <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
+                    </svg>
+                </div>
+                <eInput v-model.trim="emailInput" @focus="isFocus" class="transparent inline-block vertical-align"></eInput>
             </div>
-            <eInput v-model.trim="emailInput" v-on:onemit="onemit" @focus="isFocus"></eInput>
-            <!--  <input type="text" debounce="500" v-model.trim="emailInput" @focus="isFocus" class="transparent inline-block vertical-align" placeholder="邮箱"> -->
-        </div>
-        <div class="height">
             <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-style">邮箱不存在
             </div>
             <div v-if="!$v.emailInput.email" class="check tip-style">邮箱格式有误</div>
         </div>
-        <div class="box box-height transparent">
-            <div class="iconbox full-height width inline-block vertical-align">
-                <svg viewBox="0 0 200 200" class="icon">>
-                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
-                </svg>
+        <div class="row">
+            <div class="box box-height transparent">
+                <div class="iconbox full-height width inline-block vertical-align">
+                    <svg viewBox="0 0 200 200" class="icon">>
+                        <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
+                    </svg>
+                </div>
+                <input v-model.trim="passwordInput" type="password" class="transparent inline-block vertical-align" placeholder="密码" v-show="!showPass" @focus="isFocus">
+                <input v-model.trim="passwordInput" type="text" class="transparent inline-block vertical-align" placeholder="密码" v-show="showPass" @focus="isFocus">
+                <div class="iconbox full-height eye inline-block vertical-align" v-on:click="showPass = !showPass">
+                    <svg viewBox="0 0 200 200" class="icon">
+                        <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
+                    </svg>
+                </div>
             </div>
-            <input v-model.trim="passwordInput" type="password" class="transparent inline-block vertical-align" placeholder="密码" v-show="!showPass" @focus="isFocus">
-            <input v-model.trim="passwordInput" type="text" class="transparent inline-block vertical-align" placeholder="密码" v-show="showPass" @focus="isFocus">
-            <div class="iconbox full-height eye inline-block vertical-align" v-on:click="showPass = !showPass">
-                <svg viewBox="0 0 200 200" class="icon">
-                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
-                </svg>
-            </div>
-        </div>
-        <div class="height">
             <svg viewBox="0 0 200 200" class="secret inline-block">>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secret"></use>
             </svg>
             <a href="/newpsd" class="forget inline-block tip-style">忘记密码？</a>
             <div v-if="this.failed" class="check inline-block fail tip-style">邮箱或密码不正确</div>
         </div>
-        <button v-on:click="submit" class="change box-height full-width" :style="changedButton">登录</button>
+        <button v-on:click="submit" class="change box-height full-width login-margin" :style="changedButton">登录</button>
     </div>
 </template>
 <script>
@@ -46,15 +45,6 @@ import {
     isUnique
 } from 'vuelidate/lib/validators'
 
-// let id = false
-
-// if (id){
-//     clearTimeout(id)
-//     id = false
-// }else{
-//     id = setTimeoiut(xxx)
-// }
-
 export default {
     data() {
             return {
@@ -63,8 +53,7 @@ export default {
                 showPass: false,
                 focus: false,
                 submitFlag: false,
-                failed: false,
-                flag: true
+                failed: false
             }
         },
         mounted() {
@@ -87,12 +76,6 @@ export default {
                             this.checkemail(value))
                     })
                 }
-                // async isUnique (value) {
-                //     if (value === '' && !this.flag) return true
-                //     const response = await fetch(`https://user.muxixyz.com/api/email_exists/?email=${value}`)
-
-                //     return Boolean(await response.json())
-                // }
             },
             passwordInput: {
                 required
@@ -107,22 +90,8 @@ export default {
             }
         },
         methods: {
-            //     if (this.$v.emailInput.email && this.$v.emailInput.required) {
-            //         fetch("https://user.muxixyz.com/api/email_exists/?email=" + this.emailInput, {}).then(res => {
-            //             if (res.ok) {
-            //                 this.email_exist = false
-            //             } else {
-            //                 this.email_exist = true
-            //             }
-            //         })
-            //     }
-            // },
-            onemit(value) {
-                this.emailInput = value
-            },
             checkemail(value) {
                 fetch(`/api/email_exists/?email=${value}`).then(res => {
-                    this.flag = true
                     if (res.ok) {
                         return false
                     } else {
@@ -169,5 +138,9 @@ export default {
 
 .fail {
     float: right;
+}
+
+.login-margin {
+    margin-top: 20px;
 }
 </style>

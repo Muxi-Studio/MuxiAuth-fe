@@ -1,40 +1,14 @@
 <template>
     <div class="wrap">
-        <div class="no-footer">
             <div class="header text-align full-width">
                 <svg class="logo" viewBox="0 0 200 200">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
                 </svg>
             </div>
             <div class="main">
-                <div class="top">
-                    <div class="circle margin"></div>
-                </div>
-                <div class="bottom full-width">
-                    <div class="container margin">
-                        <div class="text-align router-margin">
-                           <captcha></captcha>
-                    </div>
-                </div>
+                <captcha></captcha>
             </div>
         </div>
-        </div>
-        <div class="footer-copy full-width">
-            <div class="footer full-width">
-                <a href="http://xueer.muxixyz.com" class="word word_change text-align">学而</a>
-                <a href="http://muxistudio.com" class="word word_change text-align">木犀团队</a>
-                <a href="http://share.muxixyz.com/" class="word word_change text-align">木犀分享</a>
-            </div>
-            <div class="full-width">
-                <div class="copyright text-align">
-                    华中师范大学木犀团队
-                </div>
-                <div class="copyright text-align">
-                    Hello from Wuhan，2014-2017 MuxiStudio
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 <script>
 import captcha from './captcha.vue'
@@ -49,6 +23,48 @@ export default {
 }
 </script>
 <style lang="sass">
-@import '../mobile.scss'
+@import '../mobile.scss';
+.container {
+    width: 350px;
+    height: 200px;
+}
 
+.row {
+    width: 100%;
+    height: 55px;
+    border-bottom: 2px solid #e1e3df;
+}
+
+.iconbox {
+    width: 50px;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 55px;
+}
+
+.new-icon {
+    width: 40px;
+    height: 35px;
+    vertical-align: middle;
+}
+
+.btn {
+    height: 25px;
+    width: 75px;
+    background-color: #4ac1c7;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 55px;
+}
+
+.inputword {
+    font-size: 15px;
+}
+
+.check {
+    line-height: 30px;
+    color: #ac372b;
+    margin-left: 50px;
+    font-size: 15px;
+}
 </style>

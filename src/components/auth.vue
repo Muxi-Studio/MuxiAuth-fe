@@ -6,14 +6,14 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
                     </use>
                 </svg>
-                <a href="http://share.muxixyz.com/" class="share word word_change">木犀分享</a>
-                <a href="http://muxistudio.com" class="studio word word_change">木犀团队</a>
-                <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
+                <a href="http://share.muxixyz.com/" class="share word word-change">木犀分享</a>
+                <a href="http://muxistudio.com" class="studio word word-change">木犀团队</a>
+                <a href="http://xueer.muxixyz.com" class="word word-change">学而</a>
             </div>
         </div>
-        <div class="full-width main-color">
-            <div class="main margin">
-                <div class="left-right inline-block vertical-align">
+        <div class="full-width main-color full-height">
+            <div class="main margin full-height">
+                <div class="left-right inline-block vertical-align margin">
                     <div class="circle">
                     </div>
                 </div>
@@ -34,9 +34,9 @@
         </div>
         <div class="footer full-width">
             <div class="center margin">
-                <div class="copyright text-align">
+                <a href="http://muxistudio.com" class="copyright text-align">
                     华中师范大学木犀团队
-                </div>
+                </a>
                 <div class="copyright text-align">
                     Hello from Wuhan，2014-2017 MuxiStudio
                 </div>
@@ -70,7 +70,6 @@ export default {
 </script>
 <style lang="sass">
 @import '../pc.scss';
-
 .highlight {
     color: #0b2029;
 }
@@ -85,13 +84,19 @@ export default {
 .circle {
     width: 380px;
     height: 380px;
-    margin: 15% auto;
-    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-image: url('../pictures/circle.png');
 }
 
 .container {
     width: 202px;
+}
+
+.row {
+    height: 50px;
 }
 
 .box-height {
@@ -104,7 +109,7 @@ export default {
 
 .right {
     box-sizing: border-box;
-    padding: 0 13%;
+    padding-top: 210px;
 }
 
 .eye {

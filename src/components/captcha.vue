@@ -6,15 +6,15 @@
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                 </svg>
             </div>
-            <input type="text" v-model.trim="emailInput" @blur="isBlur" class="transparent inline-block vertical-align inputword" placeholder="请填写邮箱地址">
+            <eInput v-model.trim="emailInput" class="transparent inline-block vertical-align inputword"></eInput>
             <div class="inline-block">
                 <sendcode :start='start' @countDown='start=false' @click.native='sendCode'></sendcode>
             </div>
         </div>
         <div class="height">
-            <div v-if="$v.emailInput.email && $v.emailInput.required && !this.email_exist && this.blur" class="check">您输入的账号不存在，请重新输入
+            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check">您输入的账号不存在，请重新输入
             </div>
-            <div v-if="!$v.emailInput.email && this.blur" class="check">邮箱格式有误</div>
+            <div v-if="!$v.emailInput.email" class="check">邮箱格式有误</div>
         </div>
         <div class="row">
             <div class="iconbox inline-block">
@@ -29,47 +29,50 @@
 </template>
 <script>
 import sendcode from './sendcode.vue'
+import Input from './Input.vue'
 import {
     email,
-    required
+    required,
+    isUnique
 } from 'vuelidate/lib/validators'
 export default {
     data() {
             return {
                 emailInput: '',
                 captchaInput: '',
-                blur: false,
-                email_exist: true,
-                start: false,
-                flag : false
+                start: false
             }
         },
         components: {
+            "eInput": Input,
             "sendcode": sendcode
         },
         validations: {
             emailInput: {
                 email,
-                required
+                required,
+                isUnique(value) {
+                    return new Promise((resolve, reject) => {
+                        resolve(typeof value === 'string' &&
+                            this.checkemail(value))
+                    })
+                }
             }
         },
         methods: {
-            isBlur() {
-                this.blur = true
-                if (this.$v.emailInput.email && this.$v.emailInput.required) {
-                    fetch("/api/email_exists/?email=" + this.emailInput, {}).then(res => {
-                        if (res.ok) {
-                            this.email_exist = false
-                        } else {
-                            this.email_exist = true
-                        }
-                    })
-                }
+            checkemail(value) {
+                fetch(`/api/email_exists/?email=${value}`).then(res => {
+                    if (res.ok) {
+                        return false
+                    } else {
+                        return true
+                    }
+                })
             },
             sendCode(value) {
                 value.stopPropagation()
                 value.preventDefault();
-                if (this.$v.emailInput.email && this.email_exist) {
+                if (this.$v.emailInput) {
                     fetch("/api/forgot_password/get_captcha/", {
                         method: 'POST',
                         headers: {
@@ -82,7 +85,6 @@ export default {
                     }).then(res => {
                         if (res.ok) {
                             this.start = true
-                            // this.flag = true               
                         }
                     })
                 }

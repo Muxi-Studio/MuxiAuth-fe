@@ -20,11 +20,11 @@
                     <captcha></captcha>
                 </div>
             </div>
-            <div class="footer">
+            <div class="footer full-width">
                 <div class="center margin">
-                    <div class="copyright text-align">
-                        华中师范大学木犀团队
-                    </div>
+                    <a href="http://muxistudio.com" class="copyright text-align">
+                    华中师范大学木犀团队
+                </a>
                     <div class="copyright text-align">
                         Hello from Wuhan，2014-2017 MuxiStudio
                     </div>

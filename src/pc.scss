@@ -4,11 +4,12 @@ body {
 
 .header-color {
     background-color: #ffffff;
+    position: absolute;
 }
 
 .header {
     width: 985px;
-    height: 73px;
+    overflow: hidden;
     background-color: #ffffff;
 }
 
@@ -16,8 +17,14 @@ body {
     width: 130px;
     height: 30px;
     margin-top: 23px;
-    margin-left: 7%;
+    margin-left: 74px;
     float: left;
+}
+
+.left-right {
+    width: 50%;
+    height: 100%;
+    position: relative;
 }
 
 .word {
@@ -26,7 +33,7 @@ body {
     float: right;
 }
 
-.word_change:hover {
+.word-chang:hover {
     color: #ff850c;
 }
 
@@ -41,15 +48,14 @@ body {
 
 .main-color {
     background-color: #f4f7ed;
-    height: 100%;
 }
 
 .main {
     font-size: 0;
     width: 985px;
 }
+
 .footer {
-    width: 100%;
     height: 56px;
     background-color: #afdce1;
     position: fixed;
@@ -64,4 +70,5 @@ body {
 .copyright {
     color: #687b84;
     font-size: 14px;
+    display: block;
 }
