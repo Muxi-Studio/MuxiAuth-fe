@@ -1,16 +1,5 @@
 <template>
     <div class="wrap">
-        <div class="full-width header-color">
-            <div class="header margin">
-                <svg class="logo">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
-                    </use>
-                </svg>
-                <a href="http://share.muxixyz.com/" class="share word word-change">木犀分享</a>
-                <a href="http://muxistudio.com" class="studio word word-change">木犀团队</a>
-                <a href="http://xueer.muxixyz.com" class="word word-change">学而</a>
-            </div>
-        </div>
         <div class="full-width main-color full-height">
             <div class="main margin full-height">
                 <div class="left-right inline-block vertical-align margin">
@@ -18,7 +7,7 @@
                     </div>
                 </div>
                 <div class="right left-right inline-block vertical-align">
-                    <div class="container vertical-align margin">
+                    <div class="container margin">
                         <div class="text-align router-margin">
                             <router-link to="/" class="btn">
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
@@ -30,6 +19,17 @@
                         <router-view></router-view>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="full-width header-color">
+            <div class="header margin">
+                <svg class="logo">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
+                    </use>
+                </svg>
+                <a href="http://share.muxixyz.com/" class="share word word-change">木犀分享</a>
+                <a href="http://muxistudio.com" class="studio word word-change">木犀团队</a>
+                <a href="http://xueer.muxixyz.com" class="word word-change">学而</a>
             </div>
         </div>
         <div class="footer full-width">

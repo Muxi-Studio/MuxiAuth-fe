@@ -34,7 +34,7 @@
             <a href="/newpsd" class="forget inline-block tip-style">忘记密码？</a>
             <div v-if="this.failed" class="check inline-block fail tip-style">邮箱或密码不正确</div>
         </div>
-        <button v-on:click="submit" class="change box-height full-width login-margin" :style="changedButton">登录</button>
+        <button v-on:click="submit" class="change box-height full-width login-margin" :style="{'background-color': this.submitFlag ? 'grey' : '#fd860e'}">登录</button>
     </div>
 </template>
 <script>
@@ -81,13 +81,6 @@ export default {
                 required
             },
             validationGroup: ['emailInput', 'passwordInput']
-        },
-        computed: {
-            changedButton: function() {
-                return {
-                    'background-color': this.submitFlag ? 'grey' : '#fd860e'
-                }
-            }
         },
         methods: {
             checkemail(value) {

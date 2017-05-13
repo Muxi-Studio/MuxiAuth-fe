@@ -1,16 +1,5 @@
 <template>
     <div class="wrap">
-        <div class="full-width header-color">
-            <div class="header margin">
-                <svg class="logo">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
-                    </use>
-                </svg>
-                <a href="http://share.muxixyz.com/" class="share word word_change">木犀分享</a>
-                <a href="http://muxistudio.com" class="studio word word_change">木犀团队</a>
-                <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
-            </div>
-        </div>
         <div class="full-width main-color">
             <div class="main margin">
                 <div class="find text-align">
@@ -18,6 +7,17 @@
                 </div>
                 <div class="container margin">
                     <captcha></captcha>
+                </div>
+            </div>
+            <div class="full-width header-color">
+                <div class="header margin">
+                    <svg class="logo">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
+                        </use>
+                    </svg>
+                    <a href="http://share.muxixyz.com/" class="share word word_change">木犀分享</a>
+                    <a href="http://muxistudio.com" class="studio word word_change">木犀团队</a>
+                    <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
                 </div>
             </div>
             <div class="footer full-width">
@@ -47,7 +47,6 @@ export default {
 </script>
 <style lang="sass">
 @import '../pc.scss';
-
 .find {
     font-size: 20px;
     color: #435b68;

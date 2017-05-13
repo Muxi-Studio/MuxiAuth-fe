@@ -5,6 +5,7 @@ body {
 .header-color {
     background-color: #ffffff;
     position: absolute;
+    top: 0;
 }
 
 .header {
@@ -27,13 +28,13 @@ body {
     position: relative;
 }
 
-.word {
+.word,.word-change{
     line-height: 73px;
     font-size: 15px;
     float: right;
 }
 
-.word-chang:hover {
+.word-change:hover {
     color: #ff850c;
 }
 
