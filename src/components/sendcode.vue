@@ -26,10 +26,10 @@
         methods: {
             countDown () {
             	var tip = 3;
-                this.time = tip + 's后重新发送';
+                this.time = tip + 's后重发';
                 let time = setInterval(()=>{
                     tip --
-                    this.time = tip + 's后重新发送'
+                    this.time = tip + 's后重发'
                     if(tip == 0){
                         this.$emit('countDown')
                         this.time = '重新发送'

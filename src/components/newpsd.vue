@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
-        <div class="full-width main-color">
-            <div class="main margin">
+        <div class="full-width main-color full-height">
+            <div class="main margin full-height">
                 <div class="find text-align">
                     找回密码
                 </div>
@@ -9,25 +9,25 @@
                     <captcha></captcha>
                 </div>
             </div>
-            <div class="full-width header-color">
-                <div class="header margin">
-                    <svg class="logo">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
-                        </use>
-                    </svg>
-                    <a href="http://share.muxixyz.com/" class="share word word_change">木犀分享</a>
-                    <a href="http://muxistudio.com" class="studio word word_change">木犀团队</a>
-                    <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
-                </div>
+        </div>
+        <div class="full-width header-color">
+            <div class="header margin">
+                <svg class="logo">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
+                    </use>
+                </svg>
+                <a href="http://share.muxixyz.com/" class="share word word-change">木犀分享</a>
+                <a href="http://muxistudio.com" class="studio word word-change">木犀团队</a>
+                <a href="http://xueer.muxixyz.com" class="word word-change">学而</a>
             </div>
-            <div class="footer full-width">
-                <div class="center margin">
-                    <a href="http://muxistudio.com" class="copyright text-align">
+        </div>
+        <div class="footer full-width">
+            <div class="center margin">
+                <a href="http://muxistudio.com" class="copyright text-align">
                     华中师范大学木犀团队
                 </a>
-                    <div class="copyright text-align">
-                        Hello from Wuhan，2014-2017 MuxiStudio
-                    </div>
+                <div class="copyright text-align">
+                    Hello from Wuhan，2014-2017 MuxiStudio
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@ export default {
     font-size: 20px;
     color: #435b68;
     margin-bottom: 100px;
-    padding: 20px;
+    padding-top: 83px;
 }
 
 .container {
@@ -80,11 +80,12 @@ export default {
 
 .btn {
     height: 25px;
-    width: 75px;
+    width: 80px;
     background-color: #4ac1c7;
     border-radius: 4px;
     vertical-align: middle;
-    margin-left: 55px;
+    margin-left: 50px;
+    color: #ffffff;
 }
 
 .inputword {

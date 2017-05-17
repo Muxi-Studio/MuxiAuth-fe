@@ -24,7 +24,7 @@
             </div>
             <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
         </div>
-        <button type="submit" class="btn next">下一步</button>
+        <button v-on:click="submit" class="btn next" :style="{'background-color': this.code ? '#fd860e':'grey' }">下一步</button>
     </div>
 </template>
 <script>
@@ -40,7 +40,9 @@ export default {
             return {
                 emailInput: '',
                 captchaInput: '',
-                start: false
+                start: false,
+                code: false,
+                correct: false
             }
         },
         components: {
@@ -70,8 +72,8 @@ export default {
                 })
             },
             sendCode(value) {
-                value.stopPropagation()
-                value.preventDefault();
+                // value.stopPropagation()
+                // value.preventDefault();
                 if (this.$v.emailInput) {
                     fetch("/api/forgot_password/get_captcha/", {
                         method: 'POST',
@@ -85,10 +87,16 @@ export default {
                     }).then(res => {
                         if (res.ok) {
                             this.start = true
+                            this.code = true
                         }
                     })
                 }
             }
+            // submit() {
+            //     if(this.code && this.captchaInput){
+
+            //     }
+            // }
         }
 }
 </script>
