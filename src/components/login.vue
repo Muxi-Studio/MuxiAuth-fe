@@ -31,7 +31,7 @@
             <svg viewBox="0 0 200 200" class="secret inline-block">>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secret"></use>
             </svg>
-            <a href="/newpsd" class="forget inline-block tip-style">忘记密码？</a>
+            <div v-on:click="link" class="forget inline-block tip-style">忘记密码？</div>
             <div v-if="this.failed" class="check inline-block fail tip-style">邮箱或密码不正确</div>
         </div>
         <button v-on:click="submit" class="change box-height full-width login-margin" :style="{'background-color': this.submitFlag ? 'grey' : '#fd860e'}">登录</button>
@@ -95,6 +95,12 @@ export default {
             isFocus() {
                 this.submitFlag = false
                 this.focus = true
+            },
+            link(){
+                var location = window.location
+                console.log(window.location)
+                // window.location.pathname.push('newpsd')
+                window.location = location + '/newpsd'
             },
             submit(e) {
                 if (this.submitFlag) return

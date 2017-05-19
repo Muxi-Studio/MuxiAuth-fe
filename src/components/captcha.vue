@@ -24,7 +24,7 @@
             </div>
             <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
         </div>
-        <button v-on:click="submit" class="btn next" :style="{'background-color': this.code ? '#fd860e':'grey' }">下一步</button>
+        <button v-on:click="next" class="btn next" :style="{'background-color': this.code && this.captchaInput ? '#fd860e':'grey' }">下一步</button>
     </div>
 </template>
 <script>
@@ -91,12 +91,26 @@ export default {
                         }
                     })
                 }
+            },
+            next() {
+                if (this.code && this.captchaInput) {
+                    fetch("/api/forgot_password/reset/", {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: this.emailInput,
+                            captcha: this.captchaInput
+                        })
+                    }).then(res => {
+                        if (res.ok) {
+                            // window.
+                        }
+                    })
+                }
             }
-            // submit() {
-            //     if(this.code && this.captchaInput){
-
-            //     }
-            // }
         }
 }
 </script>
@@ -110,7 +124,8 @@ export default {
     height: 25px;
     transform: translateX(50%);
 }
-.next{
+
+.next {
     margin-top: 20px;
     float: right;
 }

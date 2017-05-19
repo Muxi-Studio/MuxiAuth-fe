@@ -4,7 +4,7 @@ body {
 
 .no-footer {
     min-height: 100%;
-    margin-bottom: -62px;
+    margin-bottom: -68px;
 }
 
 .header {
@@ -45,8 +45,8 @@ body {
 
 .footer-copy {
     background-color: #2b2b29;
-    height: 60px;
-    padding: 3px 0;
+    // height: 60px;
+    padding: 5px 0;
 }
 
 .copyright {
@@ -65,6 +65,6 @@ body {
     color: #989f9d;
 }
 
-.word_change:hover {
+.word-change:hover {
     color: #fe850b;
 }

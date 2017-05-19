@@ -8,7 +8,7 @@
 		},
 		{
 			"name" : "auth_phone",
-			"endpoint": "/phone",
+			"endpoint": "/phone/",
 			"template": "auth_phone",
 			"async": false
 		},
@@ -20,7 +20,7 @@
 		},
 		{
 			"name" : "newpsd_phone",
-			"endpoint" : "/newpsd_phone",
+			"endpoint" : "/phone/newpsd",
 			"template" : "newpsd_phone",
 			"async" : false
 		},

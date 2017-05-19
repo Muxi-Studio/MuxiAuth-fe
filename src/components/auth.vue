@@ -95,10 +95,6 @@ export default {
     width: 202px;
 }
 
-.row {
-    height: 50px;
-}
-
 .box-height {
     height: 30px;
 }
