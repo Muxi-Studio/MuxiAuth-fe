@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="row">
-            <div class="iconbox inline-block">
+        <div class="row-line full-width">
+            <div class="iconbox inline-block full-height vertical-align">
                 <svg viewBox="0 0 200 200" class="vertical-align icon-size">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                 </svg>
@@ -16,15 +16,15 @@
             </div>
             <div v-if="!$v.emailInput.email" class="check">邮箱格式有误</div>
         </div>
-        <div class="row">
-            <div class="iconbox inline-block">
+        <div class="row-line full-width">
+            <div class="iconbox inline-block full-height vertical-align">
                 <svg viewBox="0 0 200 200" class="vertical-align icon-size">
                     <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#captcha"></use>
                 </svg>
             </div>
             <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
         </div>
-        <button v-on:click="next" class="btn next" :style="{'background-color': this.code && this.captchaInput ? '#fd860e':'grey' }">下一步</button>
+        <button v-on:click="next" class="btn next vertical-align" :style="{'background-color': this.code && this.captchaInput ? '#fd860e':'grey' }">下一步</button>
     </div>
 </template>
 <script>
@@ -106,7 +106,7 @@ export default {
                         })
                     }).then(res => {
                         if (res.ok) {
-                            // window.
+                            this.$router.push(reset)
                         }
                     })
                 }

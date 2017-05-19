@@ -1,50 +1,70 @@
 <template>
-	<div class="wrap">
-        <div class="full-width header-color">
-            <div class="header margin">
-                <svg class="logo">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
-                    </use>
+    <div>
+        <div class="row-line full-width">
+            <div class="iconbox inline-block full-height vertical-align">
+                <svg viewBox="0 0 200 200" class="icon">
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                 </svg>
-                <a href="http://share.muxixyz.com/" class="share word word_change">木犀分享</a>
-                <a href="http://muxistudio.com" class="studio word word_change">木犀团队</a>
-                <a href="http://xueer.muxixyz.com" class="word word_change">学而</a>
             </div>
+            <input v-model.trim="passwordInput" type="password" placeholder="请输入新密码">
         </div>
-        <div class="full-width main-color">
-            <div class="main margin">
-                <div class="find text-align">
-                    找回密码
-                </div>
-                <div class="container margin">
-                   <reset_psd></reset_psd>
-                </div>
+        <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
+        <div class="row-line full-width">
+            <div class="iconbox inline-block full-height vertical-align">
+                <svg viewBox="0 0 200 200" class="icon">>
+                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
+                </svg>
             </div>
-            <div class="footer">
-                <div class="center margin">
-                    <div class="copyright text-align">
-                        华中师范大学木犀团队
-                    </div>
-                    <div class="copyright text-align">
-                        Hello from Wuhan，2014-2017 MuxiStudio
-                    </div>
-                </div>
-            </div>
+            <input v-model.trim="psdsecond" type="password" placeholder="请再次输入新密码">
         </div>
+        <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
+        <button v-on:click="submit" class="btn next vertical-align">确定</button>
     </div>
 </template>
 <script>
-import reset_psd from './reset_psd.vue'
+import {
+    minLength,
+    sameAs,
+    required
+} from 'vuelidate/lib/validators'
 export default {
     data() {
-            return {}
-
+            return {
+                passwordInput: '',
+                psdsecond: '',
+                success: false
+            }
         },
-        components: {
-            "reset_psd": reset_psd
+        validations: {
+            passwordInput: {
+                minLength: minLength(6),
+                required
+            },
+            psdsecond: {
+                sameAs: sameAs('passwordInput'),
+                required
+            },
+            validationGroup: ['passwordInput', 'psdsecond']
+        },
+        methods: {
+            submit() {
+                if (this.$v.validationGroup) {
+                    fetch("/api/forgot_password/reset/", {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            new_password: this.passwordInput
+                        })
+                    }).then(res => {
+                        if (res.ok) {
+                            this.success = true
+                        }
+                    })
+                }
+            }
         }
 }
 </script>
-<style lang="sass">
-@import '../pc.scss';
-</style>
