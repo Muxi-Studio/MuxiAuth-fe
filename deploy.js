@@ -8,7 +8,7 @@ qiniu.conf.SECRET_KEY = process.env.Secret_Key
 //要上传的空间
 var bucket = 'ccnustatic';
 //上传到七牛后保存的文件名
-var key = '/muxiauthfe/' + Date.now() + '.tar';
+var key = 'muxiauthfe/' + Date.now() + '.tar';
 //构建上传策略函数
 function uptoken(bucket, key) {
   var putPolicy = new qiniu.rs.PutPolicy(bucket+":"+key);
