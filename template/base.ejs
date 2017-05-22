@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../components/pictures/favicon.ico">
+    <meta name="keywords" content="木犀通行证,木犀团队,华中师范大学,学生互联网团队,学而">
+    <meta name="description" content="木犀通行证是木犀团队互联网产品的统一用户认证系统。">
+    <meta name="Copyright" content="2014-2017 Muxistudio">
+    {% block header %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  {% block content %}{% endblock %}    
+	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <% } %>
+  {% block script %}{% endblock %}
+</body>
+</html>

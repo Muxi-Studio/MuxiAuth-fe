@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.build.config.js"
+    "build": "rm -rf dist/* && webpack --config webpack.build.config.js"
   },
   "repository": {
     "type": "git",
@@ -39,12 +39,14 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.10.1",
     "html-loader": "^0.4.4",
+    "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.28.0",
     "jquery": "^3.1.1",
     "url-loader": "^0.5.8",
     "vue": "^2.0.5",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.1.10",
+    "webpack-bundle-analyzer": "^2.8.2",
     "whatwg-fetch": "^1.0.0"
   }
 }

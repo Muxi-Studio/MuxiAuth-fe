@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block title %}木犀通行证-登录{% endblock %}
 {% block script %}
-
-	<script src="/static/auth.js"></script>
-
+<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+	<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% } %>
 {% endblock %}
 {% block content %}
 	<svg style="display:none">

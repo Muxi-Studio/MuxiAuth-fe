@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block title %}木犀通行证-登录{% endblock %}
+{% block header %}
+ <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+{% endblock %}
 {% block script %}
-
-	<script src="/static/auth.js"></script>
-
+<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+	<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% } %>
 {% endblock %}
 {% block content %}
-	<svg style="display:none">
-    {% include "svg.html" %}
+<svg style="display:none">
+        {% include "svg.html" %}
         <symbol id="logo" viewBox="0 0 308.1 77.9" style="enable-background:new 0 0 308.1 77.9;" xml:space="preserve">
             <style type="text/css">
             .st0 {
@@ -33,7 +36,7 @@
             }
             
             .st5 {
-                fill: #294654;
+                fill: #A3382F;
             }
             </style>
             <g id="图层_1" class="st0">
@@ -155,6 +158,5 @@
             </g>
         </symbol>
     </svg>
-    <div id="auth"></div>
-</div>
+    <div id="auth_phone"></div>
 {% endblock %}

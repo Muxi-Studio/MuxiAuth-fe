@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}木犀通行证-登录{% endblock %}
+{% block header %}
+ <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+{% endblock %}
+{% block script %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
-    <link rel="shortcut icon" href="../components/pictures/favicon.ico">
-    <meta name="keywords" content="木犀通行证, 华师, 华中师范大学, 木犀团队, 登录注册">
-    <meta name="description" content="木犀, 木犀通行证, 登录注册">
-    <meta name="Copyright" content="华中师范大学木犀团队Hello from Wuhan,2014-2017 Muxistudio">
-    <title>木犀通行证</title>
-</head>
+	<script src="/static/auth_phone.js"></script>
 
-<body>
-    <svg style="display:none">
+{% endblock %}
+{% block content %}
+<svg style="display:none">
         {% include "svg.html" %}
         <symbol id="logo" viewBox="0 0 308.1 77.9" style="enable-background:new 0 0 308.1 77.9;" xml:space="preserve">
             <style type="text/css">
@@ -162,7 +159,4 @@
         </symbol>
     </svg>
     <div id="auth_phone"></div>
-    <script src="http://localhost:3000/dist/auth_phone.js"></script>
-</body>
-
-</html>
+{% endblock %}

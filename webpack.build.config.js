@@ -1,22 +1,26 @@
 const webpack = require('webpack');
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+ 
 module.exports = {
     entry: {
-        'auth.js': ['./src/auth.js'],
-        'auth_phone.js': ['./src/auth_phone.js'],
-        'newpsd.js': ['./src/newpsd.js'],
-        'newpsd_phone.js': ['./src/newpsd_phone.js']
+        'auth': ['./src/auth.js'],
+        'auth_phone': ['./src/auth_phone.js'],
+        'newpsd': ['./src/newpsd.js'],
+        'newpsd_phone': ['./src/newpsd_phone.js'],
+        vendor: ["vue", "whatwg-fetch", "vuelidate", "vue-router"]
     },
     output: {
-        path: path.join(__dirname, "static"),
-        publicPath: '/static/',
-        filename: '[name]'
+        path: path.join(__dirname, "dist"),
+        publicPath: '',
+        filename: '/static/[name].js'
     },
     devtool: '#eval-source-map',
     module: {
+        noParse: /vue.runtime.min/,
         loaders: [{
             test: /\.vue$/,
             loader: 'vue-loader'
@@ -35,28 +39,52 @@ module.exports = {
             loader: "html-loader"
         }, {
             test: /\.(jpe?g|png|gif|svg)$/i,
-            loader: 'url-loader?limit=20&name=images/[hash:8].[name].[ext]'
+            loader: 'url-loader?limit=20&name=/static/[hash:8].[name].[ext]'
         }]
     },
     resolve: {
         extensions: ['', '.js', '.scss', '.vue'],
+        alias:{
+            'vue': path.resolve(__dirname, 'node_modules/vue/dist/vue.runtime.min'),
+            'vue-router': path.resolve(__dirname, 'node_modules/vue-router/dist/vue-router.min')
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
+            filename: 'template/base.html',
+            inject: false,
+            template: './template/base.ejs',
+            chunks: ['vendor']
+        }),
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
+            filename: 'template/svg.html',
+            inject: false,
+            template: './template/svg.ejs'
+        }),
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
             filename: 'template/auth_phone.html',
-            template: './template/auth_phone.html'
+            inject: false,
+            template: './template/auth_phone.ejs',
+            chunks: ['auth_phone']
         }),
         new HtmlWebpackPlugin({ 
+            alwaysWriteToDisk: true,
             filename: 'template/auth.html', 
-            template: './template/auth.html' 
+            inject: false,
+            template: './template/auth.ejs',
+            chunks: ['auth']
         }),
-        new HtmlWebpackPlugin({ 
-            filename: 'template/newpsd.html', 
-            template: './template/newpsd.html' 
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: true,
+            compress: {
+                warnings: false, 
+            },
         }),
-        new HtmlWebpackPlugin({ 
-            filename: 'template/newpsd_phone.html', 
-            template: './template/newpsd_phone.html' 
-        })
+        new HtmlWebpackHarddiskPlugin(),
+        new BundleAnalyzerPlugin(),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.js"),
     ]
 };
