@@ -1,6 +1,8 @@
 var qiniu = require("qiniu");
 //需要填写你的 Access Key 和 Secret Key
-qiniu.conf.UP_HOST = "http://up.qiniug.com"
+console.log(qiniu.conf)
+qiniu.conf.UP_HOST = "http://up-na0.qiniu.com"
+qiniu.conf.UP_HTTPS_HOST = "https://up-na0.qbox.me"
 qiniu.conf.ACCESS_KEY = process.env.Access_Key
 qiniu.conf.SECRET_KEY = process.env.Secret_Key
 //要上传的空间
