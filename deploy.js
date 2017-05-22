@@ -31,4 +31,3 @@ function uploadFile(uptoken, key, localFile) {
 }
 //调用uploadFile上传
 uploadFile(token, key, filePath);
-//push
