@@ -3,7 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
  
 module.exports = {
     entry: {
@@ -16,7 +16,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, "dist"),
         publicPath: '',
-        filename: '/static/[name].js'
+        filename: '/static/[name].[hash].js'
     },
     devtool: '#eval-source-map',
     module: {
@@ -52,27 +52,27 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: 'template/base.html',
+            filename: 'template/main/base.html',
             inject: false,
             template: './template/base.ejs',
             chunks: ['vendor']
         }),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: 'template/svg.html',
+            filename: 'template/main/svg.html',
             inject: false,
             template: './template/svg.ejs'
         }),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: 'template/auth_phone.html',
+            filename: 'template/main/auth_phone.html',
             inject: false,
             template: './template/auth_phone.ejs',
             chunks: ['auth_phone']
         }),
         new HtmlWebpackPlugin({ 
             alwaysWriteToDisk: true,
-            filename: 'template/auth.html', 
+            filename: 'template/main/auth.html', 
             inject: false,
             template: './template/auth.ejs',
             chunks: ['auth']
@@ -84,7 +84,6 @@ module.exports = {
             },
         }),
         new HtmlWebpackHarddiskPlugin(),
-        new BundleAnalyzerPlugin(),
-        new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.js"),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.[hash].js"),
     ]
 };
