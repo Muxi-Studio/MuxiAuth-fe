@@ -45,7 +45,7 @@ export default {
 
         },
         components: {
-            "aptcha": captcha,
+            "captcha": captcha,
             "reset": reset
         }
 }
@@ -73,12 +73,6 @@ export default {
     width: 50px;
     line-height: 50px;
 }
-
-// .new-icon {
-//     width: 40px;
-//     height: 35px;
-//     vertical-align: middle;
-// }
 
 .btn {
     height: 30px;

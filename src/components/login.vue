@@ -96,11 +96,13 @@ export default {
                 this.submitFlag = false
                 this.focus = true
             },
-            link(){
-                var location = window.location
-                console.log(window.location)
-                // window.location.pathname.push('newpsd')
-                window.location = location + '/newpsd'
+            link() {
+                var location = window.location.pathname
+                if (location == "/") {
+                    window.location.pathname += 'newpsd';
+                } else if(location == "/phone"){
+                    window.location.pathname += '/newpsd';
+                }
             },
             submit(e) {
                 if (this.submitFlag) return

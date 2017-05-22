@@ -156,18 +156,6 @@ export default {
                     })
                 }
             },
-            // userBlur() {
-            //     this.userblur = true
-            //     if (this.$v.username.maxLength && this.$v.username.required) {
-            //         fetch("/api/username_exists/?username=" + this.username, {}).then(res => {
-            //             if (res.ok) {
-            //                 this.username_exist = false
-            //             } else {
-            //                 this.username_exist = true
-            //             }
-            //         })
-            //     }
-            // },
             isFocus() {
                 this.submitFlag = false
                 this.focus = true
@@ -188,7 +176,6 @@ export default {
                             password: this.passwordInput
                         })
                     }).then(res => {
-                        console.log("success")
                         if (res.ok) {
                             window.location = "/"
                         }
