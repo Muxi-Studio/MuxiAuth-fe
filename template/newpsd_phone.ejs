@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% block title %}木犀通行证-找回密码{% endblock %}
+{% block header %}
+ <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+{% endblock %}
 {% block script %}
-
-	<script src="/static/newpsd.js"></script>
-
+<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% } %>
 {% endblock %}
 {% block content %}
-<svg style="display:none">
+    <svg style="display:none">
         <symbol id="logo" viewBox="0 0 308.1 77.9" style="enable-background:new 0 0 308.1 77.9;" xml:space="preserve">
             <style type="text/css">
             .st0 {
@@ -155,6 +158,5 @@
         </symbol>
         {% include "svg.html" %}
     </svg>
-        {% include "header.html" %}
-    <div id="newpsd"> </div>
+    <div id="newpsd"></div>
 {% endblock %}

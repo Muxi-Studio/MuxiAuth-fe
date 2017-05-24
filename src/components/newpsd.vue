@@ -12,17 +12,6 @@
                 </div>
             </div>
             </div>
-            <div class="full-width header-color">
-                <div class="header margin">
-                    <svg class="logo">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
-                        </use>
-                    </svg>
-                    <a href="http://share.muxixyz.com/" class="share word word-change">木犀分享</a>
-                    <a href="http://muxistudio.com" class="studio word word-change">木犀团队</a>
-                    <a href="http://xueer.muxixyz.com" class="word word-change">学而</a>
-                </div>
-            </div>
             <div class="footer full-width">
                 <div class="center margin">
                     <a href="http://muxistudio.com" class="copyright text-align">
@@ -42,7 +31,6 @@ import reset from './reset.vue'
 export default {
     data() {
             return {}
-
         },
         components: {
             "captcha": captcha,
@@ -62,6 +50,10 @@ export default {
 .container {
     width: 350px;
     height: 200px;
+}
+
+.input-tip {
+    height: 87px;
 }
 
 .row-line {

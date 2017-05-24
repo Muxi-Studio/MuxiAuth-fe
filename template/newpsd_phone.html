@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block title %}木犀通行证-找回密码{% endblock %}
+{% block header %}
+ <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
+{% endblock %}
+{% block script %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1" />
-    <link rel="shortcut icon" href="../components/pictures/favicon.ico">
-    <title>木犀通行证</title>
-</head>
+    <script src="/static/newpsd_phone.js"></script>
 
-<body>
+{% endblock %}
+{% block content %}
     <svg style="display:none">
         <symbol id="logo" viewBox="0 0 308.1 77.9" style="enable-background:new 0 0 308.1 77.9;" xml:space="preserve">
             <style type="text/css">
@@ -35,7 +35,7 @@
             }
             
             .st5 {
-                fill: #A3382F;
+                fill: #294654;
             }
             </style>
             <g id="图层_1" class="st0">
@@ -158,8 +158,5 @@
         </symbol>
         {% include "svg.html" %}
     </svg>
-    <div id="newpsd_phone"> </div>
-    <script src="http://localhost:3000/dist/newpsd_phone.js"></script>
-</body>
-
-</html>
+    <div id="newpsd"></div>
+{% endblock %}

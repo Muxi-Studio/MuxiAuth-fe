@@ -59,25 +59,38 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
+            filename: 'template/header.html',
+            inject: false,
+            template: './template/header.ejs'
+        }),
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
             filename: 'template/auth_phone.html',
             inject: false,
             template: './template/auth_phone.ejs',
             chunks: ['auth_phone']
         }),
-        new HtmlWebpackPlugin({ 
+        new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: 'template/auth.html', 
+            filename: 'template/auth.html',
             inject: false,
             template: './template/auth.ejs',
             chunks: ['auth']
         }),
-        new HtmlWebpackPlugin({ 
-            filename: 'template/newpsd.html', 
-            template: './template/newpsd.html' 
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
+            filename: 'template/newpsd.html',
+            inject: false,
+            template: './template/newpsd.ejs',
+            chunks: ['newpsd']
         }),
-        new HtmlWebpackPlugin({ 
-            filename: 'template/newpsd_phone.html', 
-            template: './template/newpsd_phone.html' 
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
+            filename: 'template/newpsd_phone.html',
+            inject: false,
+            template: './template/newpsd_phone.ejs',
+            chunks: ['newpsd_phone']
+
         }),
         new HtmlWebpackHarddiskPlugin(),
         new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js"),

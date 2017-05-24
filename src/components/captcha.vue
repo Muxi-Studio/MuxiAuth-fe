@@ -1,34 +1,40 @@
 <template>
     <div>
-        <div class="row-line full-width">
-            <div class="iconbox inline-block full-height vertical-align">
-                <svg viewBox="0 0 200 200" class="vertical-align icon-size">
-                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
-                </svg>
+        <div class="input-tip">
+            <div class="row-line full-width">
+                <div class="iconbox inline-block full-height vertical-align">
+                    <svg viewBox="0 0 200 200" class="vertical-align icon-size">
+                        <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
+                    </svg>
+                </div>
+                <eInput v-model.trim="emailInput" class="transparent inline-block vertical-align inputword"></eInput>
+                <div class="inline-block">
+                    <sendcode :start='start' @countDown='start=false' @click.native='sendCode'></sendcode>
+                </div>
             </div>
-            <eInput v-model.trim="emailInput" class="transparent inline-block vertical-align inputword"></eInput>
-            <div class="inline-block">
-                <sendcode :start='start' @countDown='start=false' @click.native='sendCode'></sendcode>
-            </div>
-        </div>
-        <div class="height">
             <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check">您输入的账号不存在，请重新输入
             </div>
             <div v-if="!$v.emailInput.email" class="check">邮箱格式有误</div>
         </div>
-        <div class="row-line full-width">
-            <div class="iconbox inline-block full-height vertical-align">
-                <svg viewBox="0 0 200 200" class="vertical-align icon-size">
-                    <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#captcha"></use>
-                </svg>
+        <div class="input-tip">
+            <div class="row-line full-width">
+                <div class="iconbox inline-block full-height vertical-align">
+                    <svg viewBox="0 0 200 200" class="vertical-align icon-size">
+                        <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#captcha"></use>
+                    </svg>
+                </div>
+                <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
             </div>
-            <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
+            <div v-if="this.wrong" class="check">验证码错误</div>
         </div>
         <button v-on:click="next" class="btn next vertical-align" :style="{'background-color': this.code && this.captchaInput ? '#fd860e':'grey' }">下一步</button>
     </div>
 </template>
 <script>
 import sendcode from './sendcode.vue'
+import {
+    bus
+} from '../bus.js'
 import Input from './Input.vue'
 import {
     email,
@@ -42,7 +48,7 @@ export default {
                 captchaInput: '',
                 start: false,
                 code: false,
-                correct: false
+                wrong: false
             }
         },
         components: {
@@ -93,32 +99,32 @@ export default {
                 }
             },
             next() {
-                if (this.code && this.captchaInput) {
-                    fetch("/api/forgot_password/reset/", {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            email: this.emailInput,
-                            captcha: this.captchaInput
+                // this.$router.push('reset')
+                    if (this.code && this.captchaInput) {
+                        fetch("/api/forgot_password/check_captcha/", {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                email: this.emailInput,
+                                captcha: this.captchaInput
+                            })
+                        }).then(res => {
+                            if (res.ok) {
+                                this.$router.push('reset')
+                            } else {
+                                this.wrong = true
+                            }
                         })
-                    }).then(res => {
-                        if (res.ok) {
-                            this.$router.push(reset)
-                        }
-                    })
-                }
+                    }
+                bus.$emit("message", msg)
             }
         }
 }
 </script>
 <style>
-.height {
-    height: 30px;
-}
-
 .icon-size {
     width: 25px;
     height: 25px;
@@ -126,7 +132,6 @@ export default {
 }
 
 .next {
-    margin-top: 20px;
     float: right;
 }
 </style>

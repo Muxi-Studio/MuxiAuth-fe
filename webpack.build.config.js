@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
- 
+
 module.exports = {
     entry: {
         'auth': ['./src/auth.js'],
@@ -44,7 +44,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['', '.js', '.scss', '.vue'],
-        alias:{
+        alias: {
             'vue': path.resolve(__dirname, 'node_modules/vue/dist/vue.runtime.min'),
             'vue-router': path.resolve(__dirname, 'node_modules/vue-router/dist/vue-router.min')
         }
@@ -65,14 +65,20 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
+            filename: 'template/main/header.html',
+            inject: false,
+            template: './template/header.ejs'
+        }),
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
             filename: 'template/main/auth_phone.html',
             inject: false,
             template: './template/auth_phone.ejs',
             chunks: ['auth_phone']
         }),
-        new HtmlWebpackPlugin({ 
+        new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: 'template/main/auth.html', 
+            filename: 'template/main/auth.html',
             inject: false,
             template: './template/auth.ejs',
             chunks: ['auth']
@@ -80,7 +86,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             mangle: true,
             compress: {
-                warnings: false, 
+                warnings: false,
             },
         }),
         new HtmlWebpackHarddiskPlugin(),
