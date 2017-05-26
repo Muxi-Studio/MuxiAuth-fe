@@ -1,6 +1,5 @@
 <template>
     <div>
-    <div v-if="this.success">修改成功！请立即登录</div>
         <div class="input-tip">
             <div class="row-line full-width">
                 <div class="iconbox inline-block full-height vertical-align">
@@ -24,10 +23,10 @@
             <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
         </div>
         <button v-on:click="submit" class="btn next vertical-align">确定</button>
+        <div v-if="this.success" class="success text-align">修改成功，请立即登录！</div>
     </div>
 </template>
 <script>
-import { bus } from '../bus.js'
 import {
     minLength,
     sameAs,
@@ -54,15 +53,12 @@ export default {
             },
             validationGroup: ['passwordInput', 'psdsecond']
         },
-        mounted(){
-            var that=this;
-            bus.$on("message",function(msg){
-                
-            })
+        created() {
+            this.emailInput = this.$parent.message[0]
+            this.captchaInput = this.$parent.message[1]
         },
         methods: {
             submit() {
-                console.log('this.emailInput',this.emailInput,'this.captchaInput',this.captchaInput)
                 if (this.$v.validationGroup) {
                     fetch("/api/forgot_password/reset/", {
                         method: 'POST',
@@ -86,4 +82,9 @@ export default {
 }
 </script>
 <style lang="sass">
+.success {
+    font-size: 20px;
+    color: #ac372b;
+    margin-top: 30px;
+}
 </style>

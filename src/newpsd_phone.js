@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        { path: '/newpsd_phone', component: captcha },
+        { path: '/phone/newpsd', component: captcha },
         { path: '/reset', component: reset }
     ]
 })

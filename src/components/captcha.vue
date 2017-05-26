@@ -32,9 +32,6 @@
 </template>
 <script>
 import sendcode from './sendcode.vue'
-import {
-    bus
-} from '../bus.js'
 import Input from './Input.vue'
 import {
     email,
@@ -67,6 +64,9 @@ export default {
                 }
             }
         },
+        created() {
+            this.$parent.message = []
+        },
         methods: {
             checkemail(value) {
                 fetch(`/api/email_exists/?email=${value}`).then(res => {
@@ -78,8 +78,8 @@ export default {
                 })
             },
             sendCode(value) {
-                // value.stopPropagation()
-                // value.preventDefault();
+                value.stopPropagation();
+                value.preventDefault();
                 if (this.$v.emailInput) {
                     fetch("/api/forgot_password/get_captcha/", {
                         method: 'POST',
@@ -99,38 +99,35 @@ export default {
                 }
             },
             next() {
-                // this.$router.push('reset')
-                    if (this.code && this.captchaInput) {
-                        fetch("/api/forgot_password/check_captcha/", {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                email: this.emailInput,
-                                captcha: this.captchaInput
-                            })
-                        }).then(res => {
-                            if (res.ok) {
-                                this.$router.push('reset')
-                            } else {
-                                this.wrong = true
-                            }
+
+
+                if (this.code && this.captchaInput) {
+                    fetch("/api/forgot_password/check_captcha/", {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: this.emailInput,
+                            captcha: this.captchaInput
                         })
-                    }
-                bus.$emit("message", msg)
+                    }).then(res => {
+                        if (res.ok) {
+                            this.$parent.message.push(this.emailInput)
+                            this.$parent.message.push(this.captchaInput)
+                            this.$router.push('reset')
+                        } else {
+                            this.wrong = true
+                        }
+                    })
+                }
+
             }
         }
 }
 </script>
 <style>
-.icon-size {
-    width: 25px;
-    height: 25px;
-    transform: translateX(50%);
-}
-
 .next {
     float: right;
 }

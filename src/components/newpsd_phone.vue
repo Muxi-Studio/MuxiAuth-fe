@@ -1,43 +1,64 @@
 <template>
     <div class="wrap">
-            <div class="header text-align full-width">
-                <svg class="logo" viewBox="0 0 200 200">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
-                </svg>
+        <div class="no-footer">
+            <div class="header text-align full-width title-find">
+                找回密码
             </div>
-            <div class="main">
-                <captcha></captcha>
+            <div class="container margin">
+                <router-link to="/newpsd">
+                </router-link>
+                <router-view></router-view>
             </div>
         </div>
+        <div class="footer-copy full-width">
+            <div class="footer full-width">
+                <a href="http://xueer.muxixyz.com" class="word word-change text-align">学而</a>
+                <a href="http://muxistudio.com" class="word word-change text-align">木犀团队</a>
+                <a href="http://share.muxixyz.com/" class="word word-change text-align">木犀分享</a>
+            </div>
+            <div class="full-width">
+                <div class="copyright text-align">
+                    华中师范大学木犀团队
+                </div>
+                <div class="copyright text-align">
+                    Hello from Wuhan，2014-2017 MuxiStudio
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
 import captcha from './captcha.vue'
+import reset from './reset.vue'
+
 export default {
     data() {
             return {}
-
         },
         components: {
-            "captcha": captcha
+            "captcha": captcha,
+            "reset": reset
         }
 }
 </script>
 <style lang="sass">
 @import '../mobile.scss';
-.container {
-    width: 350px;
-    height: 200px;
+.title-find {
+    font-size: 18px;
+    line-height: 37px;
 }
 
-.row {
-    width: 100%;
-    height: 55px;
+.container {
+    width: 320px;
+}
+
+.row-line {
+    height: 70px;
     border-bottom: 2px solid #e1e3df;
 }
 
 .iconbox {
     width: 50px;
-    height: 100%;
     vertical-align: middle;
     line-height: 55px;
 }
@@ -48,13 +69,10 @@ export default {
     vertical-align: middle;
 }
 
-.btn {
+.icon-size {
+    width: 25px;
     height: 25px;
-    width: 75px;
-    background-color: #4ac1c7;
-    border-radius: 4px;
-    vertical-align: middle;
-    margin-left: 55px;
+    transform: translateX(50%);
 }
 
 .inputword {
@@ -66,5 +84,14 @@ export default {
     color: #ac372b;
     margin-left: 50px;
     font-size: 15px;
+}
+
+.btn {
+    height: 25px;
+    width: 75px;
+    background-color: #4ac1c7;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 55px;
 }
 </style>

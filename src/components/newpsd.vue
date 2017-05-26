@@ -30,7 +30,9 @@ import reset from './reset.vue'
 
 export default {
     data() {
-            return {}
+            return {
+                message: []
+            }
         },
         components: {
             "captcha": captcha,
@@ -64,6 +66,12 @@ export default {
 .iconbox {
     width: 50px;
     line-height: 50px;
+}
+
+.icon-size {
+    width: 25px;
+    height: 25px;
+    transform: translateX(50%);
 }
 
 .btn {

@@ -9,10 +9,10 @@
                 <div class="right left-right inline-block vertical-align">
                     <div class="container margin">
                         <div class="text-align router-margin">
-                            <router-link to="/" class="btn">
+                            <router-link to="/" class="btn transparent">
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
-                            <router-link to="/register" class="registerButton btn">
+                            <router-link to="/register" class="registerButton btn transparent">
                                 <a v-on:click="toregister" v-bind:class="{ highlight: !login}">注册</a>
                             </router-link>
                         </div>
@@ -78,7 +78,6 @@ export default {
     font-size: 14px;
     border: none;
     color: #878583;
-    background-color: transparent;
 }
 
 .circle {

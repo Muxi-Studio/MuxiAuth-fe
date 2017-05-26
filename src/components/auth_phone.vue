@@ -6,7 +6,7 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
                 </svg>
             </div>
-            <div class="main">
+            <div class="full-height full-width">
                 <div class="top">
                     <div class="circle margin"></div>
                 </div>
@@ -95,11 +95,6 @@ export default {
     width: 180px;
     height: 100px;
     margin-top: -32px;
-}
-
-.main {
-    width: 100%;
-    height: 100%;
 }
 
 .top {
