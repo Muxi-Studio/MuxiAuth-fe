@@ -3,6 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+let FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -49,6 +50,7 @@ module.exports = {
             filename: 'template/base.html',
             inject: false,
             template: './template/base.ejs',
+            favicon: './src/pictures/favicon.png',
             chunks: ['vendor']
         }),
         new HtmlWebpackPlugin({
@@ -93,6 +95,7 @@ module.exports = {
 
         }),
         new HtmlWebpackHarddiskPlugin(),
+        new FaviconsWebpackPlugin('./src/pictures/favicon.png'),
         new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js"),
     ]
 };

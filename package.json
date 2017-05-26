@@ -41,6 +41,7 @@
     "html-loader": "^0.4.4",
     "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.28.0",
+    "favicons-webpack-plugin": "0.0.7",
     "jquery": "^3.1.1",
     "qiniu": "^6.1.13",
     "url-loader": "^0.5.8",

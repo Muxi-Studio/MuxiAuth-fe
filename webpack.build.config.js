@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+let FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -55,6 +56,7 @@ module.exports = {
             filename: 'template/main/base.html',
             inject: false,
             template: './template/base.ejs',
+            favicon: './src/pictures/favicon.png',
             chunks: ['vendor']
         }),
         new HtmlWebpackPlugin({
@@ -90,6 +92,7 @@ module.exports = {
             },
         }),
         new HtmlWebpackHarddiskPlugin(),
+        new FaviconsWebpackPlugin('./src/pictures/favicon.png'),
         new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.[hash].js"),
     ]
 };
