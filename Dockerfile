@@ -9,6 +9,8 @@ COPY . /usr/src/app
 RUN npm install
 RUN npm run build
 
+WORKDIR /usr/src/app/server
+
 # Bundle app source
 EXPOSE 3000
 CMD [ "npm", "start" ]
