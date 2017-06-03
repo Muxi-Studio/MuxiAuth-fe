@@ -99,8 +99,6 @@ export default {
                 }
             },
             next() {
-
-
                 if (this.code && this.captchaInput) {
                     fetch("/api/forgot_password/check_captcha/", {
                         method: 'POST',

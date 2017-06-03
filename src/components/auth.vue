@@ -104,7 +104,8 @@ export default {
 
 .right {
     box-sizing: border-box;
-    padding-top: 210px;
+    // padding-top: 210px;
+    padding-top: 25%;
 }
 
 .eye {

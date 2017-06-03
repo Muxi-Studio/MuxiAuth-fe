@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div v-if="this.success" class="success text-align">修改成功，请立即登录！</div>
         <div class="input-tip">
             <div class="row-line full-width">
                 <div class="iconbox inline-block full-height vertical-align">
@@ -23,7 +24,6 @@
             <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
         </div>
         <button v-on:click="submit" class="btn next vertical-align">确定</button>
-        <div v-if="this.success" class="success text-align">修改成功，请立即登录！</div>
     </div>
 </template>
 <script>
