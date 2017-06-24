@@ -8,13 +8,11 @@
                     </svg>
                 </div>
                 <eInput v-model.trim="emailInput" class="transparent inline-block vertical-align inputword"></eInput>
-                <div class="inline-block">
-                    <sendcode :start='start' @countDown='start=false' @click.native='sendCode'></sendcode>
-                </div>
+                <sendcode :start='start' @countDown='start=false' @click.native='sendCode' class="inline-block vertical-align code-box"></sendcode>
             </div>
-            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check">您输入的账号不存在，请重新输入
+            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="find-check">您输入的账号不存在，请重新输入
             </div>
-            <div v-if="!$v.emailInput.email" class="check">邮箱格式有误</div>
+            <div v-if="!$v.emailInput.email" class="find-check">邮箱格式有误</div>
         </div>
         <div class="input-tip">
             <div class="row-line full-width">
@@ -25,7 +23,7 @@
                 </div>
                 <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
             </div>
-            <div v-if="this.wrong" class="check">验证码错误</div>
+            <div v-if="this.wrong" class="find-check">验证码错误</div>
         </div>
         <button v-on:click="next" class="btn next vertical-align" :style="{'background-color': this.code && this.captchaInput ? '#fd860e':'grey' }">下一步</button>
     </div>
@@ -126,7 +124,4 @@ export default {
 }
 </script>
 <style>
-.next {
-    float: right;
-}
 </style>

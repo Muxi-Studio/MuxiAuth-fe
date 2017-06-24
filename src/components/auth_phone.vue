@@ -13,7 +13,8 @@
                 <div class="bottom full-width">
                     <div class="container margin">
                         <div class="text-align router-margin">
-                            <router-link to="/" class="btn">
+                        <router-link to="/phone" class="btn">
+                            <!-- <router-link to="/" class="btn"> -->
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
                             <router-link to="/register" class="registerButton btn">
@@ -121,10 +122,6 @@ export default {
     font-size: 18px;
     color: rgba(71, 70, 68, 0.99);
     width: 72%;
-}
-
-.psd-height {
-    height: 34px;
 }
 
 .box-height {

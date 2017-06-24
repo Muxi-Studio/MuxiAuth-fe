@@ -87,10 +87,14 @@ export default {
     font-size: 15px;
 }
 
-.check {
+.find-check {
     line-height: 30px;
     color: #ac372b;
     margin-left: 50px;
     font-size: 15px;
+}
+
+.next {
+    float: right;
 }
 </style>

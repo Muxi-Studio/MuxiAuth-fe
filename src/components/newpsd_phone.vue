@@ -1,14 +1,19 @@
 <template>
     <div class="wrap">
         <div class="no-footer">
-            <div class="header text-align full-width title-find">
-                找回密码
-            </div>
-            <div class="container margin">
-                <router-link to="/newpsd">
-                </router-link>
-                <router-view></router-view>
-            </div>
+            <a href="/phone" class="back inline-block">
+                < 返回</a>
+                    <div class="header  full-width inline-block">
+                        <!-- <a href="/" class="back inline-block"> -->
+                        <div class="title-find text-align">
+                            找回密码
+                        </div>
+                    </div>
+                    <div class="container margin">
+                        <router-link to="/newpsd">
+                        </router-link>
+                        <router-view></router-view>
+                    </div>
         </div>
         <div class="footer-copy full-width">
             <div class="footer full-width">
@@ -33,7 +38,9 @@ import reset from './reset.vue'
 
 export default {
     data() {
-            return {}
+            return {
+                message: []
+            }
         },
         components: {
             "captcha": captcha,
@@ -43,55 +50,71 @@ export default {
 </script>
 <style lang="sass">
 @import '../mobile.scss';
+.back {
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 37px;
+    position: absolute;
+}
+
 .title-find {
     font-size: 18px;
     line-height: 37px;
 }
 
 .container {
-    width: 320px;
+    width: 85%;
+    height: 200px;
+    padding-top: 30px;
 }
 
+.input-tip {
+    height: 82px;
+}
 .row-line {
-    height: 70px;
+    height: 50px;
     border-bottom: 2px solid #e1e3df;
 }
 
 .iconbox {
-    width: 50px;
-    vertical-align: middle;
-    line-height: 55px;
-}
-
-.new-icon {
-    width: 40px;
-    height: 35px;
-    vertical-align: middle;
+    width: 16%;
+    line-height: 50px;
 }
 
 .icon-size {
-    width: 25px;
+    width: 60%;
     height: 25px;
-    transform: translateX(50%);
+    transform: translateX(30%);
+    margin: 0 auto;
 }
 
 .inputword {
     font-size: 15px;
+    width: 48%;
 }
 
-.check {
+.find-check {
     line-height: 30px;
     color: #ac372b;
-    margin-left: 50px;
     font-size: 15px;
+    margin-left: 16%;
 }
 
 .btn {
-    height: 25px;
-    width: 75px;
     background-color: #4ac1c7;
-    border-radius: 4px;
-    vertical-align: middle;
-    margin-left: 55px;
+    border-radius: 2px;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+}
+
+.code-box {
+    width: 31%;
+    margin-right: 0;
+    height: 28px;
+}
+
+.next {
+    height: 35px;
 }
 </style>
