@@ -9,9 +9,9 @@
                 </div>
                 <userInput v-model.trim="username" @focus="isFocus" class="inputbox transparent inline-block vertical-align"></userInput>
             </div>
-            <div v-if="$v.username.required && $v.username.isUnique" class="check tip-style">用户名已注册
+            <div v-if="$v.username.required && $v.username.isUnique" class="check tip-color min-font">用户名已注册
             </div>
-            <div v-if="!$v.username.maxLength && $v.username.required" class="check tip-style">不超过八个字符
+            <div v-if="!$v.username.maxLength && $v.username.required" class="check tip-color min-font">不超过八个字符
             </div>
         </div>
         <div class="row">
@@ -23,9 +23,9 @@
                 </div>
                 <eInput v-model.trim="emailInput" @focus="isFocus" class="inputbox transparent inline-block vertical-align"></eInput>
             </div>
-            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-style">邮箱已注册
+            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-color min-font">邮箱已注册
             </div>
-            <div v-if="!$v.emailInput.email" class="check tip-style">邮箱格式不正确</div>
+            <div v-if="!$v.emailInput.email" class="check tip-color min-font">邮箱格式不正确</div>
         </div>
         <div class="row">
             <div class="box box-height transparent">
@@ -42,7 +42,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="check tip-style" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
+            <div class="check tip-color min-font" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
         </div>
         <div class="row">
             <div class="box box-height transparent">
@@ -59,9 +59,9 @@
                     </svg>
                 </div>
             </div>
-            <div class="check tip-style" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
+            <div class="check tip-color min-font" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
         </div>
-        <button v-on:click="submit" class="change full-width box-height margin-bottom" :style="changedButton" id="registerbtn">注册</button>
+        <button v-on:click="submit" class="change full-width box-height margin-bottom" :style="{'background-color': this.submitFlag ? '#d2d2d2' : '#fd860e'}" id="registerbtn">注册</button>
     </div>
 </template>
 <script>
@@ -120,13 +120,6 @@ export default {
                 required
             },
             validationGroup: ['username', 'emailInput', 'passwordInput', 'psdsecond']
-        },
-        computed: {
-            changedButton: function() {
-                return {
-                    'background-color': this.submitFlag ? 'grey' : '#fd860e'
-                }
-            }
         },
         mounted() {
             if (window.devicePixelRatio && devicePixelRatio >= 2) {

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <button class="btn mobile-btn" :style="{'background-color': this.start ? 'grey':'#4ac1c7'}">{{time | change}}</button>
+    <button class="btn blue-color" :style="{'background-color': this.start ? 'grey':'#4ac1c7'}">{{time | change}}</button>
     </div>
 </template>
 <script>

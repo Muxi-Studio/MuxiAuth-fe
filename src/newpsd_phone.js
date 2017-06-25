@@ -13,7 +13,8 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         { path: '/phone/newpsd', component: captcha },
-        { path: '/reset', component: reset }
+        { path: '/phone/reset', component: reset },
+        { path: '/phone/sucess', component: sucess }
     ]
 })
 

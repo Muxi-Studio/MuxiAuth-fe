@@ -10,9 +10,9 @@
                 <eInput v-model.trim="emailInput" class="transparent inline-block vertical-align inputword"></eInput>
                 <sendcode :start='start' @countDown='start=false' @click.native='sendCode' class="inline-block vertical-align code-box"></sendcode>
             </div>
-            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="find-check">您输入的账号不存在，请重新输入
+            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="find-check tip-color">您输入的账号不存在，请重新输入
             </div>
-            <div v-if="!$v.emailInput.email" class="find-check">邮箱格式有误</div>
+            <div v-if="!$v.emailInput.email" class="find-check tip-color">邮箱格式有误</div>
         </div>
         <div class="input-tip">
             <div class="row-line full-width">
@@ -23,9 +23,9 @@
                 </div>
                 <input type="text" v-model.trim="captchaInput" class="transparent inline-block vertical-align inputword" placeholder="输入验证码">
             </div>
-            <div v-if="this.wrong" class="find-check">验证码错误</div>
+            <div v-if="this.wrong" class="find-check tip-color">验证码错误</div>
         </div>
-        <button v-on:click="next" class="btn next vertical-align" :style="{'background-color': this.code && this.captchaInput ? '#fd860e':'grey' }">下一步</button>
+        <button v-on:click="next" class="btn next vertical-align" :style="{'background-color': this.code && this.captchaInput ? '#ff860d':'#d2d2d2' }">下一步</button>
     </div>
 </template>
 <script>
@@ -97,27 +97,30 @@ export default {
                 }
             },
             next() {
-                if (this.code && this.captchaInput) {
-                    fetch("/api/forgot_password/check_captcha/", {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            email: this.emailInput,
-                            captcha: this.captchaInput
-                        })
-                    }).then(res => {
-                        if (res.ok) {
-                            this.$parent.message.push(this.emailInput)
-                            this.$parent.message.push(this.captchaInput)
-                            this.$router.push('reset')
-                        } else {
-                            this.wrong = true
-                        }
-                    })
-                }
+                this.$parent.message.push(this.emailInput)
+                this.$parent.message.push(this.captchaInput)
+                this.$router.push('reset')
+                    // if (this.code && this.captchaInput) {
+                    //     fetch("/api/forgot_password/check_captcha/", {
+                    //         method: 'POST',
+                    //         headers: {
+                    //             'Accept': 'application/json',
+                    //             'Content-Type': 'application/json'
+                    //         },
+                    //         body: JSON.stringify({
+                    //             email: this.emailInput,
+                    //             captcha: this.captchaInput
+                    //         })
+                    //     }).then(res => {
+                    //         if (res.ok) {
+                    //             this.$parent.message.push(this.emailInput)
+                    //             this.$parent.message.push(this.captchaInput)
+                    //             this.$router.push('reset')
+                    //         } else {
+                    //             this.wrong = true
+                    //         }
+                    //     })
+                    // }
 
             }
         }

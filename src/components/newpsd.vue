@@ -77,7 +77,7 @@ export default {
 .btn {
     height: 30px;
     width: 80px;
-    background-color: #4ac1c7;
+    // background-color: #4ac1c7;
     border-radius: 4px;
     margin-left: 50px;
     color: #ffffff;
@@ -89,7 +89,6 @@ export default {
 
 .find-check {
     line-height: 30px;
-    color: #ac372b;
     margin-left: 50px;
     font-size: 15px;
 }

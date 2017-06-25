@@ -9,9 +9,9 @@
                 </div>
                 <eInput v-model.trim="emailInput" @focus="isFocus" class="transparent inline-block vertical-align"></eInput>
             </div>
-            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-style">邮箱不存在
+            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-color min-font">邮箱不存在
             </div>
-            <div v-if="!$v.emailInput.email" class="check tip-style">邮箱格式有误</div>
+            <div v-if="!$v.emailInput.email" class="check tip-color min-font">邮箱格式有误</div>
         </div>
         <div class="row">
             <div class="box box-height transparent">
@@ -31,10 +31,10 @@
             <svg viewBox="0 0 200 200" class="secret inline-block">>
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secret"></use>
             </svg>
-            <div v-on:click="link" class="forget inline-block tip-style">忘记密码？</div>
-            <div v-if="this.failed" class="check inline-block fail tip-style">邮箱或密码不正确</div>
+            <div v-on:click="link" class="forget inline-block tip-color min-font">忘记密码？</div>
+            <div v-if="this.failed" class="check inline-block fail tip-color min-font">邮箱或密码不正确</div>
         </div>
-        <button v-on:click="submit" class="change box-height full-width login-margin" :style="{'background-color': this.submitFlag ? 'grey' : '#fd860e'}">登录</button>
+        <button v-on:click="submit" class="change box-height full-width login-margin" :style="{'background-color': this.submitFlag ? '#d2d2d2' : '#fd860e'}">登录</button>
     </div>
 </template>
 <script>

@@ -71,6 +71,7 @@ export default {
 .input-tip {
     height: 82px;
 }
+
 .row-line {
     height: 50px;
     border-bottom: 2px solid #e1e3df;
@@ -101,7 +102,7 @@ export default {
 }
 
 .btn {
-    background-color: #4ac1c7;
+    // background-color: #4ac1c7;
     border-radius: 2px;
     width: 100%;
     height: 100%;
@@ -115,6 +116,8 @@ export default {
 }
 
 .next {
-    height: 35px;
+    height: 45px;
+    font-size: 16px;
 }
+
 </style>
