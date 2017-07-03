@@ -1,10 +1,10 @@
 <template>
     <div class="wrap">
         <div class="no-footer">
+            <!-- <a href="/" class="back inline-block"> -->
             <a href="/phone" class="back inline-block">
                 < 返回</a>
                     <div class="header  full-width inline-block">
-                        <!-- <a href="/" class="back inline-block"> -->
                         <div class="title-find text-align">
                             找回密码
                         </div>
@@ -35,16 +35,25 @@
 <script>
 import captcha from './captcha.vue'
 import reset from './reset.vue'
-
+import success from './success.vue'
 export default {
     data() {
             return {
-                message: []
+                message: [],
+                reset_message: false
             }
         },
         components: {
             "captcha": captcha,
-            "reset": reset
+            "reset": reset,
+            "success": success
+        },
+        methods: {
+            check_reset() {
+                if (this.reset_message) {
+                    this.$router.push('success')
+                }
+            }
         }
 }
 </script>
@@ -102,7 +111,6 @@ export default {
 }
 
 .btn {
-    // background-color: #4ac1c7;
     border-radius: 2px;
     width: 100%;
     height: 100%;
@@ -119,5 +127,4 @@ export default {
     height: 45px;
     font-size: 16px;
 }
-
 </style>

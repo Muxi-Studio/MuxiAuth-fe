@@ -97,30 +97,27 @@ export default {
                 }
             },
             next() {
-                this.$parent.message.push(this.emailInput)
-                this.$parent.message.push(this.captchaInput)
-                this.$router.push('reset')
-                    // if (this.code && this.captchaInput) {
-                    //     fetch("/api/forgot_password/check_captcha/", {
-                    //         method: 'POST',
-                    //         headers: {
-                    //             'Accept': 'application/json',
-                    //             'Content-Type': 'application/json'
-                    //         },
-                    //         body: JSON.stringify({
-                    //             email: this.emailInput,
-                    //             captcha: this.captchaInput
-                    //         })
-                    //     }).then(res => {
-                    //         if (res.ok) {
-                    //             this.$parent.message.push(this.emailInput)
-                    //             this.$parent.message.push(this.captchaInput)
-                    //             this.$router.push('reset')
-                    //         } else {
-                    //             this.wrong = true
-                    //         }
-                    //     })
-                    // }
+                if (this.code && this.captchaInput) {
+                    fetch("/api/forgot_password/check_captcha/", {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: this.emailInput,
+                            captcha: this.captchaInput
+                        })
+                    }).then(res => {
+                        if (res.ok) {
+                            this.$parent.message.push(this.emailInput)
+                            this.$parent.message.push(this.captchaInput)
+                            this.$router.push('reset')
+                        } else {
+                            this.wrong = true
+                        }
+                    })
+                }
 
             }
         }

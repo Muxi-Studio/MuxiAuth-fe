@@ -2,9 +2,11 @@
     <div class="wrap">
         <div class="full-width main-color full-height">
             <div class="main margin full-height">
-                <div class="find text-align">
+                <div class="find text-align" v-if="!this.reset_message">
                     找回密码
                 </div>
+                <div class="find text-align blue-color tip-color" v-if="this.reset_message">
+                    修改成功，请立即登录！</div>
                 <div class="container margin">
                     <router-link to="/newpsd">
                     </router-link>
@@ -31,7 +33,8 @@ import reset from './reset.vue'
 export default {
     data() {
             return {
-                message: []
+                message: [],
+                reset_message: false
             }
         },
         components: {
@@ -47,6 +50,8 @@ export default {
     color: #435b68;
     margin-bottom: 100px;
     padding-top: 83px;
+    height: 50px;
+    line-height: 50px;
 }
 
 .container {

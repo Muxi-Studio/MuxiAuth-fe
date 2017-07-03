@@ -2,6 +2,7 @@ import Vue from 'vue'
 import newpsd from './components/newpsd_phone.vue'
 import captcha from './components/captcha.vue'
 import reset from './components/reset.vue'
+import success from './components/success.vue'
 import style from './main.scss'
 import Vuelidate from 'vuelidate'
 import VueRouter from 'vue-router'
@@ -14,7 +15,7 @@ const router = new VueRouter({
     routes: [
         { path: '/phone/newpsd', component: captcha },
         { path: '/phone/reset', component: reset },
-        { path: '/phone/sucess', component: sucess }
+        { path: '/phone/success', component: success }
     ]
 })
 

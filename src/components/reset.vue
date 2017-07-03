@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- <div v-if="this.success" class="success text-align">修改成功，请立即登录！</div> -->
         <div class="input-tip">
             <div class="row-line full-width">
                 <div class="iconbox inline-block full-height vertical-align">
@@ -10,7 +9,7 @@
                 </div>
                 <input class="transparent inline-block vertical-align inputword" v-model.trim="passwordInput" type="password" placeholder="请输入新密码">
             </div>
-            <div class="check" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
+            <div class="find-check tip-color" v-if="!$v.passwordInput.minLength">密码请勿少于六位</div>
         </div>
         <div class="input-tip">
             <div class="row-line full-width">
@@ -21,7 +20,7 @@
                 </div>
                 <input class="transparent inline-block vertical-align inputword" v-model.trim="psdsecond" type="password" placeholder="请再次输入新密码">
             </div>
-            <div class="check" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
+            <div class="find-check tip-color" v-if="!$v.psdsecond.sameAs && this.psdsecond">密码输入不一致</div>
         </div>
         <button v-on:click="submit" class="btn next vertical-align orange-color">确定</button>
     </div>
@@ -38,8 +37,7 @@ export default {
                 emailInput: '',
                 captchaInput: '',
                 passwordInput: '',
-                psdsecond: '',
-                success: false
+                psdsecond: ''
             }
         },
         validations: {
@@ -56,27 +54,29 @@ export default {
         created() {
             this.emailInput = this.$parent.message[0]
             this.captchaInput = this.$parent.message[1]
+            this.$parent.reset_message = false
         },
         methods: {
             submit() {
-                if (this.$v.validationGroup) {
-                    fetch("/api/forgot_password/reset/", {
-                        method: 'POST',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            new_password: this.passwordInput,
-                            email: this.emailInput,
-                            captcha: this.captchaInput
+                    if (this.$v.validationGroup) {
+                        fetch("/api/forgot_password/reset/", {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                new_password: this.passwordInput,
+                                email: this.emailInput,
+                                captcha: this.captchaInput
+                            })
+                        }).then(res => {
+                            if (res.ok) {
+                                this.$parent.reset_message = true
+                                this.$parent.check_reset()
+                            }
                         })
-                    }).then(res => {
-                        if (res.ok) {
-                            this.success = true
-                        }
-                    })
-                }
+                    }
             }
         }
 }
