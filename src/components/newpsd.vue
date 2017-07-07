@@ -1,12 +1,12 @@
 <template>
     <div class="wrap">
         <div class="full-width main-color full-height">
-            <div class="main margin full-height">
+            <div class="main margin full-height full-width">
                 <div class="find text-align" v-if="!this.reset_message">
                     找回密码
                 </div>
-                <div class="find text-align blue-color tip-color" v-if="this.reset_message">
-                    修改成功，请立即登录！</div>
+                <div class="find text-align blue-color tip-color" v-if="this.reset_message">修改成功，请立即登录！
+                </div>
                 <div class="container margin">
                     <router-link to="/newpsd">
                     </router-link>
@@ -82,7 +82,6 @@ export default {
 .btn {
     height: 30px;
     width: 80px;
-    // background-color: #4ac1c7;
     border-radius: 4px;
     margin-left: 50px;
     color: #ffffff;

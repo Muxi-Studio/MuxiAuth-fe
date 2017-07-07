@@ -1,8 +1,8 @@
 <template>
-    <input type="text" 
-    placeholder="用户名(不超过八个字符)" 
-    ref="input" 
-    v-bind:value="value" 
+    <input type="text"
+    placeholder="用户名(不超过八个字符)"
+    ref="input"
+    v-bind:value="value"
     v-on:input="updateValue($event.target.value)">
 </template>
 

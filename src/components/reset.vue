@@ -58,25 +58,25 @@ export default {
         },
         methods: {
             submit() {
-                    if (this.$v.validationGroup) {
-                        fetch("/api/forgot_password/reset/", {
-                            method: 'POST',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                new_password: this.passwordInput,
-                                email: this.emailInput,
-                                captcha: this.captchaInput
-                            })
-                        }).then(res => {
-                            if (res.ok) {
-                                this.$parent.reset_message = true
-                                this.$parent.check_reset()
-                            }
+                if (this.$v.validationGroup) {
+                    fetch("/api/forgot_password/reset/", {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            new_password: this.passwordInput,
+                            email: this.emailInput,
+                            captcha: this.captchaInput
                         })
-                    }
+                    }).then(res => {
+                        if (res.ok) {
+                            this.$parent.reset_message = true
+                            this.$parent.check_reset()
+                        }
+                    })
+                }
             }
         }
 }
