@@ -40,8 +40,9 @@ body {
 
 .footer-copy {
     background-color: #2b2b29;
-    // height: 60px;
     padding: 5px 0;
+    position: fixed;
+    bottom: 0;
 }
 
 .copyright {

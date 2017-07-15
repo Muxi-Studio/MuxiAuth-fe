@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <div class="no-footer">
-            <a href="/" class="back inline-block">
+            <a href="https://user.muxixyz.com" class="back inline-block">
                 < 返回</a>
                     <div class="header  full-width inline-block">
                         <div class="title-find text-align">
@@ -83,6 +83,7 @@ export default {
 .row-line {
     height: 50px;
     border-bottom: 2px solid #e1e3df;
+    font-size: 0;
 }
 
 .iconbox {

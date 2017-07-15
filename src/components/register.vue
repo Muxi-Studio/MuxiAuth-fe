@@ -121,13 +121,6 @@ export default {
             },
             validationGroup: ['username', 'emailInput', 'passwordInput', 'psdsecond']
         },
-        mounted() {
-            if (window.devicePixelRatio && devicePixelRatio >= 2) {
-                var boxes = document.querySelectorAll('.box')
-                for (var i = 0; i < boxes.length; i++)
-                    boxes[i].className += ' box1';
-            }
-        },
         methods: {
             checkemail(value) {
                 fetch(`/api/email_exists/?email=${value}`).then(res => {

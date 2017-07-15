@@ -13,8 +13,8 @@
                 <div class="bottom full-width">
                     <div class="container margin">
                         <div class="text-align router-margin">
-                        <router-link to="/phone" class="btn">
-                            <!-- <router-link to="/" class="btn"> -->
+                            <router-link to="/phone" class="btn">
+                                <!-- <router-link to="/" class="btn"> -->
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
                             <router-link to="/register" class="registerButton btn">
@@ -68,8 +68,7 @@ export default {
 </script>
 <style lang="sass">
 @import '../mobile.scss';
-
-.router-margin{
+.router-margin {
     margin-bottom: 10px;
 }
 
@@ -85,37 +84,6 @@ export default {
 
 .registerButton {
     margin-left: 20px;
-}
-
-.header {
-    background-color: #f9f5d3;
-    height: 37px;
-}
-
-.logo {
-    width: 180px;
-    height: 100px;
-    margin-top: -32px;
-}
-
-.top {
-    height: 40%;
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
-
-.circle {
-    display: block;
-    width: 160px;
-    height: 160px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50%;
-    background-image: url('../pictures/mobile.png');
-}
-
-.bottom {
-    height: 60%;
 }
 
 .container {
@@ -139,31 +107,5 @@ export default {
 
 .margin-bottom {
     margin-bottom: 100px;
-}
-
-.footer-copy {
-    background-color: #2b2b29;
-    height: 60px;
-    padding-top: 3px;
-}
-
-.copyright {
-    font-size: 11px;
-    color: #989f9d;
-}
-
-.footer {
-    height: 25px;
-    display: flex;
-}
-
-.word {
-    flex: 1;
-    line-height: 25px;
-    color: #989f9d;
-}
-
-.word_change:hover {
-    color: #fe850b;
 }
 </style>
