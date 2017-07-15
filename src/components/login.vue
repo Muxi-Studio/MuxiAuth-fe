@@ -44,6 +44,7 @@ import {
     required,
     isUnique
 } from 'vuelidate/lib/validators'
+import getCookie from '../getCookie'
 
 export default {
     data() {
@@ -110,6 +111,10 @@ export default {
                         }
                     }).then(res => {
                         if (res.ok) {
+                            let landing = getCookie('landing')
+                            if (landing) {
+                                window.location.href = 'http://' + landing + '?email=' + this.emailInput
+                            }
                             return res.json()
                         } else {
                             this.failed = true
