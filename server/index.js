@@ -12,7 +12,9 @@ const templateRoot = path.join(__dirname, "../dist/template/main")
 app.use(userAgent);
 
 router.get('/', function(ctx, next){
-	console.log(ctx.userAgent)
+    ctx.cookies.set("landing", ctx.request.query.landing, {
+        httpOnly: false,
+    })
     if (!ctx.userAgent.isMobile) {
         let template = swig.compileFile(path.resolve(templateRoot, "auth.html"));
         ctx.body = template({})
