@@ -52,7 +52,6 @@ export default {
                 emailInput: '',
                 passwordInput: '',
                 showPass: false,
-                // focus: false,
                 submitFlag: false,
                 failed: false
             }
@@ -92,12 +91,9 @@ export default {
             isFocus() {
                 this.$parent.footer_display = true
                 this.submitFlag = false
-                // this.focus = true
-                console.log("focus:footer_display",this.$parent.footer_display)
             },
             isBlur() {
                 this.$parent.footer_display = false
-                console.log("blur:footer_display",this.$parent.footer_display)
             },
             link() {
                 var location = window.location.pathname
