@@ -21,6 +21,7 @@
     border: none;
     position: relative;
     z-index: 3;
+    font-size: 0;
 }
 
 .box:before {
@@ -68,7 +69,7 @@
 }
 
 .icon {
-    width: 18px;
+    width: 17px;
     height: 16px;
     transform: translate(-50%, -50%);
     top: 50%;
@@ -86,4 +87,8 @@
 
 .check {
     text-align: right;
+}
+
+.inputbox {
+    width: 65%;
 }

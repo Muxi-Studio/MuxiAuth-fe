@@ -4,7 +4,7 @@ body {
 
 .no-footer {
     min-height: 100%;
-    margin-bottom: -68px;
+    margin-bottom: -70px;
 }
 
 .header {
@@ -43,6 +43,7 @@ body {
     padding: 5px 0;
     position: fixed;
     bottom: 0;
+    z-index: 3;
 }
 
 .copyright {

@@ -7,7 +7,7 @@
                         <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                     </svg>
                 </div>
-                <eInput v-model.trim="emailInput" @focus="isFocus" class="transparent inline-block vertical-align"></eInput>
+                <eInput v-model.trim="emailInput" @focus="isFocus" class="inputbox transparent inline-block vertical-align"></eInput>
             </div>
             <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-color min-font">邮箱不存在
             </div>
@@ -20,8 +20,8 @@
                         <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                     </svg>
                 </div>
-                <input v-model.trim="passwordInput" type="password" class="transparent inline-block vertical-align" placeholder="密码" v-show="!showPass" @focus="isFocus">
-                <input v-model.trim="passwordInput" type="text" class="transparent inline-block vertical-align" placeholder="密码" v-show="showPass" @focus="isFocus">
+                <input v-model.trim="passwordInput" type="password" class="inputbox transparent inline-block vertical-align" placeholder="密码" v-show="!showPass" @focus="isFocus">
+                <input v-model.trim="passwordInput" type="text" class="inputbox transparent inline-block vertical-align" placeholder="密码" v-show="showPass" @focus="isFocus">
                 <div class="iconbox full-height eye inline-block vertical-align" v-on:click="showPass = !showPass">
                     <svg viewBox="0 0 200 200" class="icon">
                         <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>

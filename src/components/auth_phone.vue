@@ -6,15 +6,15 @@
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
                 </svg>
             </div>
-            <div class="full-height full-width">
+            <div class="full-height full-width main">
                 <div class="top">
                     <div class="circle margin"></div>
                 </div>
                 <div class="bottom full-width">
                     <div class="container margin">
                         <div class="text-align router-margin">
-                            <router-link to="/phone" class="btn">
-                                <!-- <router-link to="/" class="btn"> -->
+                            <!-- <router-link to="/phone" class="btn"> -->
+                                <router-link to="/" class="btn">
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
                             <router-link to="/register" class="registerButton btn">

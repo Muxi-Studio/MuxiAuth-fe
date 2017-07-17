@@ -171,8 +171,3 @@ export default {
         }
 }
 </script>
-<style>
-.inputbox {
-    width: 65%;
-}
-</style>
