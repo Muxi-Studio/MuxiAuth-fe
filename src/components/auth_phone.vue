@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copy full-width" v-bind:class="{display: footer_display || email_focus}">
+        <div class="footer-copy full-width" v-bind:class="{display: footer_display || email_focus || username_focus}">
             <div class="footer full-width">
                 <a href="http://xueer.muxixyz.com" class="word word-change text-align">学而</a>
                 <a href="http://muxistudio.com" class="word word-change text-align">木犀团队</a>
@@ -51,7 +51,8 @@ export default {
             return {
                 login: true,
                 footer_display: false,
-                email_focus: false
+                email_focus: false,
+                username_focus: false
             }
         },
         components: {

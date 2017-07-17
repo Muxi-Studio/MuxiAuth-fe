@@ -5,8 +5,7 @@
     v-bind:value="value" 
     v-on:input="updateValue($event.target.value)"
     @focus="isFocus" 
-    @blur="isBlur"
-    >
+    @blur="isBlur">
 </template>
 
 <script>
