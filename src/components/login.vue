@@ -7,7 +7,7 @@
                         <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#email"></use>
                     </svg>
                 </div>
-                <eInput v-model.trim="emailInput" @focus="isFocus" class="inputbox transparent inline-block vertical-align"></eInput>
+                <eInput v-model.trim="emailInput" class="inputbox transparent inline-block vertical-align"></eInput>
             </div>
             <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-color min-font">邮箱不存在
             </div>
@@ -20,8 +20,8 @@
                         <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                     </svg>
                 </div>
-                <input v-model.trim="passwordInput" type="password" class="inputbox transparent inline-block vertical-align" placeholder="密码" v-show="!showPass" @focus="isFocus">
-                <input v-model.trim="passwordInput" type="text" class="inputbox transparent inline-block vertical-align" placeholder="密码" v-show="showPass" @focus="isFocus">
+                <input v-model.trim="passwordInput" type="password" class="inputbox transparent inline-block vertical-align" placeholder="密码" v-show="!showPass" @focus="isFocus" @blur="isBlur">
+                <input v-model.trim="passwordInput" type="text" class="inputbox transparent inline-block vertical-align" placeholder="密码" v-show="showPass" @focus="isFocus" @blur="isBlur">
                 <div class="iconbox full-height eye inline-block vertical-align" v-on:click="showPass = !showPass">
                     <svg viewBox="0 0 200 200" class="icon">
                         <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#eye"></use>
@@ -52,7 +52,7 @@ export default {
                 emailInput: '',
                 passwordInput: '',
                 showPass: false,
-                focus: false,
+                // focus: false,
                 submitFlag: false,
                 failed: false
             }
@@ -76,6 +76,9 @@ export default {
             },
             validationGroup: ['emailInput', 'passwordInput']
         },
+        created() {
+            this.$parent.footer_display = false
+        },
         methods: {
             checkemail(value) {
                 fetch(`/api/email_exists/?email=${value}`).then(res => {
@@ -87,8 +90,14 @@ export default {
                 })
             },
             isFocus() {
+                this.$parent.footer_display = true
                 this.submitFlag = false
-                this.focus = true
+                // this.focus = true
+                console.log("focus:footer_display",this.$parent.footer_display)
+            },
+            isBlur() {
+                this.$parent.footer_display = false
+                console.log("blur:footer_display",this.$parent.footer_display)
             },
             link() {
                 var location = window.location.pathname

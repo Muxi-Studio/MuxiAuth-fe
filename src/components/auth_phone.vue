@@ -13,8 +13,8 @@
                 <div class="bottom full-width">
                     <div class="container margin">
                         <div class="text-align router-margin">
-                            <!-- <router-link to="/phone" class="btn"> -->
-                                <router-link to="/" class="btn">
+                            <router-link to="/phone" class="btn">
+                                <!-- <router-link to="/" class="btn"> -->
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
                             <router-link to="/register" class="registerButton btn">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copy full-width">
+        <div class="footer-copy full-width" v-bind:class="{display: footer_display || email_focus}">
             <div class="footer full-width">
                 <a href="http://xueer.muxixyz.com" class="word word-change text-align">学而</a>
                 <a href="http://muxistudio.com" class="word word-change text-align">木犀团队</a>
@@ -49,7 +49,9 @@ import Register from './register.vue'
 export default {
     data() {
             return {
-                login: true
+                login: true,
+                footer_display: false,
+                email_focus: false
             }
         },
         components: {
@@ -71,7 +73,9 @@ export default {
 .router-margin {
     margin-bottom: 10px;
 }
-
+.display {
+    display: none;
+}
 .highlight {
     color: black;
 }
