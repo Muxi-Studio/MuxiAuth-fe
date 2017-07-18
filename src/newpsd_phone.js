@@ -13,9 +13,9 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        { path: '/phone/newpsd', component: captcha },
-        { path: '/phone/reset', component: reset },
-        { path: '/phone/success', component: success }
+        { path: '/newpsd', component: captcha },
+        { path: '/reset', component: reset },
+        { path: '/success', component: success }
     ]
 })
 

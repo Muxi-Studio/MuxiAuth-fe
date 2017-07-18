@@ -92,7 +92,6 @@ module.exports = {
             inject: false,
             template: './template/newpsd_phone.ejs',
             chunks: ['newpsd_phone']
-
         }),
         new HtmlWebpackHarddiskPlugin(),
         new FaviconsWebpackPlugin('./src/pictures/favicon.png'),

@@ -24,6 +24,31 @@ router.get('/', function(ctx, next){
     }
 });
 
+router.get('/newpsd', function(ctx, next){
+    if (!ctx.userAgent.isMobile) {
+        let template = swig.compileFile(path.resolve(templateRoot, "newpsd.html"));
+        ctx.body = template({})
+    } else {
+        let template = swig.compileFile(path.resolve(templateRoot, "newpsd_phone.html"));
+        ctx.body = template({})
+    }
+});
+
+router.get('/reset', function(ctx, next){
+    if (!ctx.userAgent.isMobile) {
+        let template = swig.compileFile(path.resolve(templateRoot, "newpsd.html"));
+        ctx.body = template({})
+    } else {
+        let template = swig.compileFile(path.resolve(templateRoot, "newpsd_phone.html"));
+        ctx.body = template({})
+    }
+});
+
+router.get('/success', function(ctx, next){
+        let template = swig.compileFile(path.resolve(templateRoot, "newpsd_phone.html"));
+        ctx.body = template({})
+});
+
 router.get(/^\/static(?:\/|$)/, async (ctx) => {
      await send(ctx, ctx.path, {
          root: path.join(__dirname, "../dist")

@@ -30,7 +30,7 @@
             <div class="footer full-width">
                 <a href="http://xueer.muxixyz.com" class="word word-change text-align">学而</a>
                 <a href="http://muxistudio.com" class="word word-change text-align">木犀团队</a>
-                <a href="http://share.muxixyz.com/" class="word word-change text-align">木犀分享</a>
+                <a href="http://ccnubox.muxixyz.com/" class="word word-change text-align">华师匣子</a>
             </div>
             <div class="full-width">
                 <div class="copyright text-align">
