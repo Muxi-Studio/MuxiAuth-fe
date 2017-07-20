@@ -29,7 +29,7 @@
                 </svg>
                 <a href="http://share.muxixyz.com/" class="share word word-change">木犀分享</a>
                 <a href="http://muxistudio.com" class="studio word word-change">木犀团队</a>
-                <a href="http://xueer.muxixyz.com" class="word word-change">学而</a>
+                <a href="https://ccnubox.muxixyz.com" class="word word-change">华师匣子</a>
             </div>
         </div>
         <div class="footer full-width">
