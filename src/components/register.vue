@@ -9,7 +9,7 @@
                 </div>
                 <userInput v-model.trim="username" class="inputbox transparent inline-block vertical-align"></userInput>
             </div>
-            <div v-if="$v.username.required && $v.username.isUnique" class="check tip-color min-font">用户名已注册
+            <div v-if="$v.username.required && !$v.username.isUnique" class="check tip-color min-font">用户名已注册
             </div>
             <div v-if="!$v.username.maxLength && $v.username.required" class="check tip-color min-font">不超过八个字符
             </div>
@@ -23,7 +23,7 @@
                 </div>
                 <eInput v-model.trim="emailInput" class="inputbox transparent inline-block vertical-align"></eInput>
             </div>
-            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-color min-font">邮箱已注册
+            <div v-if="$v.emailInput.email && $v.emailInput.required && !$v.emailInput.isUnique" class="check tip-color min-font">邮箱已注册
             </div>
             <div v-if="!$v.emailInput.email" class="check tip-color min-font">邮箱格式不正确</div>
         </div>
@@ -95,11 +95,11 @@ export default {
                 required,
                 isUnique(value) {
                     return new Promise((resolve, reject) => {
-                        this.checkUsername(value).then(()=> {
+                        this.checkUsername(value).then(res=> {
                             // res.ok
-                            resolve(value)
+                            resolve(res.ok)
                             },() => {
-                            reject(value) //400
+                            resolve(res.ok) //400
                             })
                     })
                 }
@@ -108,12 +108,12 @@ export default {
                 email,
                 required,
                 isUnique(value) {
-                    return new Promise((resolve, reject) => {
+                    return new Promise(
+                        (resolve, reject) => {
                         this.checkemail(value).then(res => {
-                            // res.ok not exist
-                           // resolve(true)
+                            resolve(res.ok)
                             },() => {
-                            //reject(false) //400 exist
+                            reject(res.ok)
                             })
                     })
                 }
@@ -141,6 +141,7 @@ export default {
             },
             checkemail(value) {
                 return fetch(`/api/email_exists/?email=${value}`)
+
             },
             checkUsername(value) {
                 return fetch(`/api/username_exists/?username=${value}`)
