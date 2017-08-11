@@ -93,14 +93,14 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: 'template/newpsd.html',
+            filename: 'template/main/newpsd.html',
             inject: false,
             template: './template/newpsd.ejs',
             chunks: ['newpsd']
         }),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: 'template/newpsd_phone.html',
+            filename: 'template/main/newpsd_phone.html',
             inject: false,
             template: './template/newpsd_phone.ejs',
             chunks: ['newpsd_phone']
