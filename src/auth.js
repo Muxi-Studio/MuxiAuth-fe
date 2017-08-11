@@ -25,6 +25,6 @@ new Vue({
 
 if (window.location.href.includes('landing')) {
 	var index = window.location.href.indexOf('landing');
-	var land = window.location.href.slice(index)
-	localStorge.setItem('landing',land)
+	var land = window.location.href.slice(index+8)
+	localStorage.setItem('landing',land)
 }
