@@ -22,3 +22,9 @@ new Vue({
     router,
     render: h => h(Auth)
 })
+
+if (window.location.href.includes('landing')) {
+	var index = window.location.href.indexOf('landing');
+	var land = window.location.href.slice(index)
+	localStorge.setItem('landing',land)
+}

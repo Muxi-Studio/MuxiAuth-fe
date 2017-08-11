@@ -91,6 +91,20 @@ module.exports = {
                 warnings: false,
             },
         }),
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
+            filename: 'template/newpsd.html',
+            inject: false,
+            template: './template/newpsd.ejs',
+            chunks: ['newpsd']
+        }),
+        new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
+            filename: 'template/newpsd_phone.html',
+            inject: false,
+            template: './template/newpsd_phone.ejs',
+            chunks: ['newpsd_phone']
+        }),
         new HtmlWebpackHarddiskPlugin(),
         new FaviconsWebpackPlugin('./src/pictures/favicon.png'),
         new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.[hash].js"),

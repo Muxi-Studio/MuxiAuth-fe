@@ -9,14 +9,12 @@
                 </div>
                 <eInput v-model.trim="emailInput" class="inputbox transparent inline-block vertical-align"></eInput>
             </div>
-            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="check tip-color min-font">邮箱不存在
-            </div>
             <div v-if="!$v.emailInput.email" class="check tip-color min-font">邮箱格式有误</div>
         </div>
         <div class="row">
             <div class="box box-height transparent">
                 <div class="iconbox full-height width inline-block vertical-align">
-                    <svg viewBox="0 0 200 200" class="icon">>
+                    <svg viewBox="0 0 200 200" class="icon">
                         <use xmlns:xlink="http://www.w3.org/2000/svg" xlink:href="#password"></use>
                     </svg>
                 </div>
@@ -62,13 +60,7 @@ export default {
         validations: {
             emailInput: {
                 email,
-                required,
-                isUnique(value) {
-                    return new Promise((resolve, reject) => {
-                        resolve(typeof value === 'string' &&
-                            this.checkemail(value))
-                    })
-                }
+                required
             },
             passwordInput: {
                 required
@@ -79,15 +71,6 @@ export default {
             this.$parent.footer_display = false
         },
         methods: {
-            checkemail(value) {
-                fetch(`/api/email_exists/?email=${value}`).then(res => {
-                    if (res.ok) {
-                        return false
-                    } else {
-                        return true
-                    }
-                })
-            },
             isFocus() {
                 this.$parent.footer_display = true
                 this.submitFlag = false
@@ -116,7 +99,7 @@ export default {
                         }
                     }).then(res => {
                         if (res.ok) {
-                            let landing = getCookie('landing')
+                            let landing = localStorage.getItem('landing')
                             if (landing) {
                                 window.location.href = 'http://' + landing + '?email=' + this.emailInput
                             }

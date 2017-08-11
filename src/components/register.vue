@@ -81,7 +81,6 @@ export default {
                 emailInput: '',
                 passwordInput: '',
                 psdsecond: '',
-                // focus: false,
                 showPass: false,
                 submitFlag: false
             }
@@ -96,8 +95,12 @@ export default {
                 required,
                 isUnique(value) {
                     return new Promise((resolve, reject) => {
-                        resolve(typeof value === 'string' &&
-                            this.checkUsername(value))
+                        this.checkUsername(value).then(()=> {
+                            // res.ok
+                            resolve(value)
+                            },() => {
+                            reject(value) //400
+                            })
                     })
                 }
             },
@@ -106,8 +109,12 @@ export default {
                 required,
                 isUnique(value) {
                     return new Promise((resolve, reject) => {
-                        resolve(typeof value === 'string' &&
-                            this.checkemail(value))
+                        this.checkemail(value).then(res => {
+                            // res.ok not exist
+                           // resolve(true)
+                            },() => {
+                            //reject(false) //400 exist
+                            })
                     })
                 }
             },
@@ -127,31 +134,16 @@ export default {
         methods: {
             isFocus() {
                 this.submitFlag = false
-                // this.focus = true
                 this.$parent.footer_display = true
             },
             isBlur() {
                 this.$parent.footer_display = false
             },
             checkemail(value) {
-                fetch(`/api/email_exists/?email=${value}`).then(res => {
-                    if (res.ok) {
-                        return false
-                    } else {
-                        return true
-                    }
-                })
+                return fetch(`/api/email_exists/?email=${value}`)
             },
             checkUsername(value) {
-                if (this.$v.username.maxLength && this.$v.username.required) {
-                    fetch("/api/username_exists/?username=" + this.username, {}).then(res => {
-                        if (res.ok) {
-                            return false
-                        } else {
-                            return true
-                        }
-                    })
-                }
+                return fetch(`/api/username_exists/?username=${value}`)
             },
             isFocus() {
                 this.submitFlag = false
