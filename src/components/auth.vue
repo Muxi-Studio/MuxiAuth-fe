@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="full-width header-color">
-            <div class="header margin">
+            <a class="header margin" href="https://user.muxixyz.com">
                 <svg class="logo">
                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo">
                     </use>
@@ -30,7 +30,7 @@
                 <a href="https://ccnubox.muxixyz.com" class="share word word-change">华师匣子</a>
                 <a href="http://muxistudio.com" class="studio word word-change">木犀团队</a>
                 <a href="https://xueer.muxixyz.com" class="word word-change">学而</a>
-            </div>
+            </a>
         </div>
         <div class="footer full-width">
             <div class="center margin">

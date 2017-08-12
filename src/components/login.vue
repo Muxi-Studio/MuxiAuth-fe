@@ -101,7 +101,7 @@ export default {
                         if (res.ok) {
                             let landing = localStorage.getItem('landing')
                             if (landing) {
-                                window.location.href = 'http://' + landing + '?email=' + this.emailInput
+                                window.location.href = landing + '?email=' + this.emailInput
                             }
                             return res.json()
                         } else {
