@@ -25,7 +25,7 @@
         },
         methods: {
             countDown () {
-            	var tip = 3;
+            	var tip = 60;
                 this.time = tip + 's后重发';
                 let time = setInterval(()=>{
                     tip --

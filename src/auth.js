@@ -27,5 +27,10 @@ if (window.location.href.includes('landing')) {
 	var index = window.location.href.indexOf('landing');
 	var lands = window.location.href.slice(index+8);
     var land = decodeURIComponent(lands);
+
+    var lastChar = land[land.length-1];
+    if (lastChar !== '/')
+        land += '/';
+
 	localStorage.setItem('landing',land)
 }
