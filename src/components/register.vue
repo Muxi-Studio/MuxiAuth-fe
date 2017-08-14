@@ -141,7 +141,6 @@ export default {
             },
             checkemail(value) {
                 return fetch(`/api/email_exists/?email=${value}`)
-
             },
             checkUsername(value) {
                 return fetch(`/api/username_exists/?username=${value}`)

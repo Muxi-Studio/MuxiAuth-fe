@@ -10,7 +10,7 @@
                 <eInput v-model.trim="emailInput" class="transparent inline-block vertical-align inputword"></eInput>
                 <sendcode :start='start' @countDown='start=false' @click.native='sendCode' class="inline-block vertical-align code-box"></sendcode>
             </div>
-            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="find-check tip-color">您输入的账号不存在，请重新输入
+            <div v-if="$v.emailInput.required && $v.emailInput.isUnique" class="find-check tip-color">您输入的账号不存在，请重新输入
             </div>
             <div v-if="!$v.emailInput.email" class="find-check tip-color">邮箱格式有误</div>
         </div>
@@ -55,9 +55,13 @@ export default {
                 email,
                 required,
                 isUnique(value) {
-                    return new Promise((resolve, reject) => {
-                        resolve(typeof value === 'string' &&
-                            this.checkemail(value))
+                    return new Promise(
+                        (resolve, reject) => {
+                        this.checkemail(value).then(res => {
+                            resolve(res.ok)
+                            },() => {
+                            reject(res.ok)
+                            })
                     })
                 }
             }
@@ -67,18 +71,12 @@ export default {
         },
         methods: {
             checkemail(value) {
-                fetch(`/api/email_exists/?email=${value}`).then(res => {
-                    if (res.ok) {
-                        return false
-                    } else {
-                        return true
-                    }
-                })
+                return fetch(`/api/email_exists/?email=${value}`)
             },
             sendCode(value) {
                 value.stopPropagation();
                 value.preventDefault();
-                if (this.$v.emailInput) {
+                if (this.$v.validationGroup) {
                     fetch("/api/forgot_password/get_captcha/", {
                         method: 'POST',
                         headers: {

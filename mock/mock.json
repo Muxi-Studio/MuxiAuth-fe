@@ -39,7 +39,8 @@
 	],
 	"data":{
 		"api.login":{
-			"token":"muxi"
+			"uid": 1,
+			"token":"dafjslkfljfiasjjOJFOJDIOFJ"
 		}
 	}
 }
