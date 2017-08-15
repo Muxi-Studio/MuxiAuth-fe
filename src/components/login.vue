@@ -120,6 +120,7 @@
 
 .forget {
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .fail {

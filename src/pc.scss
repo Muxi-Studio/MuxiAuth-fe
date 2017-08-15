@@ -6,6 +6,7 @@ body {
     background-color: #ffffff;
     position: absolute;
     top: 0;
+    z-index: 10;
 }
 
 .header {
@@ -19,7 +20,7 @@ body {
     height: 30px;
     margin-top: 23px;
     margin-left: 74px;
-    float: left;
+    cursor: pointer;
 }
 
 .left-right {
