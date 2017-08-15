@@ -10,7 +10,7 @@
                 <eInput v-model.trim="emailInput" class="transparent inline-block vertical-align inputword"></eInput>
                 <sendcode :start='start' @countDown='start=false' @click.native='sendCode' class="inline-block vertical-align code-box"></sendcode>
             </div>
-            <div v-if="$v.emailInput.required && $v.emailInput.isUnique" class="find-check tip-color">您输入的账号不存在，请重新输入
+            <div v-if="$v.emailInput.email && $v.emailInput.required && $v.emailInput.isUnique" class="find-check tip-color">您输入的账号不存在，请重新输入
             </div>
             <div v-if="!$v.emailInput.email" class="find-check tip-color">邮箱格式有误</div>
         </div>
@@ -76,7 +76,7 @@ export default {
             sendCode(value) {
                 value.stopPropagation();
                 value.preventDefault();
-                if (this.$v.validationGroup) {
+                if (this.$v.emailInput.email && this.$v.emailInput.isUnique && this.$v.emailInput.required) {
                     fetch("/api/forgot_password/get_captcha/", {
                         method: 'POST',
                         headers: {

@@ -24,6 +24,19 @@ router.get('/', function(ctx, next){
     }
 });
 
+router.get('/register', function(ctx, next){
+    ctx.cookies.set("landing", ctx.request.query.landing, {
+        httpOnly: false,
+    })
+    if (!ctx.userAgent.isMobile) {
+        let template = swig.compileFile(path.resolve(templateRoot, "auth.html"));
+        ctx.body = template({})
+    } else {
+        let template = swig.compileFile(path.resolve(templateRoot, "auth_phone.html"));
+        ctx.body = template({})
+    }
+});
+
 router.get('/newpsd', function(ctx, next){
     if (!ctx.userAgent.isMobile) {
         let template = swig.compileFile(path.resolve(templateRoot, "newpsd.html"));
