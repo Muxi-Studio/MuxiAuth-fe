@@ -76,7 +76,7 @@ export default {
             sendCode(value) {
                 value.stopPropagation();
                 value.preventDefault();
-                if (this.$v.emailInput.email && this.$v.emailInput.isUnique && this.$v.emailInput.required) {
+                if (this.$v.emailInput.email && !this.$v.emailInput.isUnique && this.$v.emailInput.required) {
                     fetch("/api/forgot_password/get_captcha/", {
                         method: 'POST',
                         headers: {
