@@ -152,7 +152,11 @@ export default {
             submit(e) {
                 if (this.submitFlag) return
                 this.submitFlag = true
-                if (this.$v.validationGroup) {
+                if (this.$v.username.required && this.$v.username.isUnique 
+                    && this.$v.emailInput.required && this.$v.emailInput.email && this.$v.emailInput.isUnique
+                    && this.$v.passwordInput.required && this.$v.passwordInput.minLength
+                    && this.$v.psdsecond.sameAs
+                    ) {
                     fetch("/api/register/", {
                         method: 'POST',
                         headers: {
