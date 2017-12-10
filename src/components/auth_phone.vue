@@ -14,7 +14,7 @@
                     <div class="container margin">
                         <div class="text-align router-margin">
                             <!-- <router-link to="/phone" class="btn"> -->
-                                <router-link to="/" class="btn">
+                            <router-link to="/" class="btn">
                                 <a v-on:click="tologin" v-bind:class="{highlight: login}">登录</a>
                             </router-link>
                             <router-link to="/register" class="registerButton btn">

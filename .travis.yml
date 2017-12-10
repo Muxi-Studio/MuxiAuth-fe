@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "7"
+install:
+  - npm install
+script:
+  - npm run build
+after_script:
+  - tar -cvf bundle.tar ./dist
+  - node deploy.js
