@@ -43,7 +43,7 @@ export default {
         }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 @import '../pc.scss';
 .find {
     font-size: 20px;

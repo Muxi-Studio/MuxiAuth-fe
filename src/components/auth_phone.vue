@@ -69,7 +69,7 @@ export default {
         }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 @import '../mobile.scss';
 .router-margin {
     margin-bottom: 10px;

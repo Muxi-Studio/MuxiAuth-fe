@@ -81,7 +81,7 @@ export default {
         }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 .success {
     font-size: 20px;
     color: #ac372b;

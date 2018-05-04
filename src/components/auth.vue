@@ -59,7 +59,7 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="scss">
 @import '../pc.scss';
 .highlight {
     color: #0b2029;

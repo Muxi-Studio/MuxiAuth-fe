@@ -112,7 +112,7 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="scss">
 .secret {
     width: 14px;
     height: 12px;

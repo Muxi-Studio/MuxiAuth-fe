@@ -56,7 +56,7 @@ export default {
         }
 }
 </script>
-<style lang="sass">
+<style lang="scss">
 @import '../mobile.scss';
 .back {
     margin-left: 5px;
