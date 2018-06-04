@@ -6,13 +6,20 @@
         <div class="title-find text-align set-top">
             恭喜您，密码设置成功！
         </div>
-        <a href="https://user.muxixyz.com" class="toLogin btn next vertical-align orange-color login-top text-align">立即登录</a>
+        <div @click="reLogin" href="https://user.muxixyz.com" class="toLogin btn next vertical-align orange-color login-top text-align">立即登录</div>
     </div>
 </template>
 <script>
 export default {
-    data() {
-        return {}
+    methods: {
+        reLogin() {
+            let landing = localStorage.getItem('landing')
+            if (landing) {
+                window.location.href = 'https://user.muxixyz.com/?landing='+ landing;
+            } else {
+                window.location.href = "https://user.muxixyz.com"
+            }
+        }
     }
 }
 </script>

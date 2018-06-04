@@ -29,7 +29,7 @@
         <div class="footer-copy full-width" v-bind:class="{display: footer_display || email_focus || username_focus}">
             <div class="footer full-width">
                 <a href="https://xueer.muxixyz.com" class="word word-change text-align">学而</a>
-                <a href="http://muxistudio.com" class="word word-change text-align">木犀团队</a>
+                <a href="www.muxixyz.com" class="word word-change text-align">木犀团队</a>
                 <a href="https://ccnubox.muxixyz.com" class="word word-change text-align">华师匣子</a>
             </div>
             <div class="full-width">
