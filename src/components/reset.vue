@@ -73,7 +73,13 @@ export default {
                     }).then(res => {
                         if (res.ok) {
                             this.$parent.reset_message = true
-                            this.$parent.check_reset()
+                            
+                            setTimeout(function() {
+                                let landing = localStorage.getItem('landing')
+                                if (landing) {
+                                    window.location.href = 'https://user.muxixyz.com/?landing='+ landing;
+                                }
+                            }, 1500) 
                         }
                     })
                 }

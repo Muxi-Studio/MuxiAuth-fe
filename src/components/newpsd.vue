@@ -16,7 +16,7 @@
         </div>
         <div class="footer full-width">
             <div class="center margin">
-                <a href="http://muxistudio.com" class="copyright text-align">
+                <a href="www.muxixyz.com" class="copyright text-align">
                     华中师范大学木犀团队
                 </a>
                 <div class="copyright text-align">
