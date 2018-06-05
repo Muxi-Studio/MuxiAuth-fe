@@ -16,8 +16,8 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "dist"),
-        publicPath: '',
-        filename: '/static/[name].[hash].js'
+        publicPath: 'https://occc3ev3l.qnssl.com/muxiauth',
+        filename: 'static/[name].[chunkhash].js'
     },
     devtool: '#eval-source-map',
     module: {
