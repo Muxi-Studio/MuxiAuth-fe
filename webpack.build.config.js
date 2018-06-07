@@ -107,6 +107,6 @@ module.exports = {
         }),
         new HtmlWebpackHarddiskPlugin(),
         new FaviconsWebpackPlugin('./src/pictures/favicon.png'),
-        new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.[hash].js"),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.1.0.14.js"),
     ]
 };
