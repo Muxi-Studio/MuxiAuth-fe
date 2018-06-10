@@ -31,6 +31,7 @@ import {
     sameAs,
     required
 } from 'vuelidate/lib/validators'
+import Cookie from '../Cookie.js'
 export default {
     data() {
             return {
@@ -75,7 +76,7 @@ export default {
                             this.$parent.reset_message = true
                             
                             setTimeout(function() {
-                                let landing = localStorage.getItem('landing')
+                                let landing = Cookie.getCookie('land')
                                 if (landing) {
                                     window.location.href = 'https://user.muxixyz.com/?landing='+ landing;
                                 }

@@ -10,10 +10,11 @@
     </div>
 </template>
 <script>
+import Cookie from '../Cookie.js'
 export default {
     methods: {
         reLogin() {
-            let landing = localStorage.getItem('landing')
+            let landing = Cookie.getCookie('land')
             if (landing) {
                 window.location.href = 'https://user.muxixyz.com/?landing='+ landing;
             } else {

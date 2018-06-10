@@ -43,7 +43,7 @@
         required,
         isUnique
     } from 'vuelidate/lib/validators'
-    import getCookie from '../getCookie'
+    import Cookie from '../Cookie.js'
     
     export default {
         data() {
@@ -101,7 +101,7 @@
                             this.failed = true
                         }
                     }).then(value => {
-                        let landing = localStorage.getItem('landing')
+                        let landing = Cookie.getCookie('lands')
                         if (landing) {
                             window.location.href = 'http://'+ landing + '?email=' + this.emailInput + '&token=' + value.token
                         }

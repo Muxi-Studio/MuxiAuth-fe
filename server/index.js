@@ -14,6 +14,7 @@ app.use(userAgent);
 router.get('/', function(ctx, next){
     ctx.cookies.set("landing", ctx.request.query.landing, {
         httpOnly: false,
+        expires: new Date("2020-12-17T03:24:00")
     })
     if (!ctx.userAgent.isMobile) {
         let template = swig.compileFile(path.resolve(templateRoot, "auth.html"));
@@ -27,6 +28,7 @@ router.get('/', function(ctx, next){
 router.get('/register', function(ctx, next){
     ctx.cookies.set("landing", ctx.request.query.landing, {
         httpOnly: false,
+        expires: new Date("2020-12-17T03:24:00")
     })
     if (!ctx.userAgent.isMobile) {
         let template = swig.compileFile(path.resolve(templateRoot, "auth.html"));

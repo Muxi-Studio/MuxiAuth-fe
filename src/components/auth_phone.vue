@@ -46,6 +46,8 @@
 <script>
 import Login from './login.vue'
 import Register from './register.vue'
+import Cookie from '../Cookie.js'
+
 export default {
     data() {
             return {
@@ -65,6 +67,17 @@ export default {
             },
             toregister: function() {
                 this.login = false
+            }
+        },
+        mounted() {
+            if (window.location.href.includes('landing')) {
+	            let index = window.location.href.indexOf('landing');
+	            let lands = window.location.href.slice(index+8);
+                let land = decodeURIComponent(lands);
+
+                let lastChar = land[land.length-1];
+                if (lastChar !== '/') land += '/';
+                Cookie.setCookie("land", land);
             }
         }
 }

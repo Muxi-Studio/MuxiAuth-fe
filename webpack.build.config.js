@@ -17,7 +17,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, "dist"),
         publicPath: 'https://occc3ev3l.qnssl.com/muxiauth',
-        filename: 'static/[name].1.1.0.js'
+        filename: 'static/[name].1.1.1.js'
     },
     devtool: '#eval-source-map',
     module: {
@@ -107,6 +107,6 @@ module.exports = {
         }),
         new HtmlWebpackHarddiskPlugin(),
         new FaviconsWebpackPlugin('./src/pictures/favicon.png'),
-        new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.1.10.0.js"),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "static/vendor.1.10.1.js"),
     ]
 };
