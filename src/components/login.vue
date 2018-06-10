@@ -101,7 +101,7 @@
                             this.failed = true
                         }
                     }).then(value => {
-                        let landing = Cookie.getCookie('lands')
+                        let landing = Cookie.getCookie('land')
                         if (landing) {
                             window.location.href = 'http://'+ landing + '?email=' + this.emailInput + '&token=' + value.token
                         }

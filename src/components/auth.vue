@@ -37,6 +37,7 @@
 <script>
     import Login from './login.vue'
     import Register from './register.vue'
+    import Cookie from '../Cookie.js'
     
     export default {
         data() {
