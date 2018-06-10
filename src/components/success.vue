@@ -23,7 +23,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="sass">
 @import '../mobile.scss';
 .finish {
     height: 100px;
