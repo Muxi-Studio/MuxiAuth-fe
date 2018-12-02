@@ -95,6 +95,6 @@ module.exports = {
         }),
         new HtmlWebpackHarddiskPlugin(),
         new FaviconsWebpackPlugin('./src/pictures/favicon.png'),
-        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js"),
+        new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename:"vendor.js"}),
     ]
 };
